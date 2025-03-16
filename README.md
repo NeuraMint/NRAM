@@ -1,12 +1,20 @@
 # NeuraMint
 
-![NeuraMint Logo](https://via.placeholder.com/200x200/3498db/ffffff?text=NeuraMint)
+<div align="center">
+  <img src="https://img.shields.io/badge/NeuraMint-Memory%20NFT%20Platform-3498db?style=for-the-badge&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cGF0aCBkPSJNMjIgMTJoLTRsLTMgOUw5IDNoLTRNMTYgNWgyLjUiLz48L3N2Zz4=" alt="NeuraMint Logo" width="500px" />
 
-**Transforming Memories into Digital Assets on Solana**
+  <h3>Transforming Memories into Digital Assets on Solana</h3>
 
-NeuraMint is a groundbreaking platform that leverages brain-computer interface (BCI) technology and Solana blockchain to transform neural data into unique, verifiable NFTs that can be traded on a decentralized marketplace.
+  <p>
+    <a href="https://www.neuramint.tech" target="_blank"><img src="https://img.shields.io/badge/Website-neuramint.tech-00C7B7?style=flat-square&logo=netlify" alt="Website" /></a>
+    <a href="https://x.com/NeuraMint_" target="_blank"><img src="https://img.shields.io/badge/Twitter-@NeuraMint__-1DA1F2?style=flat-square&logo=twitter" alt="Twitter" /></a>
+    <a href="https://github.com/NeuraMint/NRAM" target="_blank"><img src="https://img.shields.io/badge/GitHub-NeuraMint/NRAM-181717?style=flat-square&logo=github" alt="GitHub" /></a>
+  </p>
+</div>
 
 ## Overview
+
+NeuraMint is a groundbreaking platform that leverages brain-computer interface (BCI) technology and Solana blockchain to transform neural data into unique, verifiable NFTs that can be traded on a decentralized marketplace.
 
 NeuraMint creates an innovative ecosystem where users can:
 
@@ -24,9 +32,11 @@ NeuraMint creates an innovative ecosystem where users can:
 - **Validator Dashboard**: Track validation performance, history, and rewards
 - **Multi-tier Memory Classification**: Organize memories by type and quality
 
-## Architecture
+## Platform Architecture
 
-The NeuraMint platform follows a modular architecture that integrates frontend components with Solana blockchain programs:
+NeuraMint follows a modular architecture that integrates frontend components with Solana blockchain smart contracts:
+
+### System Overview
 
 ```mermaid
 flowchart TD
@@ -122,6 +132,44 @@ flowchart LR
     NeuralFingerprinting --> IPFSStorage
 ```
 
+### Technical Implementation
+
+```mermaid
+sequenceDiagram
+    participant User
+    participant UI as User Interface
+    participant API as API Services
+    participant BC as Blockchain
+    participant IPFS as IPFS Storage
+    
+    User->>UI: Connect BCI Device
+    User->>UI: Initiate Memory Capture
+    UI->>API: Process Neural Data
+    API->>IPFS: Store Neural Pattern Metadata
+    IPFS-->>API: Return Content URI
+    API->>BC: Mint Memory NFT
+    BC-->>API: Return Transaction Hash
+    API-->>UI: Confirm Successful Mint
+    UI-->>User: Display Memory NFT
+    
+    Note over User,IPFS: Validation Process
+    
+    User->>UI: Request Validation
+    UI->>API: Submit for Validation
+    API->>BC: Create Validation Transaction
+    BC-->>API: Return Validation Status
+    API-->>UI: Update Validation Status
+    UI-->>User: Show Validation Results
+    
+    Note over User,IPFS: Trading Process
+    
+    User->>UI: List Memory for Sale
+    UI->>API: Create Marketplace Listing
+    API->>BC: Submit Listing Transaction
+    BC-->>API: Confirm Listing
+    API-->>UI: Show Active Listing
+```
+
 ## Technical Stack
 
 NeuraMint is built using the following technologies:
@@ -144,6 +192,45 @@ NeuraMint is built using the following technologies:
   - **Memory NFT**: Smart contract for minting and managing memory NFTs
   - **Memory Validator**: Smart contract for validating memory authenticity
 - **IPFS/Arweave**: Decentralized storage for memory metadata and images
+
+## Memory Processing and Storage
+
+```mermaid
+graph TD
+    subgraph "Neural Data Acquisition"
+        A[BCI Device] -->|Raw Neural Data| B[Signal Processing]
+        B --> C[Feature Extraction]
+        C --> D[Pattern Recognition]
+    end
+    
+    subgraph "Data Processing"
+        D --> E[Memory Classification]
+        E --> F[Quality Assessment]
+        F --> G[Metadata Creation]
+    end
+    
+    subgraph "Blockchain Integration"
+        G --> H[IPFS Storage]
+        H -->|Metadata URI| I[NFT Minting]
+        I --> J[Blockchain Record]
+    end
+    
+    subgraph "Validation Network"
+        J --> K[Validator Selection]
+        K --> L[Consensus Mechanism]
+        L --> M[Reward Distribution]
+    end
+    
+    classDef acquisition fill:#3498db,stroke:#2980b9,color:white;
+    classDef processing fill:#2ecc71,stroke:#27ae60,color:white;
+    classDef blockchain fill:#e74c3c,stroke:#c0392b,color:white;
+    classDef validation fill:#9b59b6,stroke:#8e44ad,color:white;
+    
+    class A,B,C,D acquisition;
+    class E,F,G processing;
+    class H,I,J blockchain;
+    class K,L,M validation;
+```
 
 ## User Workflows
 
