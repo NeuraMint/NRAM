@@ -1,6 +1,6 @@
 # NeuraMint
 
-![NeuraMint Logo](app/public/images/logo.png)
+![NeuraMint Logo](https://via.placeholder.com/200x200/3498db/ffffff?text=NeuraMint)
 
 **Transforming Memories into Digital Assets on Solana**
 
