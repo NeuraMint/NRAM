@@ -1,0 +1,74 @@
+{
+  "name": "neuramint",
+  "version": "0.1.0",
+  "description": "Memory Asset Solution on Solana Blockchain",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "format": "prettier --write \"**/*.{js,ts,tsx,json}\"",
+    "test": "jest",
+    "prepare": "husky install"
+  },
+  "dependencies": {
+    "@heroicons/react": "^2.0.18",
+    "@project-serum/anchor": "^0.26.0",
+    "@solana/spl-token": "^0.3.11",
+    "@solana/wallet-adapter-base": "^0.9.23",
+    "@solana/wallet-adapter-react": "^0.15.35",
+    "@solana/wallet-adapter-react-ui": "^0.9.35",
+    "@solana/wallet-adapter-wallets": "^0.19.32",
+    "@solana/web3.js": "^1.98.0",
+    "@types/recharts": "^1.8.29",
+    "axios": "^1.4.0",
+    "bs58": "^5.0.0",
+    "chart.js": "^4.3.0",
+    "daisyui": "^3.1.0",
+    "framer-motion": "^10.16.5",
+    "ipfs-http-client": "^60.0.0",
+    "next": "14.0.3",
+    "react": "^18.2.0",
+    "react-chartjs-2": "^5.2.0",
+    "react-dom": "^18.2.0",
+    "react-hook-form": "^7.44.3",
+    "react-hot-toast": "^2.5.2",
+    "recharts": "^2.15.1",
+    "three": "^0.153.0",
+    "zustand": "^4.3.8"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^14.0.0",
+    "@types/next": "^8.0.7",
+    "@types/node": "^20.17.24",
+    "@types/react": "^18.3.18",
+    "@types/react-dom": "^18.2.15",
+    "@types/three": "^0.152.1",
+    "@typescript-eslint/eslint-plugin": "^5.59.8",
+    "@typescript-eslint/parser": "^5.59.8",
+    "autoprefixer": "^10.4.16",
+    "eslint": "^8.54.0",
+    "eslint-config-next": "14.0.3",
+    "eslint-plugin-react": "^7.32.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "husky": "^8.0.3",
+    "jest": "^29.5.0",
+    "jest-environment-jsdom": "^29.5.0",
+    "lint-staged": "^13.2.2",
+    "postcss": "^8.4.31",
+    "prettier": "^2.8.8",
+    "tailwindcss": "^3.3.5",
+    "typescript": "^5.2.2"
+  },
+  "lint-staged": {
+    "*.{js,ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{json,md}": [
+      "prettier --write"
+    ]
+  }
+}

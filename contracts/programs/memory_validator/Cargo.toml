@@ -1,0 +1,23 @@
+[package]
+name = "memory_validator"
+version = "0.1.0"
+description = "Memory Validator program for NeuraMint platform"
+edition = "2021"
+
+[lib]
+crate-type = ["cdylib", "lib"]
+name = "memory_validator"
+
+[features]
+no-entrypoint = []
+no-idl = []
+no-log-ix-name = []
+cpi = ["no-entrypoint"]
+default = []
+
+[dependencies]
+anchor-lang = "0.26.0"
+anchor-spl = "0.26.0"
+solana-program = "1.14.16"
+memory_nft = { path = "../memory_nft", features = ["cpi"] }
+nram_token = { path = "../nram_token", features = ["cpi"] } 
