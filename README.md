@@ -1,7 +1,7 @@
 # NeuraMint
 
 <div align="center">
-  <img src="https://img.shields.io/badge/NeuraMint-Memory%20NFT%20Platform-3498db?style=for-the-badge&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cGF0aCBkPSJNMjIgMTJoLTRsLTMgOUw5IDNoLTRNMTYgNWgyLjUiLz48L3N2Zz4=" alt="NeuraMint Logo" width="500px" />
+  <img src="app/public/images/logo.svg" alt="NeuraMint Logo" width="300px" />
 
   <h3>Transforming Memories into Digital Assets on Solana</h3>
 

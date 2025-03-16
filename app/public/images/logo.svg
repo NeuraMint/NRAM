@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500">
+  <!-- Background -->
+  <rect width="500" height="500" fill="#080A14" rx="20" ry="20"/>
+  <!-- More realistic brain cross-section outline -->
+  <path d="M250,90
+           C290,90 325,95 350,110
+           C375,125 390,145 400,170
+           C410,195 415,220 410,250
+           C405,280 395,305 380,330
+           C365,355 345,370 320,380
+           C295,390 275,395 250,395
+           C225,395 205,390 180,380
+           C155,370 135,355 120,330
+           C105,305 95,280 90,250
+           C85,220 90,195 100,170
+           C110,145 125,125 150,110
+           C175,95 210,90 250,90z"
+        fill="none" stroke="#9945FF" stroke-width="3" stroke-opacity="0.4"/>
+  <!-- Left hemisphere indentation - more like sulci -->
+  <path d="M120,190 C140,180 155,190 165,210 C175,230 170,250 160,265"
+        fill="none" stroke="#9945FF" stroke-width="2" stroke-opacity="0.3"/>
+  <!-- Right hemisphere indentation - more like sulci -->
+  <path d="M380,190 C360,180 345,190 335,210 C325,230 330,250 340,265"
+        fill="none" stroke="#9945FF" stroke-width="2" stroke-opacity="0.3"/>
+  <!-- Left hemisphere neuron network -->
+  <!-- Main neurons -->
+  <circle cx="175" cy="170" r="15" fill="#14F195" opacity="0.9"/>
+  <circle cx="200" cy="230" r="15" fill="#14F195" opacity="0.9"/>
+  <circle cx="150" cy="270" r="15" fill="#14F195" opacity="0.9"/>
+  <!-- Secondary neurons -->
+  <circle cx="140" cy="140" r="8" fill="#14F195" opacity="0.7"/>
+  <circle cx="130" cy="200" r="8" fill="#14F195" opacity="0.7"/>
+  <circle cx="180" cy="310" r="8" fill="#14F195" opacity="0.7"/>
+  <!-- Left connections -->
+  <line x1="175" y1="170" x2="140" y2="140" stroke="#14F195" stroke-width="2"/>
+  <line x1="175" y1="170" x2="200" y2="230" stroke="#14F195" stroke-width="2"/>
+  <line x1="175" y1="170" x2="130" y2="200" stroke="#14F195" stroke-width="2"/>
+  <line x1="200" y1="230" x2="150" y2="270" stroke="#14F195" stroke-width="2"/>
+  <line x1="150" y1="270" x2="180" y2="310" stroke="#14F195" stroke-width="2"/>
+  <line x1="130" y1="200" x2="150" y2="270" stroke="#14F195" stroke-width="1.5" stroke-opacity="0.7"/>
+  <!-- Right hemisphere neuron network -->
+  <!-- Main neurons -->
+  <circle cx="325" cy="170" r="15" fill="#14F195" opacity="0.9"/>
+  <circle cx="300" cy="230" r="15" fill="#14F195" opacity="0.9"/>
+  <circle cx="350" cy="270" r="15" fill="#14F195" opacity="0.9"/>
+  <!-- Secondary neurons -->
+  <circle cx="360" cy="140" r="8" fill="#14F195" opacity="0.7"/>
+  <circle cx="370" cy="200" r="8" fill="#14F195" opacity="0.7"/>
+  <circle cx="320" cy="310" r="8" fill="#14F195" opacity="0.7"/>
+  <!-- Right connections -->
+  <line x1="325" y1="170" x2="360" y2="140" stroke="#14F195" stroke-width="2"/>
+  <line x1="325" y1="170" x2="300" y2="230" stroke="#14F195" stroke-width="2"/>
+  <line x1="325" y1="170" x2="370" y2="200" stroke="#14F195" stroke-width="2"/>
+  <line x1="300" y1="230" x2="350" y2="270" stroke="#14F195" stroke-width="2"/>
+  <line x1="350" y1="270" x2="320" y2="310" stroke="#14F195" stroke-width="2"/>
+  <line x1="370" y1="200" x2="350" y2="270" stroke="#14F195" stroke-width="1.5" stroke-opacity="0.7"/>
+  <!-- Central connector - memory processing center -->
+  <circle cx="250" cy="200" r="25" fill="#14F195"/>
+  <!-- Hemisphere connections -->
+  <line x1="175" y1="170" x2="250" y2="200" stroke="#14F195" stroke-width="3"/>
+  <line x1="200" y1="230" x2="250" y2="200" stroke="#14F195" stroke-width="3"/>
+  <line x1="325" y1="170" x2="250" y2="200" stroke="#14F195" stroke-width="3"/>
+  <line x1="300" y1="230" x2="250" y2="200" stroke="#14F195" stroke-width="3"/>
+  <!-- Neural impulse effects -->
+  <circle cx="212" cy="185" r="4" fill="white"/>
+  <circle cx="225" cy="215" r="4" fill="white"/>
+  <circle cx="288" cy="185" r="4" fill="white"/>
+  <circle cx="275" cy="215" r="4" fill="white"/>
+  <circle cx="250" cy="250" r="4" fill="white"/>
+  <!-- Blockchain element -->
+  <rect x="190" y="340" width="120" height="25" rx="5" fill="#9945FF"/>
+  <!-- Central to blockchain connection -->
+  <path d="M250,225 C250,260 250,310 250,340" stroke="#14F195" stroke-width="3" stroke-dasharray="6,3"/>
+  <circle cx="250" cy="280" r="6" fill="#14F195"/>
+  <circle cx="250" cy="310" r="6" fill="#14F195"/>
+  <!-- Brain structure details - sulci and gyri -->
+  <path d="M140,120 C160,110 180,105 200,110"
+        fill="none" stroke="#9945FF" stroke-width="1.5" stroke-opacity="0.3"/>
+  <path d="M300,110 C320,105 340,110 360,120"
+        fill="none" stroke="#9945FF" stroke-width="1.5" stroke-opacity="0.3"/>
+  <path d="M120,300 C140,320 170,330 200,325"
+        fill="none" stroke="#9945FF" stroke-width="1.5" stroke-opacity="0.3"/>
+  <path d="M300,325 C330,330 360,320 380,300"
+        fill="none" stroke="#9945FF" stroke-width="1.5" stroke-opacity="0.3"/>
+</svg>
