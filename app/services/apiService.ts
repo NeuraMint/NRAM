@@ -2,7 +2,7 @@ import { getEnvironmentConfig } from '../utils/environment';
 import { PublicKey } from '@solana/web3.js';
 
 // APIResponse interface
-interface ApiResponse<T>[Chinese UI text]  {
+interface ApiResponse<T>  {
   success: boolean;
   data?: T;
   error?: string;
@@ -90,7 +90,7 @@ export class ApiService {
    * @param endpoint API端点
    * @returns 响应数据
    */
-  private async get<T>(endpoint: string): Promise<T>[Chinese UI text]  {
+  private async get<T>(endpoint: string): Promise<T>  {
     try {
       const response = await fetch(`${this.baseUrl}${endpoint}`, {
         method: 'GET',
@@ -103,7 +103,7 @@ export class ApiService {
         throw new Error(`API错误: ${response.status}`);
       }
       
-      const result: ApiResponse<T>[Chinese UI text]  = await response.json();
+      const result: ApiResponse<T>  = await response.json();
       
       if (!result.success) {
         throw new Error(result.error || '未知API错误');
@@ -122,7 +122,7 @@ export class ApiService {
    * @param data 请求数据
    * @returns 响应数据
    */
-  private async post<T, R>(endpoint: string, data: T): Promise<R>[Chinese UI text]  {
+  private async post<T, R>(endpoint: string, data: T): Promise<R>  {
     try {
       const response = await fetch(`${this.baseUrl}${endpoint}`, {
         method: 'POST',
@@ -136,7 +136,7 @@ export class ApiService {
         throw new Error(`API错误: ${response.status}`);
       }
       
-      const result: ApiResponse<R>[Chinese UI text]  = await response.json();
+      const result: ApiResponse<R>  = await response.json();
       
       if (!result.success) {
         throw new Error(result.error || '未知API错误');
@@ -155,7 +155,7 @@ export class ApiService {
    */
   async getAllMemories(): Promise<MemoryNFT[]> {
     try {
-      return await this.get<MemoryNFT[]>[Chinese UI text] ('/memories');
+      return await this.get<MemoryNFT[]> ('/memories');
     } catch (error) {
       // Return mock data when the actual API is unavailable
       console.warn('使用模拟数据代替API调用');
@@ -174,7 +174,7 @@ export class ApiService {
       // Return mock data when the actual API is unavailable
       console.warn('使用模拟数据代替API调用');
       const allMemories = this.getMockMemories();
-      return allMemories.filter(memory =>[Chinese UI text]  memory.isListed);
+      return allMemories.filter(memory =>  memory.isListed);
     }
   }
   
@@ -190,7 +190,7 @@ export class ApiService {
       // Return mock data when the actual API is unavailable
       console.warn('使用模拟数据代替API调用');
       const allMemories = this.getMockMemories();
-      return allMemories.filter(memory =>[Chinese UI text]  memory.owner === ownerAddress);
+      return allMemories.filter(memory =>  memory.owner === ownerAddress);
     }
   }
   
@@ -206,7 +206,7 @@ export class ApiService {
       // Return mock data when the actual API is unavailable
       console.warn('使用模拟数据代替API调用');
       const allMemories = this.getMockMemories();
-      const memory = allMemories.find(m =>[Chinese UI text]  m.id === memoryId);
+      const memory = allMemories.find(m =>  m.id === memoryId);
       
       if (!memory) {
         throw new Error(`未找到ID为${memoryId}的记忆`);
@@ -225,7 +225,7 @@ export class ApiService {
   async createMemory(memoryData: CreateMemoryRequest, walletAddress: string): Promise<MemoryNFT> {
     // In the actual implementation, this would call an API to upload images and data
     // Since this is a simplified version, we return mock data directly
-    await new Promise(resolve =>[Chinese UI text]  setTimeout(resolve, 2000)); // Simulate network delay
+    await new Promise(resolve =>  setTimeout(resolve, 2000)); // Simulate network delay
     
     const newMemory: MemoryNFT = {
       id: `memory_${Date.now()}`,
@@ -267,7 +267,7 @@ export class ApiService {
       console.warn('使用模拟数据代替API调用');
       
       // Simulate delay
-      await new Promise(resolve =>[Chinese UI text]  setTimeout(resolve, 1500));
+      await new Promise(resolve =>  setTimeout(resolve, 1500));
       
       // Return mock validation records
       return {
@@ -293,7 +293,7 @@ export class ApiService {
    */
   async getValidator(validatorAddress: string): Promise<Validator | null> {
     try {
-      return await this.get<Validator>[Chinese UI text] (`/validators/${validatorAddress}`);
+      return await this.get<Validator> (`/validators/${validatorAddress}`);
     } catch (error) {
       // Return mock data when the actual API is unavailable
       console.warn('使用模拟数据代替API调用');
@@ -320,7 +320,7 @@ export class ApiService {
    */
   async getValidatorHistory(validatorAddress: string): Promise<ValidationRecord[]> {
     try {
-      return await this.get<ValidationRecord[]>[Chinese UI text] (`/validations/validator/${validatorAddress}`);
+      return await this.get<ValidationRecord[]> (`/validations/validator/${validatorAddress}`);
     } catch (error) {
       // Return mock data when the actual API is unavailable
       console.warn('使用模拟数据代替API调用');
@@ -340,7 +340,7 @@ export class ApiService {
           memoryName: `示例Memory #${i + 1}`,
           score,
           isValid: score >= 60,
-          comment: score >[Chinese UI text] = 80 ? '高质量记忆，细节丰富' : '记忆基本真实，但有些细节模糊',
+          comment: score > = 80 ? '高质量记忆，细节丰富' : '记忆基本真实，但有些细节模糊',
           processed: i < 8, // The last two records are unprocessed
           rewarded: i < 8, // All processed records have rewards
           rewardAmount: i < 8 ? 0.05 : 0,
@@ -358,7 +358,7 @@ export class ApiService {
    */
   async getValidatorRankings(): Promise<Validator[]> {
     try {
-      return await this.get<Validator[]>[Chinese UI text] ('/validators/rankings');
+      return await this.get<Validator[]> ('/validators/rankings');
     } catch (error) {
       // Return mock data when the actual API is unavailable
       console.warn('使用模拟数据代替API调用');

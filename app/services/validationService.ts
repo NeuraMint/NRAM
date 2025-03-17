@@ -100,7 +100,7 @@ export class ValidationService {
    * @returns Validator statistics
    * @throws ValidationError if operation fails
    */
-  async getValidatorStats(validatorWallet: PublicKey): Promise<ValidatorStats | null>[Chinese UI text]  {
+  async getValidatorStats(validatorWallet: PublicKey): Promise<ValidatorStats | null>  {
     try {
       if (!validatorWallet) {
         throw new ValidationError(
@@ -226,7 +226,7 @@ export class ValidationService {
         return result;
       } else {
         // Simulate network delay
-        await new Promise(resolve =>[Chinese UI text]  setTimeout(resolve, 1000));
+        await new Promise(resolve =>  setTimeout(resolve, 1000));
         return '4uQeVj5tqViQh7yWWGStvkEG1Zmhx6uasJtWCJziofM95zLnHmgvr3TQ1J4xtJRBo9YGAgLnvBfJoJ5JRJfLm1Sg';
       }
     } catch (error: any) {
@@ -311,7 +311,7 @@ export class ValidationService {
         return signature;
       } else {
         // Simulate network delay
-        await new Promise(resolve =>[Chinese UI text]  setTimeout(resolve, 1500));
+        await new Promise(resolve =>  setTimeout(resolve, 1500));
         return '5wBYqXSMTdJWrJMUfbYCFd6KjYb8oUHJQnZ82TQcjT2ar5rQwjxnYFcAWnGpJ5vA3XFTfM7PNS8Aw1UJvuRHyRKJ';
       }
     } catch (error) {
@@ -483,7 +483,7 @@ export class ValidationService {
         return result;
       } else {
         // Simulate network delay
-        await new Promise(resolve =>[Chinese UI text]  setTimeout(resolve, 2000));
+        await new Promise(resolve =>  setTimeout(resolve, 2000));
         return '5wBYqXSMTdJWrJMUfbYCFd6KjYb8oUHJQnZ82TQcjT2ar5rQwjxnYFcAWnGpJ5vA3XFTfM7PNS8Aw1UJvuRHyRKJ';
       }
     } catch (error) {

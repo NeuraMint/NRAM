@@ -30,7 +30,7 @@ export const getConnection = (endpoint: string = 'https://api.devnet.solana.com'
   return new Connection(endpoint, 'confirmed');
 };
 
-export const getProvider = (connection: Connection, wallet: any) =>[Chinese UI text]  {
+export const getProvider = (connection: Connection, wallet: any) =>  {
   if (!wallet.publicKey) throw new Error('Wallet not connected');
   
   return new AnchorProvider(
@@ -41,7 +41,7 @@ export const getProvider = (connection: Connection, wallet: any) =>[Chinese UI t
 };
 
 // [Chinese comment] 查询账户SOL余额
-export const getSolBalance = async (connection: Connection, publicKey: PublicKey): Promise<number> =>[Chinese UI text]  {
+export const getSolBalance = async (connection: Connection, publicKey: PublicKey): Promise<number> =>  {
   const balance = await connection.getBalance(publicKey);
   return balance / LAMPORTS_PER_SOL;
 };
@@ -51,7 +51,7 @@ export const getTokenBalance = async (
   connection: Connection, 
   walletAddress: PublicKey, 
   mintAddress: PublicKey
-): Promise<number> =>[Chinese UI text]  {
+): Promise<number> =>  {
   try {
     const tokenAccount = await getAssociatedTokenAddress(
       mintAddress,
@@ -72,7 +72,7 @@ export const createAssociatedTokenAccount = async (
   payer: PublicKey,
   mint: PublicKey,
   owner: PublicKey
-): Promise<TransactionInstruction> =>[Chinese UI text]  {
+): Promise<TransactionInstruction> =>  {
   const associatedToken = await getAssociatedTokenAddress(
     mint,
     owner
@@ -97,7 +97,7 @@ export const createAssociatedTokenAccount = async (
 export const getMemoryDataPDA = async (
   memoryId: string,
   programId: PublicKey = MEMORY_NFT_PROGRAM_ID
-): Promise<[PublicKey, number]> =>[Chinese UI text]  {
+): Promise<[PublicKey, number]> =>  {
   return await PublicKey.findProgramAddress(
     [
       Buffer.from('memory'),
@@ -111,7 +111,7 @@ export const getMemoryDataPDA = async (
 export const getValidatorPDA = async (
   validatorAddress: PublicKey,
   programId: PublicKey = MEMORY_VALIDATOR_PROGRAM_ID
-): Promise<[PublicKey, number]> =>[Chinese UI text]  {
+): Promise<[PublicKey, number]> =>  {
   return await PublicKey.findProgramAddress(
     [
       Buffer.from('validator'),
@@ -124,7 +124,7 @@ export const getValidatorPDA = async (
 // [Chinese comment] 获取Validate配置账户PDA
 export const getValidatorConfigPDA = async (
   programId: PublicKey = MEMORY_VALIDATOR_PROGRAM_ID
-): Promise<[PublicKey, number]> =>[Chinese UI text]  {
+): Promise<[PublicKey, number]> =>  {
   return await PublicKey.findProgramAddress(
     [
       Buffer.from('validator-config')
@@ -147,7 +147,7 @@ export const mintMemoryNFT = async (
     brainRegion: string,
     timestamp: number
   }
-): Promise<string> =>[Chinese UI text]  {
+): Promise<string> =>  {
   try {
     if (!wallet.publicKey) throw new Error('Wallet not connected');
     
@@ -231,7 +231,7 @@ export const registerValidator = async (
   connection: Connection,
   wallet: any,
   stakeAmount: number // [Chinese comment] 代币数量
-): Promise<boolean> =>[Chinese UI text]  {
+): Promise<boolean> =>  {
   try {
     if (!wallet.publicKey) throw new Error('Wallet not connected');
     
@@ -289,7 +289,7 @@ export const submitValidation = async (
   memoryId: string,
   score: number,
   comments: string
-): Promise<boolean> =>[Chinese UI text]  {
+): Promise<boolean> =>  {
   try {
     if (!wallet.publicKey) throw new Error('Wallet not connected');
     
@@ -362,7 +362,7 @@ export const getUserMemories = async (
     // [Chinese comment] 这里应该查询链上数据来确认这些是记忆NFT
     // [Chinese comment] 然后获取它们的元数据
     // [Chinese comment] 这是一个简化版
-    const memories = nftAccounts.map(account =>[Chinese UI text]  {
+    const memories = nftAccounts.map(account =>  {
       const mintAddress = (account.account.data as ParsedAccountData).parsed.info.mint;
       return {
         mint: mintAddress,
@@ -380,7 +380,7 @@ export const getUserMemories = async (
 // [Chinese comment] 获取Marketplace上的记忆NFT列表
 export const getMarketplaceMemories = async (
   connection: Connection
-): Promise<any[]> =>[Chinese UI text]  {
+): Promise<any[]> =>  {
   try {
     // [Chinese comment] 这里应该查询链上Marketplace数据
     // [Chinese comment] 这是一个示例，实际实现需要合约IDL
@@ -409,7 +409,7 @@ export const getMarketplaceMemories = async (
 // [Chinese comment] 获取待Validate的记忆列表
 export const getMemoriesToValidate = async (
   connection: Connection
-): Promise<any[]> =>[Chinese UI text]  {
+): Promise<any[]> =>  {
   try {
     // [Chinese comment] 这里应该查询链上Validate数据
     // [Chinese comment] 这是一个示例，实际实现需要合约IDL
@@ -437,7 +437,7 @@ export const getMemoriesToValidate = async (
 export const getValidatorInfo = async (
   connection: Connection,
   validatorAddress: PublicKey
-): Promise<any> =>[Chinese UI text]  {
+): Promise<any> =>  {
   try {
     // [Chinese comment] 获取Validate者PDA
     const [validatorPDA, validatorBump] = await getValidatorPDA(validatorAddress);

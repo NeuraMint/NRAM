@@ -61,29 +61,38 @@ const Market: NextPage = () => {
   } = useMemoryMarket();
 
   // Handle memory purchase
-  const handleBuyMemory = async (mint: string) =>[Chinese UI text]  {
+  const handleBuyMemory = async (mint: string) => {
     if (!wallet.connected) {
-      toast.error('Please connect your wallet first');
+      toast.error('Please connect your wallet to purchase memories');
       return;
     }
 
     try {
-      const mintService = new MintService(wallet);
-      const toastId = toast.loading('正在购买记忆...');
+      const toastId = toast.loading('Purchasing memory...');
       
-      // Execute purchase logic
-      await mintService.transferMemory(
-        new PublicKey(mint),
-        wallet.publicKey!,
-        wallet.publicKey!
-      );
+      const response = await fetch('/api/market/buy', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ 
+          mint,
+          buyer: wallet.publicKey!.toString()
+        })
+      });
       
-      toast.success('[Chinese UI text] 记忆购买成功！', { id: toastId });
-      // Refresh memory list
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message || 'Transaction failed');
+      }
+      
+      toast.success('Memory purchased successfully!', { id: toastId });
+      
+      // Refetch memories to update the UI
       refreshMemories();
     } catch (error) {
-      console.error('购买记忆失败:', error);
-      toast.error(`购买失败: ${error instanceof Error ? error.message : 'Unknown error'}`);
+      console.error('Failed to purchase memory:', error);
+      toast.error(`Purchase failed: ${error instanceof Error ? error.message : 'Unknown error'}`);
     }
   };
 
@@ -129,7 +138,7 @@ const Market: NextPage = () => {
   // Render wallet connection prompt
   const renderWalletPrompt = () => (
     <div className="flex flex-col items-center justify-center p-8 bg-gray-50 rounded-lg shadow-inner">
-      <p className="text-lg text-gray-600 mb-4 text-center">[Chinese UI text] 连接您的钱包以购买记忆NFT</p>
+      <p className="text-lg text-gray-600 mb-4 text-center">Connect your wallet to buy memory NFTs</p>
       <WalletMultiButton />
     </div>
   );
@@ -151,8 +160,8 @@ const Market: NextPage = () => {
           <button 
             onClick={() => refreshMemories()}
             className="mx-auto mt-4 px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
-          >[Chinese UI text] 
-            重试
+          > 
+            Retry
           </button>
         </div>
       );
@@ -161,7 +170,7 @@ const Market: NextPage = () => {
     if (memories.length === 0) {
       return (
         <div className="col-span-full text-center py-20">
-          <p className="text-lg text-gray-500">[Chinese UI text] 没有找到符合条件的记忆</p>
+          <p className="text-lg text-gray-500">No memories found matching your criteria</p>
         </div>
       );
     }
@@ -189,43 +198,45 @@ const Market: NextPage = () => {
   return (
     <>
       <Head>
-        <title>[Chinese UI text] 内存Marketplace | NeuraMint</title>
-        <meta name="description" content="浏览并购买记忆NFT" />
+        <title>Memory Marketplace | NeuraMint</title>
+        <meta name="description" content="Browse and purchase memory NFTs" />
       </Head>
 
       <main className="container mx-auto px-4 py-8">
         <div className="flex flex-col md:flex-row justify-between items-center mb-8">
-          <h1 className="text-3xl font-bold mb-4 md:mb-0">[Chinese UI text] 内存Marketplace</h1>
+          <h1 className="text-3xl font-bold mb-4 md:mb-0">Memory Marketplace</h1>
           
-          {/* 搜索栏 */}
+          {/* Search bar */}
           <div className="w-full md:w-1/3">
-            <input
-              type="text"
-              placeholder="搜索记忆..."
-              className="input"
-              onChange={handleSearch}
-              value={filters.searchTerm}
-            />
+            <div className="relative">
+              <input
+                type="text"
+                placeholder="Search memories..."
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg"
+                value={filters.searchTerm}
+                onChange={handleSearch}
+              />
+            </div>
           </div>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
-          {/* 过滤器侧边栏 */}
+          {/* Filters sidebar */}
           <div className="lg:col-span-1">
             <div className="bg-white rounded-lg shadow-md p-4 sticky top-4">
               <div className="flex justify-between items-center mb-4">
-                <h2 className="text-xl font-semibold">[Chinese UI text] 过滤器</h2>
+                <h2 className="text-xl font-semibold">Filters</h2>
                 <button 
                   onClick={resetFilters}
                   className="text-sm text-blue-600 hover:text-blue-800"
-                >[Chinese UI text] 
-                  重置
+                > 
+                  Reset
                 </button>
               </div>
 
-              {/* 类型过滤器 */}
+              {/* Type filters */}
               <div className="mb-6">
-                <h3 className="text-md font-medium mb-2">[Chinese UI text] 记忆类型</h3>
+                <h3 className="text-md font-medium mb-2">Memory Type</h3>
                 <div className="space-y-2">
                   {MEMORY_TYPES.map(type => (
                     <div key={type} className="flex items-center">
@@ -236,7 +247,7 @@ const Market: NextPage = () => {
                         onChange={() => toggleTypeFilter(type)}
                         className="mr-2"
                       />
-                      <label htmlFor={`type-${type}`} className="text-sm">
+                      <label htmlFor={`type-${type}`} className="text-sm capitalize">
                         {type}
                       </label>
                     </div>
@@ -244,9 +255,9 @@ const Market: NextPage = () => {
                 </div>
               </div>
 
-              {/* 品质过滤器 */}
+              {/* Quality filters */}
               <div className="mb-6">
-                <h3 className="text-md font-medium mb-2">[Chinese UI text] 记忆品质</h3>
+                <h3 className="text-md font-medium mb-2">Memory Quality</h3>
                 <div className="space-y-2">
                   {MEMORY_QUALITIES.map(quality => (
                     <div key={quality} className="flex items-center">
@@ -257,7 +268,7 @@ const Market: NextPage = () => {
                         onChange={() => toggleQualityFilter(quality)}
                         className="mr-2"
                       />
-                      <label htmlFor={`quality-${quality}`} className="text-sm">
+                      <label htmlFor={`quality-${quality}`} className="text-sm capitalize">
                         {quality}
                       </label>
                     </div>
@@ -265,12 +276,12 @@ const Market: NextPage = () => {
                 </div>
               </div>
 
-              {/* 价格过滤器 */}
+              {/* Price filters */}
               <div className="mb-6">
-                <h3 className="text-md font-medium mb-2">[Chinese UI text] 价格范围 (SOL)</h3>
+                <h3 className="text-md font-medium mb-2">Price Range (SOL)</h3>
                 <div className="grid grid-cols-2 gap-4 mb-2">
                   <div>
-                    <label className="text-xs text-gray-500">[Chinese UI text] 最小</label>
+                    <label className="text-xs text-gray-500">Min</label>
                     <input
                       type="number"
                       min="0"
@@ -281,7 +292,7 @@ const Market: NextPage = () => {
                     />
                   </div>
                   <div>
-                    <label className="text-xs text-gray-500">[Chinese UI text] 最大</label>
+                    <label className="text-xs text-gray-500">Max</label>
                     <input
                       type="number"
                       min={priceRange[0]}
@@ -299,13 +310,13 @@ const Market: NextPage = () => {
                       : 'bg-blue-100 text-blue-700 hover:bg-blue-200'
                   }`}
                 >
-                  {isPriceFilterActive ? '清除价格过滤' : 'Apply price filtering'}
+                  {isPriceFilterActive ? 'Clear price filter' : 'Apply price filtering'}
                 </button>
               </div>
 
               {/* Sort options */}
               <div>
-                <h3 className="text-md font-medium mb-2">[Chinese UI text] 排序方式</h3>
+                <h3 className="text-md font-medium mb-2">Sort By</h3>
                 <select
                   value={sortOption}
                   onChange={(e) => updateSortOption(e.target.value as SortOption)}
@@ -321,7 +332,7 @@ const Market: NextPage = () => {
             </div>
           </div>
 
-          {/* 记忆列表 */}
+          {/* Memory list */}
           <div className="lg:col-span-3">
             {!wallet.connected && renderWalletPrompt()}
             

@@ -17,8 +17,8 @@ const ValidatorRegistration: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(true);
   const [isRegistering, setIsRegistering] = useState<boolean>(false);
   const [isValidator, setIsValidator] = useState<boolean>(false);
-  const [stakeAmount, setStakeAmount] = useState<number>[Chinese UI text] (1); // [Chinese comment] 默认1 SOL
-  const [minStakeAmount, setMinStakeAmount] = useState<number>[Chinese UI text] (1); // [Chinese comment] 最小质押金额，单位SOL
+  const [stakeAmount, setStakeAmount] = useState<number> (1); // [Chinese comment] 默认1 SOL
+  const [minStakeAmount, setMinStakeAmount] = useState<number> (1); // [Chinese comment] 最小质押金额，单位SOL
   const [balance, setBalance] = useState<number>(0); // [Chinese comment] 钱包余额
   
   // Service instances
@@ -57,7 +57,7 @@ const ValidatorRegistration: React.FC = () => {
         }
       } catch (error) {
         console.error('检查Validate者状态失败:', error);
-        toast.error('[Chinese UI text] 无法获取Validate者状态');
+        toast.error(' 无法获取Validate者状态');
       } finally {
         setLoading(false);
       }
@@ -67,7 +67,7 @@ const ValidatorRegistration: React.FC = () => {
   }, [connected, publicKey]);
   
   // Register as a validator
-  const handleRegister = async () =>[Chinese UI text]  {
+  const handleRegister = async () =>  {
     if (!connected || !publicKey) {
       toast.error('Please connect your wallet first');
       return;
@@ -78,8 +78,8 @@ const ValidatorRegistration: React.FC = () => {
       return;
     }
     
-    if (stakeAmount >[Chinese UI text]  balance) {
-      toast.error('[Chinese UI text] 质押金额不能超过钱包余额');
+    if (stakeAmount >  balance) {
+      toast.error('Staked Amount不能超过钱包余额');
       return;
     }
     
@@ -93,13 +93,13 @@ const ValidatorRegistration: React.FC = () => {
         stakeAmount * LAMPORTS_PER_SOL // Convert to lamports
       );
       
-      toast.success('[Chinese UI text] 成功注册为Validate者！', { id: toastId });
+      toast.success(' 成功注册为Validate者！', { id: toastId });
       
       // [Chinese comment] 重定向到Validate者控制面板
       router.push('/validator-dashboard');
     } catch (error) {
       console.error('Register validator失败:', error);
-      toast.error('[Chinese UI text] Register validator失败，请重试', { id: toastId });
+      toast.error(' Register validator失败，请重试', { id: toastId });
     } finally {
       setIsRegistering(false);
     }
@@ -113,11 +113,11 @@ const ValidatorRegistration: React.FC = () => {
       </Head>
       
       <div className="container px-4 py-8 mx-auto">
-        <h1 className="mb-6 text-3xl font-bold">[Chinese UI text] Become a Memory Validator</h1>
+        <h1 className="mb-6 text-3xl font-bold"> Become a Memory Validator</h1>
         
         {!connected ? (
           <div className="flex flex-col items-center justify-center p-8 mb-8 bg-gray-100 rounded-lg">
-            <p className="mb-4 text-lg">[Chinese UI text] 请连接钱包以继续注册</p>
+            <p className="mb-4 text-lg"> 请连接钱包以继续注册</p>
             <WalletMultiButton />
           </div>
         ) : loading ? (
@@ -126,12 +126,12 @@ const ValidatorRegistration: React.FC = () => {
           </div>
         ) : isValidator ? (
           <div className="p-8 text-center bg-green-100 rounded-lg">
-            <h2 className="text-xl font-bold text-green-800">[Chinese UI text] 您已是Validate者</h2>
-            <p className="mt-2 text-green-700">[Chinese UI text] 您已经成功注册为NeuraMintValidate者</p>
+            <h2 className="text-xl font-bold text-green-800">You已是Validate者</h2>
+            <p className="mt-2 text-green-700">You已经成功注册为NeuraMintValidate者</p>
             <button
               onClick={() => router.push('/validator-dashboard')}
               className="px-4 py-2 mt-4 text-white bg-blue-600 rounded hover:bg-blue-700"
-            >[Chinese UI text] 
+            > 
               前往Validate者控制面板
             </button>
           </div>
@@ -140,55 +140,55 @@ const ValidatorRegistration: React.FC = () => {
             <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
               {/* Validate者信息面板 */}
               <div className="p-6 bg-white rounded-lg shadow">
-                <h2 className="mb-6 text-2xl font-bold">[Chinese UI text] Validate者介绍</h2>
+                <h2 className="mb-6 text-2xl font-bold">Validator介绍</h2>
                 
                 <div className="mb-6">
-                  <h3 className="mb-2 text-xl font-semibold">[Chinese UI text] 什么是记忆Validate者？</h3>
-                  <p className="text-gray-700">[Chinese UI text] 
+                  <h3 className="mb-2 text-xl font-semibold"> 什么是记忆Validate者？</h3>
+                  <p className="text-gray-700"> 
                     记忆Validate者是NeuraMint平台的重要参与者，负责Validate记忆NFT的真实性和质量。
                     通过质押SOL代币，您可以获得Validate权限，并通过提供有质量的Validate获取Rewards。
                   </p>
                 </div>
                 
                 <div className="mb-6">
-                  <h3 className="mb-2 text-xl font-semibold">[Chinese UI text] 成为Validate者的好处</h3>
+                  <h3 className="mb-2 text-xl font-semibold"> 成为Validate者的好处</h3>
                   <ul className="pl-5 space-y-2 text-gray-700 list-disc">
-                    <li>[Chinese UI text] 每次成功Validate可获得ValidateRewards</li>
-                    <li>[Chinese UI text] 参与决定哪些记忆有资格在平台上流通</li>
-                    <li>[Chinese UI text] 提高平台上记忆数据的质量和真实性</li>
-                    <li>[Chinese UI text] 建立Validate声誉，获得更多Validate机会</li>
+                    <li> 每次成功Validate可获得ValidateRewards</li>
+                    <li> 参与决定哪些记忆有资格在平台上流通</li>
+                    <li> 提高平台上记忆数据的质量和真实性</li>
+                    <li> 建立Validate声誉，获得更多Validate机会</li>
                   </ul>
                 </div>
                 
                 <div className="p-4 mb-6 bg-blue-50 rounded-lg">
-                  <h3 className="mb-2 text-lg font-semibold text-blue-800">[Chinese UI text] Validate者Requirements</h3>
+                  <h3 className="mb-2 text-lg font-semibold text-blue-800">ValidatorRequirements</h3>
                   <ul className="pl-5 space-y-1 text-blue-700 list-disc">
-                    <li>[Chinese UI text] 最低质押 {minStakeAmount} SOL</li>
-                    <li>[Chinese UI text] 保持高质量的Validate记录</li>
-                    <li>[Chinese UI text] 遵守平台的Validate准则</li>
+                    <li> 最低质押 {minStakeAmount} SOL</li>
+                    <li> 保持高质量的Validate记录</li>
+                    <li> 遵守平台的Validate准则</li>
                   </ul>
                 </div>
                 
                 <div className="p-4 bg-yellow-50 rounded-lg">
-                  <h3 className="mb-2 text-lg font-semibold text-yellow-800">[Chinese UI text] 注意事项</h3>
+                  <h3 className="mb-2 text-lg font-semibold text-yellow-800"> 注意事项</h3>
                   <ul className="pl-5 space-y-1 text-yellow-700 list-disc">
-                    <li>[Chinese UI text] 质押的SOL将在您活跃为Validate者期间被锁定</li>
-                    <li>[Chinese UI text] 如果提供虚假Validate，可能会失去部分质押</li>
-                    <li>[Chinese UI text] 您可以随时取消质押，但需要等待7天的冷却期</li>
+                    <li> 质押的SOL将在您活跃为Validate者期间被锁定</li>
+                    <li> 如果提供虚假Validate，可能会失去部分质押</li>
+                    <li>You可以随时取消质押，但需要等待7天的冷却期</li>
                   </ul>
                 </div>
               </div>
               
               {/* 注册表单面板 */}
               <div className="p-6 bg-white rounded-lg shadow">
-                <h2 className="mb-6 text-2xl font-bold">[Chinese UI text] 注册表单</h2>
+                <h2 className="mb-6 text-2xl font-bold"> 注册表单</h2>
                 
                 <div className="mb-6">
                   <div className="flex items-center justify-between mb-2">
-                    <label className="text-lg font-medium" htmlFor="stakeAmount">[Chinese UI text] 
+                    <label className="text-lg font-medium" htmlFor="stakeAmount"> 
                       质押金额 (SOL)
                     </label>
-                    <span className="text-sm text-gray-500">[Chinese UI text] 
+                    <span className="text-sm text-gray-500"> 
                       钱包余额: {balance.toFixed(2)} SOL
                     </span>
                   </div>
@@ -222,20 +222,20 @@ const ValidatorRegistration: React.FC = () => {
                   </div>
                   
                   <div className="flex justify-between text-xs text-gray-500">
-                    <span>[Chinese UI text] 最低: {minStakeAmount} SOL</span>
-                    <span>[Chinese UI text] 建议: 2 SOL</span>
-                    <span>[Chinese UI text] 最高: 10 SOL</span>
+                    <span> 最低: {minStakeAmount} SOL</span>
+                    <span> 建议: 2 SOL</span>
+                    <span> 最高: 10 SOL</span>
                   </div>
                 </div>
                 
                 <div className="p-4 mb-6 bg-gray-100 rounded-lg">
                   <div className="flex items-center justify-between mb-2">
-                    <span className="font-medium">[Chinese UI text] 预计每日收益:</span>
+                    <span className="font-medium"> 预计每日收益:</span>
                     <span className="font-bold text-green-600">
                       ~{(stakeAmount * 0.02).toFixed(3)} SOL
                     </span>
                   </div>
-                  <p className="text-sm text-gray-600">[Chinese UI text] 
+                  <p className="text-sm text-gray-600"> 
                     实际收益取决于您的Validate数量和质量，以上仅为估算值。Validate者平均每天可以处理约10个Validate请求。
                   </p>
                 </div>
@@ -248,8 +248,8 @@ const ValidatorRegistration: React.FC = () => {
                       required
                       className="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
                     />
-                    <label htmlFor="termsAgreement" className="ml-2 text-sm text-gray-700">[Chinese UI text] 
-                      我已阅读并同意<a href="#" className="text-blue-600 hover:underline">[Chinese UI text] Validate者条款和条件</a>
+                    <label htmlFor="termsAgreement" className="ml-2 text-sm text-gray-700"> 
+                      我已阅读并同意<a href="#" className="text-blue-600 hover:underline">Validator条款和条件</a>
                     </label>
                   </div>
                 </div>
@@ -259,7 +259,7 @@ const ValidatorRegistration: React.FC = () => {
                     onClick={() => router.back()}
                     className="px-4 py-2 text-gray-700 bg-gray-200 rounded hover:bg-gray-300"
                     disabled={isRegistering}
-                  >[Chinese UI text] 
+                  > 
                     返回
                   </button>
                   <button
@@ -272,7 +272,7 @@ const ValidatorRegistration: React.FC = () => {
                 </div>
                 
                 {balance < minStakeAmount && (
-                  <p className="mt-4 text-sm text-center text-red-600">[Chinese UI text] 
+                  <p className="mt-4 text-sm text-center text-red-600"> 
                     您的钱包余额不足，无法满足最低质押Requirements
                   </p>
                 )}
@@ -280,10 +280,10 @@ const ValidatorRegistration: React.FC = () => {
             </div>
             
             <div className="p-6 mt-8 text-center bg-gray-100 rounded-lg">
-              <h3 className="mb-2 text-xl font-semibold">[Chinese UI text] 有疑问？</h3>
-              <p className="mb-4 text-gray-700">[Chinese UI text] 
-                如果您对成为Validate者有任何疑问，请查看我们的<a href="#" className="text-blue-600 hover:underline">FAQ</a>[Chinese UI text] 或
-                <a href="#" className="text-blue-600 hover:underline">[Chinese UI text] 联系我们</a>
+              <h3 className="mb-2 text-xl font-semibold"> 有疑问？</h3>
+              <p className="mb-4 text-gray-700"> 
+                如果您对成为Validate者有任何疑问，请查看我们的<a href="#" className="text-blue-600 hover:underline">FAQ</a> 或
+                <a href="#" className="text-blue-600 hover:underline"> 联系我们</a>
               </p>
             </div>
           </>

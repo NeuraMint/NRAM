@@ -1,0 +1,17 @@
+{
+  "name": "neuramint-solana-exporter",
+  "version": "1.0.0",
+  "description": "Prometheus exporter for Solana blockchain metrics related to NeuraMint",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "NeuraMint DevOps Team",
+  "license": "MIT",
+  "dependencies": {
+    "@solana/web3.js": "^1.87.6",
+    "express": "^4.18.2",
+    "prom-client": "^15.0.0"
+  }
+} 

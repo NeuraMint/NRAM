@@ -3,10 +3,10 @@
 <div align="center">
   <img src="app/public/images/logo.svg" alt="NeuraMint Logo" width="300px" />
 
-  <h3>Transforming Memories into Digital Assets on Solana</h3>
+  <h3>Transforming Neural Memories into Digital Assets on Solana</h3>
 
   <p>
-    <a href="https://www.neuramint.tech" target="_blank"><img src="https://img.shields.io/badge/Website-neuramint.tech-00C7B7?style=flat-square&logo=netlify" alt="Website" /></a>
+    <a href="https://www.neuramint.tech" target="_blank"><img src="https://img.shields.io/badge/Website-neuramint.tech-00C7B7?style=flat-square" alt="Website" /></a>
     <a href="https://x.com/NeuraMint_" target="_blank"><img src="https://img.shields.io/badge/Twitter-@NeuraMint__-1DA1F2?style=flat-square&logo=twitter" alt="Twitter" /></a>
     <a href="https://github.com/NeuraMint/NRAM" target="_blank"><img src="https://img.shields.io/badge/GitHub-NeuraMint/NRAM-181717?style=flat-square&logo=github" alt="GitHub" /></a>
   </p>
@@ -16,7 +16,7 @@
 
 NeuraMint is a groundbreaking platform that leverages brain-computer interface (BCI) technology and Solana blockchain to transform neural data into unique, verifiable NFTs that can be traded on a decentralized marketplace.
 
-NeuraMint creates an innovative ecosystem where users can:
+Our platform creates an innovative ecosystem where users can:
 
 - **Capture** neural patterns using BCI technology
 - **Mint** these patterns as unique NFTs on Solana
@@ -31,144 +31,164 @@ NeuraMint creates an innovative ecosystem where users can:
 - **Memory Marketplace**: Buy, sell, and collect unique memory NFTs
 - **Validator Dashboard**: Track validation performance, history, and rewards
 - **Multi-tier Memory Classification**: Organize memories by type and quality
+- **Analytics**: View market trends and memory performance metrics
+- **Monitoring**: Comprehensive system monitoring for platform reliability
 
 ## Platform Architecture
 
 NeuraMint follows a modular architecture that integrates frontend components with Solana blockchain smart contracts:
 
-### System Overview
-
 ```mermaid
 flowchart TD
-    classDef frontendClass fill:#34ace0,stroke:#000,stroke-width:1px,color:white
-    classDef blockchainClass fill:#33d9b2,stroke:#000,stroke-width:1px,color:white
-    classDef componentsClass fill:#706fd3,stroke:#000,stroke-width:1px,color:white
-    classDef servicesClass fill:#ff793f,stroke:#000,stroke-width:1px,color:white
-    classDef contractsClass fill:#40407a,stroke:#000,stroke-width:1px,color:white
-    
-    NeuraMint[NeuraMint Platform]
-    Frontend[Frontend<br>Next.js]:::frontendClass
-    Blockchain[Blockchain<br>Solana]:::blockchainClass
-    
-    NeuraMint --> Frontend
-    NeuraMint --> Blockchain
-    
-    %% Frontend section
-    Components[Components]:::componentsClass
-    MemoryCard[Memory Card]
-    Marketplace[Marketplace]
-    BCIInput[BCI Input]
-    
-    Frontend --> Components
-    Components --> MemoryCard
-    Components --> Marketplace
-    Components --> BCIInput
-    
-    %% Services section
-    Services[Services/Utils]:::servicesClass
-    MintService[Mint Service]
-    ValidationService[Validation Service]
-    NeuralUtils[Neural Utils]
-    IPFSUtils[IPFS Utils]
-    
-    Frontend --> Services
-    Services --> MintService
-    Services --> ValidationService
-    Services --> NeuralUtils
-    Services --> IPFSUtils
-    
-    %% Blockchain section
-    SmartContracts[Smart Contracts]:::contractsClass
-    MemoryNFT[Memory NFT]
-    MemoryValidator[Memory Validator]
-    SPLTokens[SPL Tokens]
-    
-    Blockchain --> SmartContracts
-    SmartContracts --> MemoryNFT
-    SmartContracts --> MemoryValidator
-    SmartContracts --> SPLTokens
-    
-    %% Integration
-    WalletAdapter[Wallet Adapter]
-    SmartContracts -.-> WalletAdapter
-    WalletAdapter -.-> MintService
-    WalletAdapter -.-> ValidationService
+    subgraph "Client Applications"
+        WebApp["Web App\n(Next.js)"]
+        MobileApp["Mobile App\n(React Native)"]
+        Desktop["Desktop\n(Electron)"]
+    end
+
+    subgraph "API Layer"
+        APIGateway["API Gateway"]
+    end
+
+    subgraph "Backend Services"
+        UserAuth["User & Auth\nService"]
+        MemoryService["Memory\nService"]
+        ValidationService["Validation\nService"]
+        MarketplaceService["Marketplace\nService"]
+        NeuralData["Neural Data\nProcessing"]
+        Analytics["Analytics\nService"]
+        Metrics["Metrics\nService"]
+        Monitoring["Monitoring\nService"]
+    end
+
+    subgraph "Blockchain Layer"
+        BlockchainSDK["Blockchain SDK"]
+    end
+
+    subgraph "Solana Blockchain"
+        MemoryNFT["Memory NFT\nProgram"]
+        ValidatorProgram["Validator\nProgram"]
+        MarketplaceProgram["Marketplace\nProgram"]
+        NRAMToken["NRAM Token\nProgram"]
+    end
+
+    WebApp --> APIGateway
+    MobileApp --> APIGateway
+    Desktop --> APIGateway
+    WebApp --> BlockchainSDK
+    MobileApp --> BlockchainSDK
+    Desktop --> BlockchainSDK
+
+    APIGateway --> UserAuth
+    APIGateway --> MemoryService
+    APIGateway --> ValidationService
+    APIGateway --> MarketplaceService
+    APIGateway --> NeuralData
+    APIGateway --> Analytics
+    UserAuth --> BlockchainSDK
+    MemoryService --> BlockchainSDK
+    ValidationService --> BlockchainSDK
+    MarketplaceService --> BlockchainSDK
+    Analytics --> BlockchainSDK
+
+    BlockchainSDK --> MemoryNFT
+    BlockchainSDK --> ValidatorProgram
+    BlockchainSDK --> MarketplaceProgram
+    BlockchainSDK --> NRAMToken
+
+    Monitoring --> UserAuth
+    Monitoring --> MemoryService
+    Monitoring --> ValidationService
+    Monitoring --> MarketplaceService
+    Monitoring --> NeuralData
+    Monitoring --> Analytics
+    Monitoring --> Metrics
+    Monitoring --> BlockchainSDK
+
+    classDef client fill:#d2f5ff,stroke:#0099cc,stroke-width:2px;
+    classDef api fill:#ffe6cc,stroke:#d79b00,stroke-width:2px;
+    classDef service fill:#d5e8d4,stroke:#82b366,stroke-width:2px;
+    classDef blockchain fill:#fff2cc,stroke:#d6b656,stroke-width:2px;
+    classDef solana fill:#e1d5e7,stroke:#9673a6,stroke-width:2px;
+
+    class WebApp,MobileApp,Desktop client;
+    class APIGateway api;
+    class UserAuth,MemoryService,ValidationService,MarketplaceService,NeuralData,Analytics,Metrics,Monitoring service;
+    class BlockchainSDK blockchain;
+    class MemoryNFT,ValidatorProgram,MarketplaceProgram,NRAMToken solana;
 ```
 
-### Data Flow
-
-The NeuraMint platform operates with the following data flow:
+Additionally, here's how our monitoring stack integrates with the platform:
 
 ```mermaid
 flowchart LR
-    classDef deviceClass fill:#16a085,stroke:#000,stroke-width:1px,color:white
-    classDef processClass fill:#2980b9,stroke:#000,stroke-width:1px,color:white
-    classDef storageClass fill:#8e44ad,stroke:#000,stroke-width:1px,color:white
-    classDef blockchainClass fill:#c0392b,stroke:#000,stroke-width:1px,color:white
-    classDef marketClass fill:#d35400,stroke:#000,stroke-width:1px,color:white
+    subgraph "NeuraMint Application"
+        App["Next.js App"]
+        Middleware["Metrics Middleware"]
+        MetricsAPI["Metrics API"]
+    end
+
+    subgraph "Monitoring Stack"
+        Prometheus["Prometheus"]
+        AlertManager["AlertManager"]
+        Grafana["Grafana"]
+        Loki["Loki"]
+        Promtail["Promtail"]
+        NodeExporter["Node Exporter"]
+        cAdvisor["cAdvisor"]
+        SolanaExporter["Solana Exporter"]
+    end
+
+    subgraph "Notification Channels"
+        Email["Email Alerts"]
+        Slack["Slack Notifications"]
+    end
+
+    App -->|"Generates metrics"| Middleware
+    Middleware -->|"Records metrics"| MetricsAPI
+    MetricsAPI -->|"Exposes metrics\nendpoint"| Prometheus
     
-    BCIDevice[BCI Device]:::deviceClass
-    NeuralAnalysis[Neural Analysis]:::processClass
-    IPFSStorage[IPFS Storage]:::storageClass
-    MemoryNFT[Memory NFT]:::blockchainClass
-    Marketplace[Marketplace]:::marketClass
-    Validation[Validation Network]:::processClass
-    NeuralFingerprinting[Neural Fingerprinting]:::processClass
-    MetadataRetrieval[Metadata Retrieval]:::storageClass
+    Prometheus -->|"Scrapes metrics"| NodeExporter
+    Prometheus -->|"Scrapes metrics"| cAdvisor
+    Prometheus -->|"Scrapes metrics"| SolanaExporter
+    Prometheus -->|"Scrapes metrics"| Loki
+    Prometheus -->|"Sends alerts"| AlertManager
     
-    %% Main flow
-    BCIDevice --> NeuralAnalysis
-    NeuralAnalysis --> IPFSStorage
-    IPFSStorage --> MemoryNFT
-    MemoryNFT --> Marketplace
+    Loki -->|"Receives logs"| Promtail
+    Promtail -->|"Collects logs"| App
+
+    AlertManager -->|"Sends notifications"| Email
+    AlertManager -->|"Sends notifications"| Slack
     
-    %% Secondary flows
-    Marketplace --> Validation
-    Validation --> MetadataRetrieval
-    MetadataRetrieval --> Validation
+    Grafana -->|"Queries metrics"| Prometheus
+    Grafana -->|"Queries logs"| Loki
     
-    %% Neural fingerprinting
-    BCIDevice --> NeuralFingerprinting
-    NeuralFingerprinting --> IPFSStorage
+    classDef app fill:#d2f5ff,stroke:#0099cc,stroke-width:2px;
+    classDef monitoring fill:#d5e8d4,stroke:#82b366,stroke-width:2px;
+    classDef notification fill:#ffe6cc,stroke:#d79b00,stroke-width:2px;
+    
+    class App,Middleware,MetricsAPI app;
+    class Prometheus,AlertManager,Grafana,Loki,Promtail,NodeExporter,cAdvisor,SolanaExporter monitoring;
+    class Email,Slack notification;
 ```
 
-### Technical Implementation
+## Memory Types and Classification
 
-```mermaid
-sequenceDiagram
-    participant User
-    participant UI as User Interface
-    participant API as API Services
-    participant BC as Blockchain
-    participant IPFS as IPFS Storage
-    
-    User->>UI: Connect BCI Device
-    User->>UI: Initiate Memory Capture
-    UI->>API: Process Neural Data
-    API->>IPFS: Store Neural Pattern Metadata
-    IPFS-->>API: Return Content URI
-    API->>BC: Mint Memory NFT
-    BC-->>API: Return Transaction Hash
-    API-->>UI: Confirm Successful Mint
-    UI-->>User: Display Memory NFT
-    
-    Note over User,IPFS: Validation Process
-    
-    User->>UI: Request Validation
-    UI->>API: Submit for Validation
-    API->>BC: Create Validation Transaction
-    BC-->>API: Return Validation Status
-    API-->>UI: Update Validation Status
-    UI-->>User: Show Validation Results
-    
-    Note over User,IPFS: Trading Process
-    
-    User->>UI: List Memory for Sale
-    UI->>API: Create Marketplace Listing
-    API->>BC: Submit Listing Transaction
-    BC-->>API: Confirm Listing
-    API-->>UI: Show Active Listing
-```
+NeuraMint supports six fundamental memory types, each with distinct characteristics and values:
+
+1. **Visual**: Memories related to visual perception and imagery
+2. **Conceptual**: Memories of abstract concepts and ideas
+3. **Emotional**: Memories of feelings and emotional experiences 
+4. **Procedural**: Memories related to skills and procedures
+5. **Episodic**: Memories of specific events and experiences
+6. **Spatial**: Memories related to spatial awareness and navigation
+
+Each memory NFT is classified into quality tiers based on neural data complexity and rarity:
+
+- **Common** (50%): Basic neural patterns with standard features
+- **Fine** (30%): Complex neural patterns with distinctive attributes
+- **Excellent** (15%): Highly sophisticated patterns with unique characteristics
+- **Legendary** (5%): Exceptionally rare patterns with extraordinary complexity
 
 ## Technical Stack
 
@@ -188,457 +208,156 @@ NeuraMint is built using the following technologies:
 - **Wallet Adapter**: Solana wallet connection libraries
 
 ### Backend
-- **Solana Programs**:
-  - **Memory NFT**: Smart contract for minting and managing memory NFTs
-  - **Memory Validator**: Smart contract for validating memory authenticity
-- **IPFS/Arweave**: Decentralized storage for memory metadata and images
+- **Next.js API Routes**: Serverless API endpoints
+- **Solana Programs**: Smart contracts for memory NFTs and validation
+- **IPFS/Arweave**: Decentralized storage for memory metadata
+- **TensorFlow.js**: Neural network libraries for BCI data processing
 
-## Memory Processing and Storage
-
-```mermaid
-graph TD
-    subgraph "Neural Data Acquisition"
-        A[BCI Device] -->|Raw Neural Data| B[Signal Processing]
-        B --> C[Feature Extraction]
-        C --> D[Pattern Recognition]
-    end
-    
-    subgraph "Data Processing"
-        D --> E[Memory Classification]
-        E --> F[Quality Assessment]
-        F --> G[Metadata Creation]
-    end
-    
-    subgraph "Blockchain Integration"
-        G --> H[IPFS Storage]
-        H -->|Metadata URI| I[NFT Minting]
-        I --> J[Blockchain Record]
-    end
-    
-    subgraph "Validation Network"
-        J --> K[Validator Selection]
-        K --> L[Consensus Mechanism]
-        L --> M[Reward Distribution]
-    end
-    
-    classDef acquisition fill:#3498db,stroke:#2980b9,color:white;
-    classDef processing fill:#2ecc71,stroke:#27ae60,color:white;
-    classDef blockchain fill:#e74c3c,stroke:#c0392b,color:white;
-    classDef validation fill:#9b59b6,stroke:#8e44ad,color:white;
-    
-    class A,B,C,D acquisition;
-    class E,F,G processing;
-    class H,I,J blockchain;
-    class K,L,M validation;
-```
-
-## User Workflows
-
-### Memory Creation Workflow
-
-```mermaid
-flowchart TD
-    Start([Start]) --> Connect[Connect Wallet]
-    Connect --> Capture[Capture Neural Data]
-    Capture --> Process[Process Data]
-    Process --> Preview[Preview Memory NFT]
-    Preview --> Mint[Mint on Blockchain]
-    Mint --> View[View in Collection]
-    
-    classDef start fill:#4CAF50,stroke:#388E3C,color:white
-    classDef process fill:#2196F3,stroke:#1976D2,color:white
-    classDef action fill:#FF9800,stroke:#F57C00,color:white
-    classDef view fill:#9C27B0,stroke:#7B1FA2,color:white
-    
-    class Start start
-    class Capture,Process process
-    class Connect,Mint action
-    class Preview,View view
-```
-
-### Validation Workflow
-
-```mermaid
-flowchart TD
-    Start([Start]) --> Connect[Connect Wallet]
-    Connect --> Register[Register as Validator]
-    Register --> Stake[Stake NRAM Tokens]
-    Stake --> Review[Review Pending Memories]
-    Review --> Validate[Submit Validation]
-    Validate --> Earn[Earn Rewards]
-    
-    classDef start fill:#4CAF50,stroke:#388E3C,color:white
-    classDef process fill:#2196F3,stroke:#1976D2,color:white
-    classDef action fill:#FF9800,stroke:#F57C00,color:white
-    classDef reward fill:#9C27B0,stroke:#7B1FA2,color:white
-    
-    class Start start
-    class Register,Review process
-    class Connect,Stake,Validate action
-    class Earn reward
-```
-
-## Validator Dashboard
-
-The validator dashboard provides comprehensive tools for validators to monitor and manage their validation activities:
-
-### Key Features
-
-- **Statistics Overview**: View total validations, success rate, and rewards
-- **Validation History**: Browse complete history of validation activities
-- **Performance Charts**: Visual representation of validation trends over time
-- **Reward Tracking**: Monitor earned and pending rewards
-- **Validator Rankings**: See how you compare to other validators
-
-### Dashboard Components
-
-```mermaid
-flowchart TD
-    Dashboard[Validator Dashboard] --> Stats[Statistics Overview]
-    Dashboard --> History[Validation History]
-    Dashboard --> Charts[Performance Charts]
-    Dashboard --> Rewards[Reward Management]
-    Dashboard --> Rankings[Validator Rankings]
-    
-    classDef main fill:#3949AB,stroke:#303F9F,color:white
-    classDef component fill:#5C6BC0,stroke:#3F51B5,color:white
-    
-    class Dashboard main
-    class Stats,History,Charts,Rewards,Rankings component
-```
-
-## Memory Types and Classification
-
-NeuraMint supports four fundamental memory types, each with distinct characteristics and values:
-
-```mermaid
-flowchart TD
-    classDef cognitiveClass fill:#3498db,stroke:#000,stroke-width:1px,color:white
-    classDef emotionalClass fill:#e74c3c,stroke:#000,stroke-width:1px,color:white
-    classDef culturalClass fill:#f39c12,stroke:#000,stroke-width:1px,color:white
-    classDef therapeuticClass fill:#2ecc71,stroke:#000,stroke-width:1px,color:white
-    
-    MemoryTypes[Memory Types]
-    
-    Cognitive[Cognitive<br>Thinking & Learning]:::cognitiveClass
-    Emotional[Emotional<br>Feelings & Experiences]:::emotionalClass
-    Cultural[Cultural<br>Art & Social]:::culturalClass
-    Therapeutic[Therapeutic<br>Healing & Wellness]:::therapeuticClass
-    
-    MemoryTypes --> Cognitive
-    MemoryTypes --> Emotional
-    MemoryTypes --> Cultural
-    MemoryTypes --> Therapeutic
-```
-
-Each memory NFT is classified into quality tiers based on neural data complexity and rarity:
-
-```mermaid
-pie title Memory Quality Distribution
-    "Common" : 50
-    "Fine" : 30
-    "Excellent" : 15
-    "Legendary" : 5
-```
-
-## Internationalization
-
-NeuraMint is designed with internationalization in mind:
-
-- **Multi-language Support**: Core platform components ready for localization
-- **Language Detection**: Automatic language detection based on user preferences
-- **Internationalized UI**: All user interface elements prepared for translation
-- **Documentation**: Available in multiple languages
-
-## Core Features
-
-### 1. Neural Data Processing
-
-The platform uses sophisticated algorithms to process raw neural data into meaningful memory patterns:
-
-```typescript
-// Sample from neuralUtils.ts
-export const analyzeNeuralData = async (data: ArrayBuffer): Promise<NeuralAnalysisResult> => {
-  // Simulate processing delay
-  await new Promise(resolve => setTimeout(resolve, 2000));
-  
-  // Create neural fingerprint from data
-  const hashBuffer = await crypto.subtle.digest('SHA-256', data);
-  const hashArray = Array.from(new Uint8Array(hashBuffer));
-  const neuralFingerprint = '0x' + hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
-  
-  // Determine memory quality based on neural complexity
-  const qualityDeterminator = hashArray[0] % 100;
-  let quality: MemoryQuality;
-  
-  if (qualityDeterminator < 50) {
-    quality = 'common';
-  } else if (qualityDeterminator < 80) {
-    quality = 'fine';
-  } else if (qualityDeterminator < 95) {
-    quality = 'excellent';
-  } else {
-    quality = 'legendary';
-  }
-  
-  // Determine other attributes
-  // ... [additional processing]
-  
-  return {
-    quality,
-    type,
-    brainRegion,
-    emotionalValence,
-    cognitiveLoad,
-    neuralFingerprint,
-    confidenceScore,
-    timestamp: Date.now()
-  };
-};
-```
-
-### 2. Memory NFT Minting
-
-Users can mint their neural patterns as NFTs on Solana:
-
-```typescript
-// Sample from mintService.ts
-async mintMemoryNFT(metadata: MemoryMetadata): Promise<{ signature: string; mintKey: PublicKey; memoryKey: PublicKey }> {
-  try {
-    // Generate new mint keypair
-    const mintKeypair = Keypair.generate();
-    const mintKey = mintKeypair.publicKey;
-    
-    // Derive memory PDA
-    const [memoryPda, memoryBump] = await PublicKey.findProgramAddress(
-      [Buffer.from("memory"), mintKey.toBuffer()],
-      this.program.programId
-    );
-    
-    // Build and send transaction
-    const transaction = new Transaction();
-    
-    // Add instructions for creating mint account, token account, and minting NFT
-    // ... [transaction setup]
-    
-    // Sign and confirm transaction
-    const signature = await sendAndConfirmTransaction(
-      this.connection,
-      transaction,
-      [this.wallet.payer, mintKeypair]
-    );
-    
-    return {
-      signature,
-      mintKey,
-      memoryKey: memoryPda
-    };
-  } catch (error) {
-    throw new Error(`Memory NFT minting failed: ${error.message}`);
-  }
-}
-```
-
-### 3. Decentralized Validation
-
-The platform includes a validation network for verifying memory authenticity:
-
-```typescript
-// Sample from validationService.ts
-async submitValidation(request: ValidationRequest): Promise<string> {
-  try {
-    // Create unique validation ID
-    const validationId = Keypair.generate().publicKey.toString();
-    
-    // Derive validation PDA
-    const [validationPda, validationBump] = await PublicKey.findProgramAddress(
-      [Buffer.from("validation"), new PublicKey(validationId).toBuffer()],
-      this.program.programId
-    );
-    
-    // Build and submit validation transaction
-    const tx = await this.program.methods
-      .submitValidation({
-        memoryId: request.memoryId,
-        neuralFingerprint: request.neuralFingerprint,
-        quality: request.quality,
-        description: request.description,
-        timestamp: new BN(Math.floor(Date.now() / 1000)),
-      })
-      .accounts({
-        validation: validationPda,
-        validator: validatorPda,
-        authority: this.wallet.publicKey,
-        systemProgram: SystemProgram.programId,
-      })
-      .rpc();
-    
-    return validationId;
-  } catch (error) {
-    throw new Error(`Validation submission failed: ${error.message}`);
-  }
-}
-```
-
-### 4. Memory Marketplace
-
-The marketplace allows users to browse, buy, and sell memory NFTs:
-
-```typescript
-// Sample market filtering functionality from marketplace.tsx
-useEffect(() => {
-  let result = [...memories];
-  
-  // Apply search query
-  if (searchQuery) {
-    const query = searchQuery.toLowerCase();
-    result = result.filter(
-      memory => memory.name.toLowerCase().includes(query) || 
-               memory.neuralFingerprint.toLowerCase().includes(query)
-    );
-  }
-  
-  // Apply type filters
-  if (filterOptions.types.length > 0) {
-    result = result.filter(memory => filterOptions.types.includes(memory.memoryType));
-  }
-  
-  // Apply quality filters
-  if (filterOptions.qualities.length > 0) {
-    result = result.filter(memory => filterOptions.qualities.includes(memory.quality));
-  }
-  
-  // Apply price range filters
-  result = result.filter(
-    memory => memory.price >= filterOptions.minPrice && memory.price <= filterOptions.maxPrice
-  );
-  
-  // Apply brain region filters
-  if (filterOptions.brainRegions.length > 0) {
-    result = result.filter(memory => filterOptions.brainRegions.includes(memory.brainRegion));
-  }
-  
-  setFilteredMemories(result);
-}, [memories, filterOptions, searchQuery]);
-```
-
-## Project Directory Structure
-
-```
-NeuraMint/
-├── app/                  # Frontend application
-│   ├── components/       # React components
-│   ├── pages/            # Page components and routing
-│   ├── public/           # Static resources
-│   ├── services/         # Service classes
-│   ├── utils/            # Utility functions and hooks
-│   └── styles/           # Global styles and themes
-├── contracts/            # Solana smart contracts
-│   ├── programs/         # Anchor program source code
-│   │   ├── memory_nft/   # Memory NFT program
-│   │   └── memory_validator/ # Validator program
-│   └── tests/            # Smart contract tests
-├── docs/                 # Project documentation
-└── README.md             # Project overview
-```
+### Monitoring and Metrics
+- **Prometheus**: Metrics collection and alerting
+- **Grafana**: Data visualization and dashboards
+- **Loki**: Log aggregation and exploration
+- **AlertManager**: Alert handling and notification
+- **Node Exporter**: Hardware and OS metrics collection
+- **cAdvisor**: Container metrics collection
+- **Solana Exporter**: Blockchain metrics collection
 
 ## Getting Started
 
-### Frontend Application
+### Prerequisites
 
-```bash
-# Navigate to app directory
-cd app
+- Node.js (v16+)
+- NPM or Yarn
+- Solana CLI tools (for blockchain development)
+- A Solana wallet (Phantom, Solflare, etc.)
+- Docker and Docker Compose (for monitoring stack)
 
-# Install dependencies
-npm install
+### Installation
 
-# Run development server
-npm run dev
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/NeuraMint/NRAM.git
+   cd NeuraMint
+   ```
 
-# Build production version
-npm run build
+2. Install dependencies:
+   ```bash
+   npm install
+   # or
+   yarn install
+   ```
+
+3. Set up environment variables:
+   ```bash
+   cp .env.example .env.local
+   ```
+   Edit `.env.local` with your configuration settings.
+
+4. Run the development server:
+   ```bash
+   npm run dev
+   # or
+   yarn dev
+   ```
+
+5. Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+### Setting Up Monitoring
+
+1. Navigate to the monitoring directory:
+   ```bash
+   cd monitoring
+   ```
+
+2. Start the monitoring stack:
+   ```bash
+   docker-compose up -d
+   ```
+
+3. Access Grafana at [http://localhost:3000](http://localhost:3000) with default credentials (admin/neuramint_admin).
+
+## Project Structure
+
+```
+NeuraMint/
+├── app/                    # Next.js application
+│   ├── components/         # Reusable UI components
+│   │   ├── analytics/      # Analytics components
+│   │   ├── common/         # Common UI components
+│   │   ├── layout/         # Layout components
+│   │   ├── marketplace/    # Marketplace components
+│   │   └── social/         # Social features components
+│   ├── config/             # Configuration files
+│   ├── hooks/              # Custom React hooks
+│   ├── middleware/         # Next.js middleware
+│   ├── pages/              # Application pages and API routes
+│   │   ├── api/            # API endpoints
+│   │   │   ├── analytics/  # Analytics API endpoints
+│   │   │   ├── market/     # Market API endpoints
+│   │   │   └── memories/   # Memories API endpoints
+│   │   └── memory/         # Memory detail pages
+│   ├── public/             # Static assets
+│   ├── services/           # API services
+│   ├── types/              # TypeScript type definitions
+│   └── utils/              # Utility functions
+├── contracts/              # Solana smart contracts
+│   └── tests/              # Contract tests
+├── docs/                   # Documentation
+│   ├── api/                # API documentation
+│   ├── architecture/       # Architecture documentation
+│   ├── blockchain/         # Blockchain integration docs
+│   ├── deployment/         # Deployment guides
+│   ├── development/        # Development guidelines
+│   ├── security/           # Security documentation
+│   └── user/               # User guides
+├── monitoring/             # Monitoring infrastructure
+│   ├── alertmanager/       # AlertManager configuration
+│   ├── grafana/            # Grafana dashboards and config
+│   ├── loki/               # Loki configuration
+│   ├── prometheus/         # Prometheus configuration
+│   │   └── rules/          # Alert rules
+│   ├── promtail/           # Promtail configuration
+│   └── solana-exporter/    # Solana metrics exporter
+├── .env.example            # Example environment variables
+├── package.json            # Project dependencies
+└── README.md               # Project documentation
 ```
 
-### Solana Smart Contracts
+## Documentation
 
-```bash
-# Navigate to contracts directory
-cd contracts
+Comprehensive documentation is available in the `docs/` directory:
 
-# Install dependencies
-npm install
+- [User Guide](docs/user/USER_GUIDE.md): Complete guide for using the platform
+- [API Reference](docs/api/API.md): API endpoints and usage
+- [Architecture Overview](docs/architecture/TECHNICAL_ARCHITECTURE.md): System design details
+- [Blockchain Integration](docs/blockchain/INTEGRATION.md): Solana integration details
+- [Smart Contracts](docs/blockchain/SMART_CONTRACTS.md): Smart contract documentation
+- [Features](docs/user/FEATURES.md): Detailed platform features
+- [Development Roadmap](docs/development/ROADMAP.md): Future development plans
+- [Security Policies](docs/security/SECURITY.md): Security considerations and practices
+- [Deployment Guide](docs/deployment/DEPLOYMENT.md): Deployment instructions
 
-# Build programs
-anchor build
+## Monitoring System
 
-# Deploy to Solana devnet
-anchor deploy --provider.cluster devnet
+NeuraMint includes a comprehensive monitoring stack for tracking system performance:
 
-# Run tests
-anchor test
-```
-
-## Environment Configuration
-
-NeuraMint uses environment-specific configuration for different deployment stages:
-
-```mermaid
-flowchart LR
-    classDef localClass fill:#7f8c8d,stroke:#000,stroke-width:1px,color:white
-    classDef devClass fill:#27ae60,stroke:#000,stroke-width:1px,color:white
-    classDef stagingClass fill:#2980b9,stroke:#000,stroke-width:1px,color:white
-    classDef prodClass fill:#c0392b,stroke:#000,stroke-width:1px,color:white
-
-    Config[Environment Config]
-    Local[Local<br>localhost]:::localClass
-    Dev[Development<br>devnet]:::devClass
-    Staging[Staging<br>testnet]:::stagingClass
-    Production[Production<br>mainnet]:::prodClass
-
-    Config --> Local
-    Config --> Dev
-    Config --> Staging
-    Config --> Production
-```
-
-## Project Roadmap
-
-NeuraMint is under active development with the following roadmap:
-
-### Q2 2023 (Completed)
-- ✅ Core platform architecture
-- ✅ Basic memory NFT minting
-- ✅ Validation system prototyping
-- ✅ UI/UX foundation
-
-### Q3-Q4 2023 (Completed)
-- ✅ Enhanced validation system
-- ✅ Memory marketplace
-- ✅ Validator dashboard with statistics
-- ✅ Integration with multiple wallet providers
-
-### Q1-Q2 2024 (In Progress)
-- 🔄 Advanced neural data analysis
-- 🔄 Expanded validator rewards system
-- 🔄 Memory collections and galleries
-- 🔄 Mobile application development
-
-### Q3-Q4 2024 (Planned)
-- ⏳ Customizable memory visualization
-- ⏳ Enhanced BCI device support
-- ⏳ DAO governance implementation
-- ⏳ Cross-chain compatibility exploration
+- **Real-time Metrics**: Track API performance, memory operations, and blockchain interactions
+- **Custom Dashboards**: Visualize platform activity and performance metrics
+- **Automated Alerts**: Receive notifications for critical system events
+- **Log Aggregation**: Centralized logging for troubleshooting
+- **Blockchain Monitoring**: Track Solana network performance and contract interactions
 
 ## Contributing
 
-Contributions to NeuraMint are welcome! Please follow these steps:
+We welcome contributions from the community! Please follow these steps:
 
 1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+2. Create a feature branch: `git checkout -b feature/your-feature-name`
+3. Commit your changes: `git commit -m 'Add some feature'`
+4. Push to the branch: `git push origin feature/your-feature-name`
+5. Open a pull request
+
+Please read our [Contributing Guidelines](docs/development/CONTRIBUTING.md) for more details.
 
 ## License
 
@@ -646,10 +365,12 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Contact
 
-- Project Website: [neuramint.tech](https://www.neuramint.tech)
+- Website: [www.neuramint.tech](https://www.neuramint.tech)
 - Twitter: [@NeuraMint_](https://x.com/NeuraMint_)
 - GitHub: [NeuraMint/NRAM](https://github.com/NeuraMint/NRAM)
 
----
+## Acknowledgements
 
-*NeuraMint - The Future of Memory, Now.* 
+- The Solana community for providing tools and support
+- BCI device manufacturers for advancing neural interface technology
+- All contributors who have helped build the NeuraMint platform 

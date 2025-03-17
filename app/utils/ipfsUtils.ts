@@ -45,7 +45,7 @@ export const uploadFileToIPFS = async (file: File, onProgress?: (progress: numbe
     const result = await ipfsClient.add(
       { path: file.name, content: fileBuffer },
       { 
-        progress: (prog) =>[Chinese UI text]  {
+        progress: (prog) =>  {
           console.log(`上传进度: ${prog}`);
           if (onProgress) {
             // [Chinese comment] 计算上传进度百分比
@@ -106,7 +106,7 @@ export const uploadMemoryMetadataToIPFS = async (
     const result = await ipfsClient.add(
       { path: 'metadata.json', content: metadataBuffer },
       { 
-        progress: (prog) =>[Chinese UI text]  {
+        progress: (prog) =>  {
           console.log(`上传进度: ${prog}`); 
           if (onProgress) {
             // [Chinese comment] 计算上传进度百分比
@@ -140,7 +140,7 @@ const readFileAsArrayBuffer = (file: File): Promise<ArrayBuffer> => {
       }
     };
     
-    reader.onerror = (error) =>[Chinese UI text]  {
+    reader.onerror = (error) =>  {
       reject(error);
     };
     
@@ -190,7 +190,7 @@ export const uploadMultipleFilesToIPFS = async (
     try {
       const path = await uploadFileToIPFS(
         file,
-        (progress) =>[Chinese UI text]  {
+        (progress) =>  {
           // [Chinese comment] 报告单个文件进度
           if (onFileProgress) {
             onFileProgress(i, progress);

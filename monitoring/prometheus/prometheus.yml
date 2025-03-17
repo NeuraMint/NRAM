@@ -1,0 +1,45 @@
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+  scrape_timeout: 10s
+
+alerting:
+  alertmanagers:
+    - static_configs:
+        - targets:
+            - alertmanager:9093
+
+rule_files:
+  - "/etc/prometheus/rules/*.yml"
+
+scrape_configs:
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['localhost:9090']
+
+  - job_name: 'neuramint_api'
+    metrics_path: '/api/metrics'
+    scheme: http
+    static_configs:
+      - targets: ['host.docker.internal:3000']
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: instance
+        regex: '.*'
+        replacement: 'neuramint-api'
+
+  - job_name: 'node_exporter'
+    static_configs:
+      - targets: ['node_exporter:9100']
+
+  - job_name: 'cadvisor'
+    static_configs:
+      - targets: ['cadvisor:8080']
+
+  - job_name: 'solana_exporter'
+    static_configs:
+      - targets: ['solana_exporter:9164']
+
+  - job_name: 'loki'
+    static_configs:
+      - targets: ['loki:3100'] 

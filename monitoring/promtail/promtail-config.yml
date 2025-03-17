@@ -1,0 +1,130 @@
+server:
+  http_listen_port: 9080
+  grpc_listen_port: 0
+
+positions:
+  filename: /tmp/positions.yaml
+
+clients:
+  - url: http://loki:3100/loki/api/v1/push
+
+scrape_configs:
+  # Docker containers
+  - job_name: containers
+    docker_sd_configs:
+      - host: unix:///var/run/docker.sock
+        refresh_interval: 5s
+        filters:
+          - name: label
+            values: ["org.label-schema.group=monitoring"]
+    relabel_configs:
+      - source_labels: ['__meta_docker_container_name']
+        regex: '/(.*)'
+        target_label: 'container'
+      - source_labels: ['__meta_docker_container_log_stream']
+        target_label: 'logstream'
+      - source_labels: ['__meta_docker_container_label_org_label_schema_group']
+        target_label: 'group'
+
+  # System logs
+  - job_name: system
+    static_configs:
+      - targets:
+          - localhost
+        labels:
+          job: varlogs
+          __path__: /var/log/*log
+    
+  # Application specific logs
+  - job_name: neuramint
+    static_configs:
+      - targets:
+          - localhost
+        labels:
+          job: neuramint
+          app: neuramint
+          __path__: /var/log/neuramint/*.log
+    
+  - job_name: neuramint-frontend
+    static_configs:
+      - targets:
+          - localhost
+        labels:
+          job: neuramint
+          service: frontend
+          __path__: /var/log/neuramint/frontend*.log
+
+  # Solana specific logs
+  - job_name: solana_validator
+    static_configs:
+      - targets:
+          - localhost
+        labels:
+          job: solana_validator
+          app: neuramint
+          component: validator
+          __path__: /var/log/solana/*.log
+    
+  # Extract structured logs
+  - job_name: json-logs
+    pipeline_stages:
+      - json:
+          expressions:
+            timestamp: timestamp
+            level: level
+            message: message
+            method: method
+            path: path
+            status: status
+            duration: duration
+            user: user
+      - timestamp:
+          source: timestamp
+          format: RFC3339
+      - labels:
+          level:
+          method:
+          path:
+          status:
+          user:
+    static_configs:
+      - targets:
+          - localhost
+        labels:
+          job: neuramint-json
+          __path__: /var/log/neuramint/json*.log
+
+  # Add this section to scrape logs forwarded from the application
+  - job_name: neuramint_app
+    static_configs:
+      - targets:
+          - localhost
+        labels:
+          job: neuramint_app
+          app: neuramint
+          component: app
+          __path__: /var/log/neuramint/app/*.log
+
+pipeline_stages:
+  # Add common labels to all logs
+  - static_labels:
+      environment: production
+      app: neuramint
+  
+  # Set timestamp from Docker logs
+  - regex:
+      expression: '^(?P<timestamp>\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}.\d+Z)'
+  - timestamp:
+      source: timestamp
+      format: RFC3339Nano
+      
+  # Add severity label based on log content
+  - regex:
+      expression: '(error|ERROR|Error)'
+  - labels:
+      severity: error
+  
+  # Drop health check logs to reduce noise
+  - match:
+      selector: '{container="neuramint-api"} |~ "/api/health"'
+      action: drop 

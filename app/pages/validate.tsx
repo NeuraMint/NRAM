@@ -86,7 +86,7 @@ const ValidateMemory = () => {
             toast.error(`Unable to load validator information: ${error.message}`);
         }
       } else {
-        toast.error('[Chinese UI text] Unable to load validator information');
+        toast.error(' Unable to load validator information');
       }
     } finally {
       setIsLoading(false);
@@ -217,7 +217,7 @@ const ValidateMemory = () => {
       // Submit validation
       const signature = await validationService.submitValidation(publicKey, validationRequest);
       
-      toast.success('[Chinese UI text] Validation submitted successfully!', {
+      toast.success(' Validation submitted successfully!', {
         id: 'submit-validation',
         icon: '✅',
         duration: 5000,
@@ -258,7 +258,7 @@ const ValidateMemory = () => {
             });
             break;
           case ValidationErrorType.NOT_VALIDATOR:
-            toast.error('[Chinese UI text] You are not a validator, cannot submit validation', {
+            toast.error(' You are not a validator, cannot submit validation', {
               id: 'submit-validation',
               icon: '❌',
               duration: 5000,
@@ -278,7 +278,7 @@ const ValidateMemory = () => {
           duration: 5000,
         });
       } else {
-        toast.error('[Chinese UI text] Validation submission failed, please try again', {
+        toast.error(' Validation submission failed, please try again', {
           id: 'submit-validation',
           icon: '❌',
           duration: 5000,
@@ -290,7 +290,7 @@ const ValidateMemory = () => {
   };
   
   // Register as a validator
-  const handleRegisterValidator = async () =>[Chinese UI text]  {
+  const handleRegisterValidator = async () =>  {
     if (!connected || !publicKey) return;
     
     try {
@@ -314,7 +314,7 @@ const ValidateMemory = () => {
         stakeAmount * 1000000000 // Convert to lamports
       );
       
-      toast.success('[Chinese UI text] Validator registration successful!', {
+      toast.success(' Validator registration successful!', {
         id: 'register-validator',
         icon: '🎉',
         duration: 5000,
@@ -337,14 +337,14 @@ const ValidateMemory = () => {
             });
             break;
           case ValidationErrorType.INSUFFICIENT_FUNDS:
-            toast.error('[Chinese UI text] Your balance is insufficient to cover the stake amount and transaction fees', {
+            toast.error(' Your balance is insufficient to cover the stake amount and transaction fees', {
               id: 'register-validator',
               icon: '❌',
               duration: 5000,
             });
             break;
           case ValidationErrorType.REGISTRATION_FAILED:
-            toast.error('[Chinese UI text] Validator registration failed, please try again later', {
+            toast.error(' Validator registration failed, please try again later', {
               id: 'register-validator',
               icon: '❌',
               duration: 5000,
@@ -364,7 +364,7 @@ const ValidateMemory = () => {
           duration: 5000,
         });
       } else {
-        toast.error('[Chinese UI text] Validator registration failed, please try again', {
+        toast.error(' Validator registration failed, please try again', {
           id: 'register-validator',
           icon: '❌',
           duration: 5000,
@@ -381,7 +381,7 @@ const ValidateMemory = () => {
     
     // Check if there are rewards to claim
     if (validatorStats.pendingRewards <= 0) {
-      toast.error('[Chinese UI text] No rewards to claim');
+      toast.error(' No rewards to claim');
       return;
     }
     
@@ -417,14 +417,14 @@ const ValidateMemory = () => {
             });
             break;
           case ValidationErrorType.REWARD_CLAIM_FAILED:
-            toast.error('[Chinese UI text] Failed to claim rewards，请稍后再试', {
+            toast.error('Failed to claim rewards, please try again later', {
               id: 'claim-rewards',
               icon: '❌',
               duration: 5000,
             });
             break;
           case ValidationErrorType.NOT_VALIDATOR:
-            toast.error('[Chinese UI text] You are not a validator, cannot claim rewards', {
+            toast.error(' You are not a validator, cannot claim rewards', {
               id: 'claim-rewards',
               icon: '❌',
               duration: 5000,
@@ -511,34 +511,34 @@ const ValidateMemory = () => {
   const renderValidatorRequirements = () => {
     return (
       <div className="bg-gray-800 p-6 rounded-lg shadow-lg mb-8">
-        <h3 className="text-xl font-bold mb-4">[Chinese UI text] Become a Memory Validator</h3>
-        <p className="mb-4">[Chinese UI text] 
+        <h3 className="text-xl font-bold mb-4"> Become a Memory Validator</h3>
+        <p className="mb-4"> 
           Validators are responsible for evaluating the authenticity and quality of memories. By staking NRAM tokens, you can participate in the validation process and earn rewards.
         </p>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
           <div className="bg-gray-700 p-4 rounded-lg">
-            <h4 className="font-bold mb-2">[Chinese UI text] Requirements</h4>
+            <h4 className="font-bold mb-2"> Requirements</h4>
             <ul className="list-disc list-inside">
-              <li>[Chinese UI text] Minimum stake: 1000 NRAM</li>
-              <li>[Chinese UI text] Validation accuracy: at least 85%</li>
-              <li>[Chinese UI text] Activity: at least 10 validations per week</li>
+              <li> Minimum stake: 1000 NRAM</li>
+              <li> Validation accuracy: at least 85%</li>
+              <li> Activity: at least 10 validations per week</li>
             </ul>
           </div>
           
           <div className="bg-gray-700 p-4 rounded-lg">
             <h4 className="font-bold mb-2">Rewards</h4>
             <ul className="list-disc list-inside">
-              <li>[Chinese UI text] Each validation: 5-20 NRAM</li>
-              <li>[Chinese UI text] Accuracy bonus: up to 10% additional rewards</li>
-              <li>[Chinese UI text] 质押Rewards: 年化10%</li>
+              <li> Each validation: 5-20 NRAM</li>
+              <li> Accuracy bonus: up to 10% additional rewards</li>
+              <li> 质押Rewards: 年化10%</li>
             </ul>
           </div>
         </div>
         
         <div className="flex flex-col md:flex-row items-center gap-4">
           <div className="w-full md:w-1/2">
-            <label className="block text-sm font-medium mb-2">[Chinese UI text] 
+            <label className="block text-sm font-medium mb-2"> 
               质押金额 (NRAM)
             </label>
             <input
@@ -629,19 +629,19 @@ const ValidateMemory = () => {
             
             <div className="grid grid-cols-2 gap-2">
               <div className="bg-gray-700 rounded-lg p-3">
-                <h4 className="text-xs text-gray-400">[Chinese UI text] 品质</h4>
+                <h4 className="text-xs text-gray-400"> 品质</h4>
                 <p className="font-semibold">{selectedMemory.quality}</p>
               </div>
               <div className="bg-gray-700 rounded-lg p-3">
-                <h4 className="text-xs text-gray-400">[Chinese UI text] 类型</h4>
+                <h4 className="text-xs text-gray-400"> 类型</h4>
                 <p className="font-semibold">{selectedMemory.memoryType}</p>
               </div>
               <div className="bg-gray-700 rounded-lg p-3">
-                <h4 className="text-xs text-gray-400">[Chinese UI text] 情感值</h4>
+                <h4 className="text-xs text-gray-400"> 情感值</h4>
                 <p className="font-semibold">{selectedMemory.emotionalValence}/10</p>
               </div>
               <div className="bg-gray-700 rounded-lg p-3">
-                <h4 className="text-xs text-gray-400">[Chinese UI text] 认知负荷</h4>
+                <h4 className="text-xs text-gray-400"> 认知负荷</h4>
                 <p className="font-semibold">{selectedMemory.cognitiveLoad}/10</p>
               </div>
             </div>
@@ -655,29 +655,29 @@ const ValidateMemory = () => {
             
             <div className="space-y-2">
               <div>
-                <h4 className="text-sm text-gray-400">[Chinese UI text] submitted者</h4>
+                <h4 className="text-sm text-gray-400"> submitted者</h4>
                 <p className="font-mono text-sm">{formatAddress(selectedMemory.owner)}</p>
               </div>
               <div>
-                <h4 className="text-sm text-gray-400">[Chinese UI text] submitted时间</h4>
+                <h4 className="text-sm text-gray-400"> submitted时间</h4>
                 <p>{formatDate(selectedMemory.submittedAt)}</p>
               </div>
               <div>
-                <h4 className="text-sm text-gray-400">[Chinese UI text] 神经签名</h4>
+                <h4 className="text-sm text-gray-400"> 神经签名</h4>
                 <p className="font-mono text-sm truncate">{selectedMemory.neuralSignature}</p>
               </div>
               <div>
-                <h4 className="text-sm text-gray-400">[Chinese UI text] 脑区</h4>
+                <h4 className="text-sm text-gray-400"> 脑区</h4>
                 <p>{selectedMemory.brainRegion}</p>
               </div>
             </div>
             
             <div className="pt-4 border-t border-gray-700">
-              <h3 className="font-bold mb-3">[Chinese UI text] Validate评分</h3>
+              <h3 className="font-bold mb-3"> Validate评分</h3>
               <div className="mb-6">
                 <div className="flex justify-between mb-2">
-                  <span>[Chinese UI text] 无效 (0)</span>
-                  <span>[Chinese UI text] 有效 (100)</span>
+                  <span> 无效 (0)</span>
+                  <span> 有效 (100)</span>
                 </div>
                 <input
                   type="range"
@@ -694,7 +694,7 @@ const ValidateMemory = () => {
               </div>
               
               <div className="mb-4">
-                <label className="block text-sm font-medium mb-2">[Chinese UI text] 
+                <label className="block text-sm font-medium mb-2"> 
                   评论 (可选)
                 </label>
                 <textarea
@@ -715,7 +715,7 @@ const ValidateMemory = () => {
                     <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                       <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                       <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                    </svg>[Chinese UI text] 
+                    </svg> 
                     submitted中...
                   </span>
                 ) : (
@@ -732,7 +732,7 @@ const ValidateMemory = () => {
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-900 to-black text-white">
       <Head>
-        <title>[Chinese UI text] Validate记忆 | NeuraMint</title>
+        <title>Validate Memory | NeuraMint</title>
         <meta name="description" content="为NeuraMint平台上的记忆进行Validate，赚取Rewards" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
       </Head>
@@ -744,12 +744,12 @@ const ValidateMemory = () => {
               <div className="absolute top-0 left-0 w-full h-full border-4 border-t-purple-500 border-r-transparent border-b-transparent border-l-transparent rounded-full animate-spin"></div>
               <div className="absolute top-2 left-2 w-20 h-20 border-4 border-t-blue-500 border-r-transparent border-b-transparent border-l-transparent rounded-full animate-spin-slow"></div>
             </div>
-            <p className="mt-4 text-xl">[Chinese UI text] 加载中...</p>
+            <p className="mt-4 text-xl"> 加载中...</p>
           </div>
         ) : !connected ? (
           <div className="max-w-lg mx-auto text-center p-4">
-            <h1 className="text-2xl md:text-3xl font-bold mb-4 md:mb-6">[Chinese UI text] 连接钱包以继续</h1>
-            <p className="mb-6 md:mb-8 text-gray-300">[Chinese UI text] 
+            <h1 className="text-2xl md:text-3xl font-bold mb-4 md:mb-6"> 连接钱包以继续</h1>
+            <p className="mb-6 md:mb-8 text-gray-300"> 
               您需要连接钱包才能参与记忆Validate。Validate记忆可以赚取NRAM代币Rewards。
             </p>
             <div className="flex justify-center">
@@ -758,8 +758,8 @@ const ValidateMemory = () => {
           </div>
         ) : (
           <div>
-            <h1 className="text-2xl md:text-3xl font-bold mb-2">[Chinese UI text] 记忆Validate</h1>
-            <p className="text-gray-300 mb-6 md:mb-8">[Chinese UI text] Validate记忆的真实性和品质，获取NRAM代币Rewards</p>
+            <h1 className="text-2xl md:text-3xl font-bold mb-2"> 记忆Validate</h1>
+            <p className="text-gray-300 mb-6 md:mb-8"> Validate记忆的真实性和品质，获取NRAM代币Rewards</p>
             
             {!validatorStats ? (
               renderValidatorRequirements()
@@ -767,18 +767,18 @@ const ValidateMemory = () => {
               <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 md:gap-8">
                 <div className="lg:col-span-1 space-y-4 md:space-y-8">
                   <div className="bg-gray-800 rounded-xl p-4 md:p-6">
-                    <h2 className="text-xl font-bold mb-4">[Chinese UI text] Validate者统计</h2>
+                    <h2 className="text-xl font-bold mb-4">Validator统计</h2>
                     <div className="space-y-3 md:space-y-4">
                       <div className="flex justify-between">
-                        <span className="text-gray-400">[Chinese UI text] 总Validate数</span>
+                        <span className="text-gray-400">Total Validations</span>
                         <span className="font-bold">{validatorStats.completedValidations}</span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-gray-400">[Chinese UI text] 成功率</span>
+                        <span className="text-gray-400">Success Rate</span>
                         <span className="font-bold">{validatorStats.successRate.toFixed(1)}%</span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-gray-400">[Chinese UI text] 声誉分数</span>
+                        <span className="text-gray-400">Reputation Score</span>
                         <div className="flex items-center">
                           <div className="w-16 md:w-24 h-3 bg-gray-700 rounded-full mr-2">
                             <div 
@@ -790,11 +790,11 @@ const ValidateMemory = () => {
                         </div>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-gray-400">[Chinese UI text] 质押金额</span>
+                        <span className="text-gray-400">Staked Amount</span>
                         <span className="font-bold">{(validatorStats.stakedAmount / 1000000000).toFixed(2)} NRAM</span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-gray-400">[Chinese UI text] 待领取Rewards</span>
+                        <span className="text-gray-400">Pending Rewards</span>
                         <span className="font-bold text-green-400">{(validatorStats.pendingRewards / 1000000000).toFixed(4)} NRAM</span>
                       </div>
                     </div>
@@ -809,26 +809,26 @@ const ValidateMemory = () => {
                   </div>
                   
                   <div className="bg-gray-800 rounded-xl p-4 md:p-6">
-                    <h2 className="text-xl font-bold mb-4">[Chinese UI text] Validate指南</h2>
+                    <h2 className="text-xl font-bold mb-4"> Validate指南</h2>
                     <ul className="space-y-2 text-gray-300 text-sm md:text-base">
                       <li className="flex items-start">
-                        <span className="mr-2 text-purple-400">•</span>[Chinese UI text] 
+                        <span className="mr-2 text-purple-400">•</span> 
                         仔细检查记忆的神经签名是否有效
                       </li>
                       <li className="flex items-start">
-                        <span className="mr-2 text-purple-400">•</span>[Chinese UI text] 
+                        <span className="mr-2 text-purple-400">•</span> 
                         确认记忆内容与描述一致
                       </li>
                       <li className="flex items-start">
-                        <span className="mr-2 text-purple-400">•</span>[Chinese UI text] 
+                        <span className="mr-2 text-purple-400">•</span> 
                         评估记忆的情感值和认知负荷是否合理
                       </li>
                       <li className="flex items-start">
-                        <span className="mr-2 text-purple-400">•</span>[Chinese UI text] 
+                        <span className="mr-2 text-purple-400">•</span> 
                         检查记忆类型和品质标记是否准确
                       </li>
                       <li className="flex items-start">
-                        <span className="mr-2 text-purple-400">•</span>[Chinese UI text] 
+                        <span className="mr-2 text-purple-400">•</span> 
                         给予公正的评分，以维护平台的完整性
                       </li>
                     </ul>
@@ -840,7 +840,7 @@ const ValidateMemory = () => {
                     renderMemoryDetail()
                   ) : memories.length > 0 ? (
                     <div>
-                      <h2 className="text-xl font-bold mb-4">[Chinese UI text] 选择记忆进行Validate</h2>
+                      <h2 className="text-xl font-bold mb-4"> 选择记忆进行Validate</h2>
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         {memories.map(memory => renderMemoryCard(memory))}
                       </div>
@@ -848,8 +848,8 @@ const ValidateMemory = () => {
                   ) : (
                     <div className="bg-gray-800 p-6 md:p-8 rounded-xl text-center">
                       <div className="text-4xl md:text-5xl mb-4">🎉</div>
-                      <h3 className="text-lg md:text-xl font-bold mb-2">[Chinese UI text] 所有记忆都已Validate!</h3>
-                      <p className="text-gray-300 mb-4">[Chinese UI text] 
+                      <h3 className="text-lg md:text-xl font-bold mb-2"> 所有记忆都已Validate!</h3>
+                      <p className="text-gray-300 mb-4"> 
                         目前没有待Validate的记忆。请稍后再来查看新的Validate任务。
                       </p>
                     </div>

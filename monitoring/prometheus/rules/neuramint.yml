@@ -1,0 +1,98 @@
+groups:
+  - name: neuramint
+    rules:
+      # API Performance Alerts
+      - alert: APIHighResponseTime
+        expr: rate(http_request_duration_seconds_sum{job="neuramint-api"}[5m]) / rate(http_request_duration_seconds_count{job="neuramint-api"}[5m]) > 0.5
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High API response time"
+          description: "API endpoints have a high average response time (> 500ms) for the last 5 minutes."
+          
+      - alert: APIHighErrorRate
+        expr: sum(rate(http_requests_total{job="neuramint-api", status=~"5.."}[5m])) / sum(rate(http_requests_total{job="neuramint-api"}[5m])) > 0.05
+        for: 2m
+        labels:
+          severity: critical
+        annotations:
+          summary: "High API error rate"
+          description: "API is returning a high rate of 5xx errors (> 5%) for the last 2 minutes."
+          
+      # Frontend Performance Alerts
+      - alert: FrontendSlowPageLoad
+        expr: histogram_quantile(0.95, sum(rate(page_load_time_seconds_bucket{job="neuramint-frontend"}[5m])) by (le)) > 3
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Slow page load times"
+          description: "95th percentile of page load time is above 3 seconds for the last 5 minutes."
+          
+      # Solana RPC Alerts
+      - alert: SolanaRPCErrors
+        expr: increase(solana_rpc_errors_total[5m]) > 10
+        for: 2m
+        labels:
+          severity: critical
+        annotations:
+          summary: "High Solana RPC errors"
+          description: "There have been more than 10 Solana RPC errors in the last 5 minutes."
+          
+      - alert: SolanaRPCHighLatency
+        expr: solana_rpc_latency_seconds > 2
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High Solana RPC latency"
+          description: "Solana RPC latency is above 2 seconds for the last 5 minutes."
+          
+      # Memory Transaction Alerts
+      - alert: FailedMemoryTransactions
+        expr: increase(memory_transaction_failures_total[15m]) > 5
+        for: 5m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Failed memory transactions"
+          description: "There have been more than 5 failed memory transactions in the last 15 minutes."
+          
+      # System Resource Alerts
+      - alert: HighCPUUsage
+        expr: 100 - (avg by(instance) (irate(node_cpu_seconds_total{mode="idle"}[5m])) * 100) > 80
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High CPU usage"
+          description: "CPU usage has been above 80% for the last 5 minutes."
+          
+      - alert: HighMemoryUsage
+        expr: (node_memory_MemTotal_bytes - node_memory_MemAvailable_bytes) / node_memory_MemTotal_bytes * 100 > 85
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High memory usage"
+          description: "Memory usage has been above 85% for the last 5 minutes."
+          
+      - alert: LowDiskSpace
+        expr: (node_filesystem_size_bytes{fstype!="tmpfs"} - node_filesystem_free_bytes{fstype!="tmpfs"}) / node_filesystem_size_bytes{fstype!="tmpfs"} * 100 > 85
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Low disk space"
+          description: "Disk usage has been above 85% for the last 5 minutes."
+          
+      # Network Alerts
+      - alert: HighNetworkTraffic
+        expr: sum(rate(node_network_transmit_bytes_total[5m])) + sum(rate(node_network_receive_bytes_total[5m])) > 100000000
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High network traffic"
+          description: "Network traffic has been above 100MB/s for the last 5 minutes." 

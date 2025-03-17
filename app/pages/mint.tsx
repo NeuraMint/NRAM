@@ -91,7 +91,7 @@ const MintMemory = () => {
     }
     
     if (!neuralDataFile || !imageFile) {
-      toast.error('[Chinese UI text] 请上传神经数据和图像文件');
+      toast.error(' 请上传神经数据和图像文件');
       return;
     }
     
@@ -157,7 +157,7 @@ const MintMemory = () => {
           quality: memoryQuality,
           transferable: true
         },
-        (progress) =>[Chinese UI text]  {
+        (progress) =>  {
           setMintProgress(progress);
         }
       );
@@ -166,11 +166,11 @@ const MintMemory = () => {
       setCurrentStep('complete');
       
       // 9. 显示成功消息并跳转到详情页
-      toast.success('[Chinese UI text] 记忆NFTMint成功！');
+      toast.success(' 记忆NFTMint成功！');
       router.push(`/memory/${mintResult.mint.toString()}`);
     } catch (error) {
       console.error('Mint记忆时出错:', error);
-      toast.error('[Chinese UI text] Mint记忆失败。请重试。');
+      toast.error(' Mint记忆失败。请重试。');
     } finally {
       setIsMinting(false);
     }
@@ -198,7 +198,7 @@ const MintMemory = () => {
   };
   
   // [Chinese comment] 渲染进度条
-  const renderProgressBar = useCallback(() =>[Chinese UI text]  {
+  const renderProgressBar = useCallback(() =>  {
     const steps = [
       { name: '填写表单', status: currentStep !== 'form' ? 'complete' : 'current' },
       { name: '上传到IPFS', status: currentStep === 'uploading' ? 'current' : currentStep === 'form' ? 'upcoming' : 'complete' },
@@ -241,12 +241,12 @@ const MintMemory = () => {
   return (
     <div className="min-h-screen bg-gray-900 text-white">
       <Head>
-        <title>[Chinese UI text] Mint记忆NFT | NeuraMint</title>
+        <title>Mint Memory NFT | NeuraMint</title>
         <meta name="description" content="在Solana区块链上创建和Mint你的神经记忆NFT" />
       </Head>
       
       <div className="container mx-auto px-4 py-12">
-        <h1 className="text-4xl font-bold mb-8">[Chinese UI text] Mint记忆NFT</h1>
+        <h1 className="text-4xl font-bold mb-8"> Mint记忆NFT</h1>
         
         {isMinting && renderProgressBar()}
         
@@ -264,19 +264,19 @@ const MintMemory = () => {
                 ) : (
                   <div className="text-center p-12">
                     <div className="text-6xl mb-4">🧠</div>
-                    <p className="text-gray-400">[Chinese UI text] 神经数据预览将显示在这里</p>
+                    <p className="text-gray-400"> 神经数据预览将显示在这里</p>
                   </div>
                 )}
               </div>
             </div>
             
             <div className="bg-gray-800 p-6 rounded-xl">
-              <h3 className="text-xl font-bold mb-4">[Chinese UI text] 什么是记忆NFT？</h3>
-              <p className="text-gray-300 mb-4">[Chinese UI text] 
+              <h3 className="text-xl font-bold mb-4"> 什么是记忆NFT？</h3>
+              <p className="text-gray-300 mb-4"> 
                 记忆NFT是代表从你的大脑中捕获的神经模式的独特数字资产。
                 使用先进的BCI技术，NeuraMint将这些模式转换为Solana区块链上可收藏、可交易的NFT。
               </p>
-              <p className="text-gray-300">[Chinese UI text] 
+              <p className="text-gray-300"> 
                 每个记忆NFT都具有独特的属性，包括脑区、情感效价、
                 认知负荷和Validate其真实性的神经签名。
               </p>
@@ -287,14 +287,14 @@ const MintMemory = () => {
           <div>
             <div className="bg-gray-800 p-6 rounded-xl mb-6">
               <div className="flex justify-between items-center mb-6">
-                <h3 className="text-xl font-bold">[Chinese UI text] 记忆详情</h3>
+                <h3 className="text-xl font-bold"> 记忆详情</h3>
                 <WalletMultiButton />
               </div>
               
               <form onSubmit={handleSubmit}>
                 <div className="space-y-6">
                   <div>
-                    <label className="block text-gray-400 mb-2">[Chinese UI text] 记忆标题</label>
+                    <label className="block text-gray-400 mb-2"> 记忆标题</label>
                     <input
                       type="text"
                       value={memoryTitle}
@@ -307,7 +307,7 @@ const MintMemory = () => {
                   </div>
                   
                   <div>
-                    <label className="block text-gray-400 mb-2">[Chinese UI text] 描述</label>
+                    <label className="block text-gray-400 mb-2"> 描述</label>
                     <textarea
                       value={memoryDescription}
                       onChange={(e) => setMemoryDescription(e.target.value)}
@@ -320,39 +320,39 @@ const MintMemory = () => {
                   
                   <div className="grid grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-gray-400 mb-2">[Chinese UI text] 记忆类型</label>
+                      <label className="block text-gray-400 mb-2">Memory Type</label>
                       <select
                         value={memoryType}
                         onChange={(e) => setMemoryType(e.target.value as MemoryType)}
                         disabled={isMinting}
                         className="w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-2"
                       >
-                        <option value="cognitive">[Chinese UI text] 认知型 🧠</option>
-                        <option value="emotional">[Chinese UI text] 情感型 ❤️</option>
-                        <option value="cultural">[Chinese UI text] 文化型 🏛️</option>
-                        <option value="therapeutic">[Chinese UI text] 治疗型 🏥</option>
+                        <option value="cognitive"> 认知型 🧠</option>
+                        <option value="emotional"> 情感型 ❤️</option>
+                        <option value="cultural"> 文化型 🏛️</option>
+                        <option value="therapeutic"> 治疗型 🏥</option>
                       </select>
                     </div>
                     
                     <div>
-                      <label className="block text-gray-400 mb-2">[Chinese UI text] 品质等级</label>
+                      <label className="block text-gray-400 mb-2"> 品质等级</label>
                       <select
                         value={memoryQuality}
                         onChange={(e) => setMemoryQuality(e.target.value as MemoryQuality)}
                         disabled={isMinting}
                         className="w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-2"
                       >
-                        <option value="common">[Chinese UI text] 普通</option>
-                        <option value="fine">[Chinese UI text] 精良</option>
-                        <option value="excellent">[Chinese UI text] 卓越</option>
-                        <option value="legendary">[Chinese UI text] 传奇</option>
+                        <option value="common"> 普通</option>
+                        <option value="fine"> 精良</option>
+                        <option value="excellent"> 卓越</option>
+                        <option value="legendary"> 传奇</option>
                       </select>
                     </div>
                   </div>
                   
                   <div className="grid grid-cols-3 gap-4">
                     <div>
-                      <label className="block text-gray-400 mb-2">[Chinese UI text] 脑区</label>
+                      <label className="block text-gray-400 mb-2"> 脑区</label>
                       <input
                         type="text"
                         value={brainRegion}
@@ -365,7 +365,7 @@ const MintMemory = () => {
                     </div>
                     
                     <div>
-                      <label className="block text-gray-400 mb-2">[Chinese UI text] 情感效价 (-10~10)</label>
+                      <label className="block text-gray-400 mb-2"> 情感效价 (-10~10)</label>
                       <input
                         type="number"
                         min="-10"
@@ -380,7 +380,7 @@ const MintMemory = () => {
                     </div>
                     
                     <div>
-                      <label className="block text-gray-400 mb-2">[Chinese UI text] 认知负荷 (0~10)</label>
+                      <label className="block text-gray-400 mb-2"> 认知负荷 (0~10)</label>
                       <input
                         type="number"
                         min="0"
@@ -396,7 +396,7 @@ const MintMemory = () => {
                   </div>
                   
                   <div>
-                    <label className="block text-gray-400 mb-2">[Chinese UI text] 上传记忆图像</label>
+                    <label className="block text-gray-400 mb-2"> 上传记忆图像</label>
                     <div className="w-full bg-gray-700 border border-dashed border-gray-500 rounded-lg px-4 py-8 text-center">
                       <input
                         type="file"
@@ -409,17 +409,17 @@ const MintMemory = () => {
                       <label 
                         htmlFor="memory-image"
                         className="cursor-pointer inline-block px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-lg disabled:opacity-50"
-                      >[Chinese UI text] 
+                      > 
                         选择图像文件
                       </label>
                       {imageFile && (
-                        <p className="mt-2 text-gray-300">[Chinese UI text] 已选择: {imageFile.name}</p>
+                        <p className="mt-2 text-gray-300"> 已选择: {imageFile.name}</p>
                       )}
                     </div>
                   </div>
                   
                   <div>
-                    <label className="block text-gray-400 mb-2">[Chinese UI text] 上传神经数据文件</label>
+                    <label className="block text-gray-400 mb-2"> 上传神经数据文件</label>
                     <div className="w-full bg-gray-700 border border-dashed border-gray-500 rounded-lg px-4 py-8 text-center">
                       <input
                         type="file"
@@ -432,11 +432,11 @@ const MintMemory = () => {
                       <label 
                         htmlFor="neural-data"
                         className="cursor-pointer inline-block px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-lg disabled:opacity-50"
-                      >[Chinese UI text] 
+                      > 
                         选择神经数据文件
                       </label>
                       {neuralDataFile && (
-                        <p className="mt-2 text-gray-300">[Chinese UI text] 已选择: {neuralDataFile.name}</p>
+                        <p className="mt-2 text-gray-300"> 已选择: {neuralDataFile.name}</p>
                       )}
                     </div>
                   </div>

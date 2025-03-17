@@ -282,8 +282,8 @@ const translationMap = {
   ' NRAM tokens required to become a validator': ' NRAM tokens required to become a validator',
   'You are already a validator': 'You are already a validator',
   
-  // Fix double [Chinese UI text] issues
-  '[Chinese UI text]': '[Chinese UI text]',
+  // Fix double  issues
+  '': '',
 };
 
 // Get a list of all files in the project
@@ -304,76 +304,76 @@ const getFiles = (dir, fileList = [], extensions = ['.ts', '.tsx', '.js', '.jsx'
   return fileList;
 };
 
-// Function to replace [Chinese UI text] markers with English equivalents
+// Function to replace  markers with English equivalents
 function replaceChineseUITextMarkers(content) {
   // Common UI text replacements
   const uiTextReplacements = {
     // Page titles
-    '[Chinese UI text] 内存Marketplace | NeuraMint': 'Memory Marketplace | NeuraMint',
-    '[Chinese UI text] NeuraMint - 记忆Marketplace': 'NeuraMint - Memory Marketplace',
-    '[Chinese UI text] 记忆NFT平台': 'Memory NFT Platform',
-    '[Chinese UI text] Mint记忆NFT | NeuraMint': 'Mint Memory NFT | NeuraMint',
-    '[Chinese UI text] Validate记忆 | NeuraMint': 'Validate Memory | NeuraMint',
-    '[Chinese UI text] Validate者仪表盘 | NeuraMint': 'Validator Dashboard | NeuraMint',
-    '[Chinese UI text] 关于 NeuraMint | 记忆NFT平台': 'About NeuraMint | Memory NFT Platform',
+    'Memory Marketplace | NeuraMint': 'Memory Marketplace | NeuraMint',
+    'NeuraMint - Memory Marketplace': 'NeuraMint - Memory Marketplace',
+    'Memory NFT Platform': 'Memory NFT Platform',
+    'Mint Memory NFT | NeuraMint': 'Mint Memory NFT | NeuraMint',
+    'Validate Memory | NeuraMint': 'Validate Memory | NeuraMint',
+    'Validator Dashboard | NeuraMint': 'Validator Dashboard | NeuraMint',
+    'About NeuraMint | Memory NFT Platform': 'About NeuraMint | Memory NFT Platform',
     
     // Headers and titles
-    '[Chinese UI text] 内存Marketplace': 'Memory Marketplace',
-    '[Chinese UI text] 记忆Marketplace': 'Memory Marketplace',
-    '[Chinese UI text] 筛选': 'Filter',
-    '[Chinese UI text] 过滤器': 'Filters',
-    '[Chinese UI text] 记忆类型': 'Memory Type',
-    '[Chinese UI text] 记忆品质': 'Memory Quality',
-    '[Chinese UI text] 价格范围 (SOL)': 'Price Range (SOL)',
-    '[Chinese UI text] 最小': 'Min',
-    '[Chinese UI text] 最大': 'Max',
-    '[Chinese UI text] 排序方式': 'Sort By',
+    'Memory Marketplace': 'Memory Marketplace',
+    'Memory Marketplace': 'Memory Marketplace',
+    'Filter': 'Filter',
+    'Filters': 'Filters',
+    'Memory Type': 'Memory Type',
+    'Memory Quality': 'Memory Quality',
+    'Price Range (SOL)': 'Price Range (SOL)',
+    'Min': 'Min',
+    'Max': 'Max',
+    'Sort By': 'Sort By',
     
     // Validator dashboard
-    '[Chinese UI text] Validate者仪表盘': 'Validator Dashboard',
-    '[Chinese UI text] 查看您的Validate统计数据、历史记录和排名': 'View your validation statistics, history, and rankings',
-    '[Chinese UI text] 总Validate数': 'Total Validations',
-    '[Chinese UI text] 成功率': 'Success Rate',
-    '[Chinese UI text] 总Rewards': 'Total Rewards',
-    '[Chinese UI text] 待领取Rewards': 'Pending Rewards',
-    '[Chinese UI text] 每日Validate活动': 'Daily Validation Activity',
-    '[Chinese UI text] Validate结果分布': 'Validation Result Distribution',
-    '[Chinese UI text] Validate者资料': 'Validator Profile',
-    '[Chinese UI text] 钱包地址': 'Wallet Address',
-    '[Chinese UI text] 质押金额': 'Staked Amount',
-    '[Chinese UI text] Validate者状态': 'Validator Status',
-    '[Chinese UI text] 声誉分数': 'Reputation Score',
-    '[Chinese UI text] 本周Rewards': 'Weekly Rewards',
-    '[Chinese UI text] 暂无Validate历史': 'No Validation History',
-    '[Chinese UI text] Validate活动图表': 'Validation Activity Chart',
-    '[Chinese UI text] Validate时间': 'Validation Time',
-    '[Chinese UI text] Validate分数': 'Validation Score',
-    '[Chinese UI text] 结果': 'Result',
+    'Validator Dashboard': 'Validator Dashboard',
+    'View your validation statistics, history, and rankings': 'View your validation statistics, history, and rankings',
+    'Total Validations': 'Total Validations',
+    'Success Rate': 'Success Rate',
+    'Total Rewards': 'Total Rewards',
+    'Pending Rewards': 'Pending Rewards',
+    'Daily Validation Activity': 'Daily Validation Activity',
+    'Validation Result Distribution': 'Validation Result Distribution',
+    'Validator Profile': 'Validator Profile',
+    'Wallet Address': 'Wallet Address',
+    'Staked Amount': 'Staked Amount',
+    'Validator Status': 'Validator Status',
+    'Reputation Score': 'Reputation Score',
+    'Weekly Rewards': 'Weekly Rewards',
+    'No Validation History': 'No Validation History',
+    'Validation Activity Chart': 'Validation Activity Chart',
+    'Validation Time': 'Validation Time',
+    'Validation Score': 'Validation Score',
+    'Result': 'Result',
     'Rewards': 'Rewards',
-    '[Chinese UI text] 排名': 'Rank',
-    '[Chinese UI text] Validate者': 'Validator',
-    '[Chinese UI text] Validate数量': 'Validation Count',
-    '[Chinese UI text] 声誉分数': 'Reputation Score',
-    '[Chinese UI text] 您': 'You',
-    '[Chinese UI text] 声誉排名对比': 'Reputation Ranking Comparison',
+    'Rank': 'Rank',
+    'Validator': 'Validator',
+    'Validation Count': 'Validation Count',
+    'Reputation Score': 'Reputation Score',
+    'You': 'You',
+    'Reputation Ranking Comparison': 'Reputation Ranking Comparison',
     
     // Messages
-    '[Chinese UI text] 请连接您的钱包': 'Please Connect Your Wallet',
-    '[Chinese UI text] 连接您的钱包以购买记忆NFT': 'Connect your wallet to buy memory NFTs',
-    '[Chinese UI text] 没有找到符合条件的记忆': 'No memories found matching your criteria',
-    '[Chinese UI text] 记忆购买成功！': 'Memory purchased successfully!',
+    'Please Connect Your Wallet': 'Please Connect Your Wallet',
+    'Connect your wallet to buy memory NFTs': 'Connect your wallet to buy memory NFTs',
+    'No memories found matching your criteria': 'No memories found matching your criteria',
+    'Memory purchased successfully!': 'Memory purchased successfully!',
     'Please connect your wallet first': 'Please connect your wallet first',
-    '[Chinese UI text] 您还不是Validate者': 'You are not a validator yet',
-    '[Chinese UI text] 加载Validate者数据失败': 'Failed to load validator data',
-    '[Chinese UI text] 无法加载Validate历史': 'Failed to load validation history',
-    '[Chinese UI text] 无法加载Validate者排名': 'Failed to load validator rankings',
+    'You还不是Validate者': 'You are not a validator yet',
+    'Failed to load validator data': 'Failed to load validator data',
+    'Failed to load validation history': 'Failed to load validation history',
+    'Failed to load validator rankings': 'Failed to load validator rankings',
     'Rewards claimed successfully!': 'Rewards claimed successfully!',
-    '[Chinese UI text] Failed to claim rewards，请稍后再试': 'Failed to claim rewards, please try again later',
+    'Failed to claim rewards, please try again later': 'Failed to claim rewards, please try again later',
     'Failed to claim rewards, please try again': 'Failed to claim rewards, please try again',
     
     // Generic UI elements
-    '[Chinese UI text] 打开主菜单': 'Open main menu',
-    '[Chinese UI text]': '',
+    'Open main menu': 'Open main menu',
+    '': '',
   };
   
   // Replace all occurrences of Chinese UI text markers
@@ -395,10 +395,10 @@ const processFile = (filePath) => {
       content = content.replace(new RegExp(chinese.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'g'), english);
     });
     
-    // Fix double [Chinese UI text] markers
-    content = content.replace(/\[Chinese UI text\] \[Chinese UI text\]/g, '[Chinese UI text]');
+    // Fix double  markers
+    content = content.replace(/\[Chinese UI text\] \[Chinese UI text\]/g, '');
     
-    // Replace [Chinese UI text] markers with English equivalents
+    // Replace  markers with English equivalents
     content = replaceChineseUITextMarkers(content);
     
     // Check if content was modified
@@ -412,7 +412,7 @@ const processFile = (filePath) => {
         console.log(`Untranslated comments in ${filePath}:`, remainingChinese);
       }
       
-      // Log any remaining [Chinese UI text] markers
+      // Log any remaining  markers
       const remainingMarkers = content.match(/\[Chinese UI text\]/g);
       if (remainingMarkers) {
         console.log(`Remaining UI text markers in ${filePath}: ${remainingMarkers.length}`);

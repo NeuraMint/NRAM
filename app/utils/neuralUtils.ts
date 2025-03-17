@@ -63,7 +63,7 @@ export const analyzeNeuralData = async (data: ArrayBuffer): Promise<NeuralAnalys
   // [Chinese comment] 从数据创建模拟的神经指纹
   const hashBuffer = await crypto.subtle.digest('SHA-256', data);
   const hashArray = Array.from(new Uint8Array(hashBuffer));
-  const neuralFingerprint = '0x' + hashArray.map(b =>[Chinese UI text]  b.toString(16).padStart(2, '0')).join('');
+  const neuralFingerprint = '0x' + hashArray.map(b =>  b.toString(16).padStart(2, '0')).join('');
   
   // [Chinese comment] 根据神经指纹的特定位生成记忆质量
   // [Chinese comment] 这只是一个模拟，实际应用会使用更复杂的算法

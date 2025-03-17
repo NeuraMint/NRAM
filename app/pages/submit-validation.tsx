@@ -18,7 +18,7 @@ const VALIDATION_QUALITY_OPTIONS = [
   { value: 0, label: '无效 (0分)', description: '完全不符合记忆NFT标准或恶意submitted' },
 ];
 
-const SubmitValidation: React.FC = () =>[Chinese UI text]  {
+const SubmitValidation: React.FC = () =>  {
   const router = useRouter();
   const { memoryId } = router.query;
   const wallet = useWallet();
@@ -66,7 +66,7 @@ const SubmitValidation: React.FC = () =>[Chinese UI text]  {
         }
       } catch (error) {
         console.error('加载记忆数据失败:', error);
-        toast.error('[Chinese UI text] 无法加载记忆数据');
+        toast.error(' 无法加载记忆数据');
       } finally {
         setLoading(false);
       }
@@ -76,14 +76,14 @@ const SubmitValidation: React.FC = () =>[Chinese UI text]  {
   }, [memoryId, connected, publicKey]);
   
   // Submit validation
-  const handleSubmitValidation = async () =>[Chinese UI text]  {
+  const handleSubmitValidation = async () =>  {
     if (!connected || !publicKey || !memoryData) {
       toast.error('Please connect your wallet first并确保记忆数据已加载');
       return;
     }
     
     if (!isValidator) {
-      toast.error('[Chinese UI text] 您不是Validate者，请先Register as a validator');
+      toast.error('You不是Validate者，请先Register as a validator');
       router.push('/validator-registration');
       return;
     }
@@ -101,11 +101,11 @@ const SubmitValidation: React.FC = () =>[Chinese UI text]  {
       const toastId = toast.loading('Submitting validation...');
       await validationService.submitValidation(publicKey, validationRequest);
       
-      toast.success('[Chinese UI text] Validatesubmitted成功!', { id: toastId });
+      toast.success(' Validatesubmitted成功!', { id: toastId });
       router.push('/validator-dashboard?tab=history');
     } catch (error) {
       console.error('Submit validation失败:', error);
-      toast.error('[Chinese UI text] Validation submission failed, please try again');
+      toast.error(' Validation submission failed, please try again');
     } finally {
       setSubmitting(false);
     }
@@ -116,12 +116,12 @@ const SubmitValidation: React.FC = () =>[Chinese UI text]  {
     return (
       <div className="container p-4 mx-auto">
         <div className="p-8 text-center bg-red-100 rounded-lg">
-          <h2 className="text-xl font-bold text-red-800">[Chinese UI text] 缺少记忆ID</h2>
-          <p className="mt-2 text-red-600">[Chinese UI text] 无法进行Validate，缺少有效的记忆ID参数</p>
+          <h2 className="text-xl font-bold text-red-800"> 缺少记忆ID</h2>
+          <p className="mt-2 text-red-600"> 无法进行Validate，缺少有效的记忆ID参数</p>
           <button
             onClick={() => router.back()}
             className="px-4 py-2 mt-4 text-white bg-blue-600 rounded hover:bg-blue-700"
-          >[Chinese UI text] 
+          > 
             返回
           </button>
         </div>
@@ -141,7 +141,7 @@ const SubmitValidation: React.FC = () =>[Chinese UI text]  {
         
         {!connected ? (
           <div className="flex flex-col items-center justify-center p-8 bg-gray-100 rounded-lg">
-            <p className="mb-4 text-lg">[Chinese UI text] 请连接钱包以Submit validation</p>
+            <p className="mb-4 text-lg"> 请连接钱包以Submit validation</p>
             <WalletMultiButton />
           </div>
         ) : loading ? (
@@ -150,8 +150,8 @@ const SubmitValidation: React.FC = () =>[Chinese UI text]  {
           </div>
         ) : !isValidator ? (
           <div className="p-8 text-center bg-yellow-100 rounded-lg">
-            <h2 className="text-xl font-bold text-yellow-800">[Chinese UI text] 您不是Validate者</h2>
-            <p className="mt-2 text-yellow-700">[Chinese UI text] 要Submit validation，您需要先注册成为NeuraMintValidate者</p>
+            <h2 className="text-xl font-bold text-yellow-800">You不是Validate者</h2>
+            <p className="mt-2 text-yellow-700"> 要Submit validation，您需要先注册成为NeuraMintValidate者</p>
             <button
               onClick={() => router.push('/validator-registration')}
               className="px-4 py-2 mt-4 text-white bg-blue-600 rounded hover:bg-blue-700"
@@ -177,37 +177,37 @@ const SubmitValidation: React.FC = () =>[Chinese UI text]  {
                   </div>
                 ) : (
                   <div className="flex items-center justify-center w-full h-full bg-gray-200">
-                    <span className="text-gray-400">[Chinese UI text] 无图像</span>
+                    <span className="text-gray-400"> 无图像</span>
                   </div>
                 )}
               </div>
               
               <div className="mb-4">
-                <h3 className="text-lg font-semibold">[Chinese UI text] 描述</h3>
+                <h3 className="text-lg font-semibold"> 描述</h3>
                 <p className="mt-1 text-gray-700">{memoryData.description}</p>
               </div>
               
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <h3 className="text-sm font-semibold text-gray-500">[Chinese UI text] 创建者</h3>
+                  <h3 className="text-sm font-semibold text-gray-500"> 创建者</h3>
                   <p>{memoryData.creator}</p>
                 </div>
                 <div>
-                  <h3 className="text-sm font-semibold text-gray-500">[Chinese UI text] 创建日期</h3>
+                  <h3 className="text-sm font-semibold text-gray-500"> 创建日期</h3>
                   <p>{memoryData.createDate?.toLocaleDateString()}</p>
                 </div>
                 <div>
-                  <h3 className="text-sm font-semibold text-gray-500">[Chinese UI text] 记忆类型</h3>
+                  <h3 className="text-sm font-semibold text-gray-500">Memory Type</h3>
                   <p>{memoryData.type}</p>
                 </div>
                 <div>
-                  <h3 className="text-sm font-semibold text-gray-500">[Chinese UI text] 强度</h3>
+                  <h3 className="text-sm font-semibold text-gray-500"> 强度</h3>
                   <p>{memoryData.intensity}/100</p>
                 </div>
               </div>
               
               <div className="mt-4 overflow-hidden rounded-md">
-                <h3 className="text-sm font-semibold text-gray-500">[Chinese UI text] 神经指纹</h3>
+                <h3 className="text-sm font-semibold text-gray-500"> 神经指纹</h3>
                 <div className="p-2 mt-1 font-mono text-xs bg-gray-100 break-all">
                   {memoryData.neuralFingerprint}
                 </div>
@@ -216,10 +216,10 @@ const SubmitValidation: React.FC = () =>[Chinese UI text]  {
             
             {/* Validate表单 */}
             <div className="p-6 bg-white rounded-lg shadow">
-              <h2 className="mb-6 text-2xl font-bold">[Chinese UI text] Validate评估</h2>
+              <h2 className="mb-6 text-2xl font-bold"> Validate评估</h2>
               
               <div className="mb-6">
-                <label className="block mb-2 text-lg font-medium">[Chinese UI text] 记忆质量评分</label>
+                <label className="block mb-2 text-lg font-medium"> 记忆质量评分</label>
                 <div className="mb-4">
                   <input
                     type="range"
@@ -235,12 +235,12 @@ const SubmitValidation: React.FC = () =>[Chinese UI text]  {
                     className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer"
                   />
                   <div className="flex justify-between mt-2 text-xs text-gray-500">
-                    <span>[Chinese UI text] 无效</span>
-                    <span>[Chinese UI text] 劣质</span>
-                    <span>[Chinese UI text] 较差</span>
-                    <span>[Chinese UI text] 一般</span>
-                    <span>[Chinese UI text] 良好</span>
-                    <span>[Chinese UI text] 优质</span>
+                    <span> 无效</span>
+                    <span> 劣质</span>
+                    <span> 较差</span>
+                    <span> 一般</span>
+                    <span> 良好</span>
+                    <span> 优质</span>
                   </div>
                 </div>
                 
@@ -254,22 +254,22 @@ const SubmitValidation: React.FC = () =>[Chinese UI text]  {
                 </div>
                 
                 <div className="px-4 py-3 mb-4 rounded-lg bg-blue-50">
-                  <p className="text-sm text-blue-800">[Chinese UI text] 
+                  <p className="text-sm text-blue-800"> 
                     您的评分：<span className="font-bold">{validationScore}</span>/100
                   </p>
-                  <p className="text-sm text-blue-800">[Chinese UI text] 
+                  <p className="text-sm text-blue-800"> 
                     Validate结果：
                     {isValid ? (
-                      <span className="font-bold text-green-600">[Chinese UI text] 有效记忆</span>
+                      <span className="font-bold text-green-600"> 有效记忆</span>
                     ) : (
-                      <span className="font-bold text-red-600">[Chinese UI text] 无效记忆</span>
+                      <span className="font-bold text-red-600"> 无效记忆</span>
                     )}
                   </p>
                 </div>
               </div>
               
               <div className="mb-6">
-                <label className="block mb-2 text-lg font-medium" htmlFor="comment">[Chinese UI text] 
+                <label className="block mb-2 text-lg font-medium" htmlFor="comment"> 
                   Validate评论 (可选)
                 </label>
                 <textarea
@@ -287,7 +287,7 @@ const SubmitValidation: React.FC = () =>[Chinese UI text]  {
                   onClick={() => router.back()}
                   className="px-4 py-2 text-gray-700 bg-gray-200 rounded hover:bg-gray-300"
                   disabled={submitting}
-                >[Chinese UI text] 
+                > 
                   返回
                 </button>
                 <button
@@ -302,12 +302,12 @@ const SubmitValidation: React.FC = () =>[Chinese UI text]  {
           </div>
         ) : (
           <div className="p-8 text-center bg-red-100 rounded-lg">
-            <h2 className="text-xl font-bold text-red-800">[Chinese UI text] 记忆数据加载失败</h2>
-            <p className="mt-2 text-red-600">[Chinese UI text] 无法获取记忆数据，请稍后重试</p>
+            <h2 className="text-xl font-bold text-red-800"> 记忆数据加载失败</h2>
+            <p className="mt-2 text-red-600"> 无法获取记忆数据，请稍后重试</p>
             <button
               onClick={() => router.back()}
               className="px-4 py-2 mt-4 text-white bg-blue-600 rounded hover:bg-blue-700"
-            >[Chinese UI text] 
+            > 
               返回
             </button>
           </div>

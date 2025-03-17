@@ -184,7 +184,7 @@ function determineValidationStatus(memoryData: any): 'pending' | 'validated' | '
 
 // [Chinese comment] 筛选记忆
 function filterMemories(memories: MemoryItem[], filters: FilterParams): MemoryItem[] {
-  return memories.filter(memory =>[Chinese UI text]  {
+  return memories.filter(memory =>  {
     // [Chinese comment] 按拥有者筛选
     if (filters.owner && memory.owner !== filters.owner) {
       return false;
@@ -204,7 +204,7 @@ function filterMemories(memories: MemoryItem[], filters: FilterParams): MemoryIt
     if (filters.minPrice !== undefined && (!memory.price || memory.price < filters.minPrice)) {
       return false;
     }
-    if (filters.maxPrice !== undefined && (!memory.price || memory.price >[Chinese UI text]  filters.maxPrice)) {
+    if (filters.maxPrice !== undefined && (!memory.price || memory.price >  filters.maxPrice)) {
       return false;
     }
     

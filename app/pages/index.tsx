@@ -43,7 +43,7 @@ const HomePage: NextPage = () => {
   return (
     <>
       <Head>
-        <title>[Chinese UI text] NeuraMint - 记忆NFT平台</title>
+        <title> NeuraMint - 记忆NFT平台</title>
         <meta name="description" content="在Solana上Mint、Validate、交易和收集记忆NFT的平台" />
       </Head>
 
@@ -52,11 +52,11 @@ const HomePage: NextPage = () => {
         <div className="container mx-auto px-4 py-16 md:py-24">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
             <div>
-              <h1 className="text-4xl md:text-5xl font-bold mb-6">[Chinese UI text] 
+              <h1 className="text-4xl md:text-5xl font-bold mb-6"> 
                 将记忆Mint为
                 <span className="text-yellow-300"> NFT</span>
               </h1>
-              <p className="text-xl mb-8 text-blue-100">[Chinese UI text] 
+              <p className="text-xl mb-8 text-blue-100"> 
                 NeuraMint让您能够将珍贵的记忆永久保存在区块链上，进行Validate、交易和收藏。
               </p>
               
@@ -69,7 +69,7 @@ const HomePage: NextPage = () => {
                   <WalletMultiButton />
                 )}
                 <Link href="/market">
-                  <a className="btn btn-secondary">[Chinese UI text] 浏览Marketplace</a>
+                  <a className="btn btn-secondary"> 浏览Marketplace</a>
                 </Link>
               </div>
             </div>
@@ -86,7 +86,7 @@ const HomePage: NextPage = () => {
                     priority
                   />
                 </div>
-                <div className="absolute -bottom-4 -right-4 bg-yellow-400 text-black px-3 py-1 rounded-lg text-sm font-bold">[Chinese UI text] 
+                <div className="absolute -bottom-4 -right-4 bg-yellow-400 text-black px-3 py-1 rounded-lg text-sm font-bold"> 
                   稀有记忆
                 </div>
               </div>
@@ -100,8 +100,8 @@ const HomePage: NextPage = () => {
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">[Chinese UI text] 如何工作</h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">[Chinese UI text] 
+            <h2 className="text-3xl font-bold mb-4"> 如何工作</h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto"> 
               NeuraMint平台通过区块链技术将记忆转化为独特的NFT资产，为您的珍贵回忆赋予真正的价值
             </p>
           </div>
@@ -109,24 +109,24 @@ const HomePage: NextPage = () => {
           <div className="flex flex-col md:flex-row justify-center items-start space-y-8 md:space-y-0 md:space-x-8">
             <div className="bg-white rounded-lg shadow-md p-6 w-full md:w-1/3">
               <div className="bg-blue-100 text-blue-700 rounded-full w-12 h-12 flex items-center justify-center mb-4 text-xl font-bold">1</div>
-              <h3 className="text-xl font-semibold mb-3">[Chinese UI text] 上传记忆</h3>
-              <p className="text-gray-600">[Chinese UI text] 
+              <h3 className="text-xl font-semibold mb-3"> 上传记忆</h3>
+              <p className="text-gray-600"> 
                 连接您的钱包，上传图像和描述，提供神经指纹数据，创建独特的记忆NFT
               </p>
             </div>
             
             <div className="bg-white rounded-lg shadow-md p-6 w-full md:w-1/3">
               <div className="bg-blue-100 text-blue-700 rounded-full w-12 h-12 flex items-center justify-center mb-4 text-xl font-bold">2</div>
-              <h3 className="text-xl font-semibold mb-3">[Chinese UI text] 获得Validate</h3>
-              <p className="text-gray-600">[Chinese UI text] 
+              <h3 className="text-xl font-semibold mb-3"> 获得Validate</h3>
+              <p className="text-gray-600"> 
                 Validate者评估记忆的质量和真实性，确保平台上的内容符合Community标准
               </p>
             </div>
             
             <div className="bg-white rounded-lg shadow-md p-6 w-full md:w-1/3">
               <div className="bg-blue-100 text-blue-700 rounded-full w-12 h-12 flex items-center justify-center mb-4 text-xl font-bold">3</div>
-              <h3 className="text-xl font-semibold mb-3">[Chinese UI text] 交易与收藏</h3>
-              <p className="text-gray-600">[Chinese UI text] 
+              <h3 className="text-xl font-semibold mb-3"> 交易与收藏</h3>
+              <p className="text-gray-600"> 
                 将您的记忆上架出售，或收藏其他人的记忆，建立独特的数字记忆库
               </p>
             </div>
@@ -138,8 +138,8 @@ const HomePage: NextPage = () => {
       <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">[Chinese UI text] 平台特色</h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">[Chinese UI text] 
+            <h2 className="text-3xl font-bold mb-4"> 平台特色</h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto"> 
               探索NeuraMint的核心功能，开始您的记忆NFT之旅
             </p>
           </div>
@@ -160,48 +160,48 @@ const HomePage: NextPage = () => {
       <section className="py-16 bg-gradient-to-r from-purple-600 to-indigo-700 text-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">[Chinese UI text] 成为Validate者</h2>
-            <p className="text-xl max-w-3xl mx-auto">[Chinese UI text] 
+            <h2 className="text-3xl font-bold mb-4"> 成为Validate者</h2>
+            <p className="text-xl max-w-3xl mx-auto"> 
               通过质押代币成为平台Validate者，评估记忆质量，维护Community标准，同时获得Rewards
             </p>
           </div>
           
           <div className="flex flex-col md:flex-row justify-center items-center space-y-8 md:space-y-0 md:space-x-12">
             <div className="bg-white text-gray-800 rounded-lg shadow-md p-6 w-full md:w-1/3">
-              <h3 className="text-xl font-semibold mb-3">[Chinese UI text] Validate者特权</h3>
+              <h3 className="text-xl font-semibold mb-3">Validator特权</h3>
               <ul className="space-y-2">
                 <li className="flex items-center">
-                  <span className="mr-2 text-green-500">✓</span>[Chinese UI text] 
+                  <span className="mr-2 text-green-500">✓</span> 
                   评估记忆并获得代币Rewards
                 </li>
                 <li className="flex items-center">
-                  <span className="mr-2 text-green-500">✓</span>[Chinese UI text] 
+                  <span className="mr-2 text-green-500">✓</span> 
                   获得独家Validate者徽章和头像
                 </li>
                 <li className="flex items-center">
-                  <span className="mr-2 text-green-500">✓</span>[Chinese UI text] 
+                  <span className="mr-2 text-green-500">✓</span> 
                   参与平台治理投票
                 </li>
                 <li className="flex items-center">
-                  <span className="mr-2 text-green-500">✓</span>[Chinese UI text] 
+                  <span className="mr-2 text-green-500">✓</span> 
                   获得优先购买稀有记忆NFT的权限
                 </li>
               </ul>
               
               <div className="mt-6">
                 <Link href="/validator-registration">
-                  <a className="btn btn-primary w-full">[Chinese UI text] 立即注册</a>
+                  <a className="btn btn-primary w-full"> 立即注册</a>
                 </Link>
               </div>
             </div>
             
             <div className="w-full md:w-1/2">
               <div className="bg-indigo-800 bg-opacity-50 p-6 rounded-lg">
-                <h3 className="text-xl font-semibold mb-3">[Chinese UI text] Validate流程</h3>
-                <p className="mb-4">[Chinese UI text] 
+                <h3 className="text-xl font-semibold mb-3"> Validate流程</h3>
+                <p className="mb-4"> 
                   Validate者通过质押SOL代币获得Validate权限，评估记忆的质量、真实性和内容。高质量的Validate工作会获得Rewards，而低质量的Validate可能导致质押减少。
                 </p>
-                <p>[Chinese UI text] 
+                <p> 
                   成为Validate者需要最低10 SOL的质押，您随时可以解除质押，但需要完成所有进行中的Validate任务。
                 </p>
               </div>
@@ -213,18 +213,18 @@ const HomePage: NextPage = () => {
       {/* 开始使用 */}
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold mb-8">[Chinese UI text] 准备好开始您的记忆NFT之旅了吗？</h2>
+          <h2 className="text-3xl font-bold mb-8"> 准备好开始您的记忆NFT之旅了吗？</h2>
           
           <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
             {connected ? (
               <Link href="/create-memory">
-                <a className="btn btn-primary">[Chinese UI text] 创建第一个记忆</a>
+                <a className="btn btn-primary"> 创建第一个记忆</a>
               </Link>
             ) : (
               <WalletMultiButton />
             )}
             <Link href="/market">
-              <a className="btn btn-secondary">[Chinese UI text] 探索记忆Marketplace</a>
+              <a className="btn btn-secondary"> 探索记忆Marketplace</a>
             </Link>
           </div>
         </div>

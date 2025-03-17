@@ -209,14 +209,14 @@ const Marketplace: React.FC = () => {
     
     // [Chinese comment] 应用脑区筛选
     if (filterOptions.brainRegions.length > 0) {
-      result = result.filter(memory =>[Chinese UI text]  filterOptions.brainRegions.includes(memory.brainRegion));
+      result = result.filter(memory =>  filterOptions.brainRegions.includes(memory.brainRegion));
     }
     
     setFilteredMemories(result);
   }, [memories, filterOptions, searchQuery]);
   
   // [Chinese comment] 搜索更改处理程序
-  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) =>[Chinese UI text]  {
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) =>  {
     setSearchQuery(e.target.value);
   };
   
@@ -278,21 +278,21 @@ const Marketplace: React.FC = () => {
   return (
     <>
       <Head>
-        <title>[Chinese UI text] NeuraMint - 记忆Marketplace</title>
+        <title>NeuraMint - Memory Marketplace</title>
         <meta name="description" content="浏览并交易记忆NFT" />
       </Head>
       
       <div className="container mx-auto px-4 py-8">
-        <h1 className="text-3xl font-bold mb-8 text-gray-800">[Chinese UI text] 记忆Marketplace</h1>
+        <h1 className="text-3xl font-bold mb-8 text-gray-800">Memory Marketplace</h1>
         
         <div className="flex flex-col lg:flex-row gap-8">
           {/* 筛选侧边栏 */}
           <div className="lg:w-1/4 bg-white p-6 rounded-lg shadow-md h-fit">
-            <h2 className="text-xl font-semibold mb-4 text-gray-700">[Chinese UI text] 筛选</h2>
+            <h2 className="text-xl font-semibold mb-4 text-gray-700">Filter</h2>
             
             {/* 搜索框 */}
             <div className="mb-6">
-              <label className="block text-sm font-medium text-gray-700 mb-2">[Chinese UI text] 搜索</label>
+              <label className="block text-sm font-medium text-gray-700 mb-2"> 搜索</label>
               <input
                 type="text"
                 value={searchQuery}
@@ -304,7 +304,7 @@ const Marketplace: React.FC = () => {
             
             {/* 记忆类型筛选 */}
             <div className="mb-6">
-              <h3 className="text-sm font-medium text-gray-700 mb-2">[Chinese UI text] 记忆类型</h3>
+              <h3 className="text-sm font-medium text-gray-700 mb-2">Memory Type</h3>
               <div className="space-y-2">
                 {['cognitive', 'emotional', 'cultural', 'therapeutic'].map(type => (
                   <label key={type} className="flex items-center">
@@ -322,7 +322,7 @@ const Marketplace: React.FC = () => {
             
             {/* 记忆质量筛选 */}
             <div className="mb-6">
-              <h3 className="text-sm font-medium text-gray-700 mb-2">[Chinese UI text] 记忆质量</h3>
+              <h3 className="text-sm font-medium text-gray-700 mb-2"> 记忆质量</h3>
               <div className="space-y-2">
                 {['common', 'fine', 'excellent', 'legendary'].map(quality => (
                   <label key={quality} className="flex items-center">
@@ -340,7 +340,7 @@ const Marketplace: React.FC = () => {
             
             {/* 价格范围筛选 */}
             <div className="mb-6">
-              <h3 className="text-sm font-medium text-gray-700 mb-2">[Chinese UI text] 价格范围 (NRAM)</h3>
+              <h3 className="text-sm font-medium text-gray-700 mb-2"> 价格范围 (NRAM)</h3>
               <div className="flex items-center space-x-2">
                 <input
                   type="number"
@@ -349,7 +349,7 @@ const Marketplace: React.FC = () => {
                   onChange={(e) => handlePriceChange(Number(e.target.value), filterOptions.maxPrice)}
                   className="w-24 px-2 py-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
                 />
-                <span>[Chinese UI text] 到</span>
+                <span> 到</span>
                 <input
                   type="number"
                   min={filterOptions.minPrice}
@@ -362,7 +362,7 @@ const Marketplace: React.FC = () => {
             
             {/* 脑区筛选 */}
             <div className="mb-6">
-              <h3 className="text-sm font-medium text-gray-700 mb-2">[Chinese UI text] 脑区</h3>
+              <h3 className="text-sm font-medium text-gray-700 mb-2"> 脑区</h3>
               <div className="space-y-2 max-h-40 overflow-y-auto">
                 {Object.values(BrainRegion).map(region => (
                   <label key={region} className="flex items-center">
@@ -382,7 +382,7 @@ const Marketplace: React.FC = () => {
             <button 
               onClick={resetFilters}
               className="w-full bg-gray-200 hover:bg-gray-300 text-gray-800 py-2 px-4 rounded-md transition-colors"
-            >[Chinese UI text] 
+            > 
               重置筛选器
             </button>
           </div>
@@ -391,26 +391,26 @@ const Marketplace: React.FC = () => {
           <div className="lg:w-3/4">
             {/* 排序和结果摘要 */}
             <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 bg-white p-4 rounded-lg shadow-sm">
-              <p className="text-gray-600 mb-4 md:mb-0">[Chinese UI text] 
-                找到 <span className="font-semibold">{filteredMemories.length}</span>[Chinese UI text]  个记忆
+              <p className="text-gray-600 mb-4 md:mb-0"> 
+                找到 <span className="font-semibold">{filteredMemories.length}</span>  个记忆
               </p>
               
               <div className="flex items-center">
-                <label htmlFor="sort" className="text-sm text-gray-700 mr-2">[Chinese UI text] 排序:</label>
+                <label htmlFor="sort" className="text-sm text-gray-700 mr-2"> 排序:</label>
                 <select
                   id="sort"
                   value={sortType}
                   onChange={handleSortChange}
                   className="bg-white border border-gray-300 rounded-md px-2 py-1 focus:outline-none focus:ring-2 focus:ring-purple-500"
                 >
-                  <option value="date-desc">[Chinese UI text] 最新</option>
-                  <option value="date-asc">[Chinese UI text] 最早</option>
-                  <option value="price-asc">[Chinese UI text] Price: Low to High</option>
-                  <option value="price-desc">[Chinese UI text] Price: High to Low</option>
-                  <option value="quality">[Chinese UI text] 质量</option>
+                  <option value="date-desc"> 最新</option>
+                  <option value="date-asc"> 最早</option>
+                  <option value="price-asc"> Price: Low to High</option>
+                  <option value="price-desc"> Price: High to Low</option>
+                  <option value="quality"> 质量</option>
                 </select>
               </div>
-            </div>[Chinese UI text] 
+            </div> 
             
             {/* 记忆网格 */}
             {isLoading ? (
@@ -439,8 +439,8 @@ const Marketplace: React.FC = () => {
               </div>
             ) : (
               <div className="text-center py-16 bg-white rounded-lg shadow">
-                <h3 className="text-xl font-semibold text-gray-700 mb-2">[Chinese UI text] 未找到记忆</h3>
-                <p className="text-gray-500">[Chinese UI text] 尝试调整您的筛选条件或搜索查询。</p>
+                <h3 className="text-xl font-semibold text-gray-700 mb-2"> 未找到记忆</h3>
+                <p className="text-gray-500"> 尝试调整您的筛选条件或搜索查询。</p>
               </div>
             )}
           </div>

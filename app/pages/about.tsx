@@ -3,7 +3,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 
-const About = () =>[Chinese UI text]  {
+const About = () =>  {
   // Animation variants
   const fadeIn = {
     hidden: { opacity: 0, y: 20 },
@@ -77,7 +77,7 @@ const About = () =>[Chinese UI text]  {
   return (
     <div className="min-h-screen bg-gray-900 text-white">
       <Head>
-        <title>[Chinese UI text] 关于 NeuraMint | 记忆NFT平台</title>
+        <title>About NeuraMint | Memory NFT Platform</title>
         <meta name="description" content="了解NeuraMint如何利用脑机接口技术在Solana区块链上Create MemoryNFT。" />
       </Head>
       
@@ -92,13 +92,13 @@ const About = () =>[Chinese UI text]  {
           <motion.h1 
             className="text-5xl md:text-6xl font-bold mb-6 gradient-text"
             variants={fadeIn}
-          >[Chinese UI text] 
+          > 
             关于 NeuraMint
           </motion.h1>
           <motion.p 
             className="text-xl text-gray-300 max-w-3xl mx-auto"
             variants={fadeIn}
-          >[Chinese UI text] 
+          > 
             我们正在创造记忆的未来，将神经体验转化为区块链上的数字资产。
           </motion.p>
         </motion.div>
@@ -114,7 +114,7 @@ const About = () =>[Chinese UI text]  {
           <motion.h2 
             className="text-3xl font-bold mb-8 text-center"
             variants={fadeIn}
-          >[Chinese UI text] 
+          > 
             我们的使命
           </motion.h2>
           
@@ -124,8 +124,8 @@ const About = () =>[Chinese UI text]  {
               variants={fadeIn}
             >
               <div className="text-4xl mb-4">🧠</div>
-              <h3 className="text-xl font-bold mb-2">[Chinese UI text] 捕捉人类体验</h3>
-              <p className="text-gray-300">[Chinese UI text] 
+              <h3 className="text-xl font-bold mb-2"> 捕捉人类体验</h3>
+              <p className="text-gray-300"> 
                 我们相信每个人的记忆和体验都是独特而宝贵的。我们的技术让这些内在体验变得可见、可分享和可保存。
               </p>
             </motion.div>
@@ -135,8 +135,8 @@ const About = () =>[Chinese UI text]  {
               variants={fadeIn}
             >
               <div className="text-4xl mb-4">⛓️</div>
-              <h3 className="text-xl font-bold mb-2">[Chinese UI text] 去中心化记忆</h3>
-              <p className="text-gray-300">[Chinese UI text] 
+              <h3 className="text-xl font-bold mb-2"> 去中心化记忆</h3>
+              <p className="text-gray-300"> 
                 通过区块链技术，我们创建了一个去中心化的记忆库，确保您的神经体验永远安全、真实且由您完全拥有。
               </p>
             </motion.div>
@@ -146,8 +146,8 @@ const About = () =>[Chinese UI text]  {
               variants={fadeIn}
             >
               <div className="text-4xl mb-4">🌐</div>
-              <h3 className="text-xl font-bold mb-2">[Chinese UI text] 连接人类</h3>
-              <p className="text-gray-300">[Chinese UI text] 
+              <h3 className="text-xl font-bold mb-2"> 连接人类</h3>
+              <p className="text-gray-300"> 
                 我们正在建立一个新的共享体验平台，让人们能够以前所未有的方式交流、学习和共享他们的内心世界。
               </p>
             </motion.div>
@@ -165,7 +165,7 @@ const About = () =>[Chinese UI text]  {
           <motion.h2 
             className="text-3xl font-bold mb-8 text-center"
             variants={fadeIn}
-          >[Chinese UI text] 
+          > 
             我们的技术
           </motion.h2>
           
@@ -175,26 +175,26 @@ const About = () =>[Chinese UI text]  {
           >
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
               <div>
-                <h3 className="text-2xl font-bold mb-4">[Chinese UI text] 神经捕捉技术</h3>
-                <p className="text-gray-300 mb-4">[Chinese UI text] 
+                <h3 className="text-2xl font-bold mb-4"> 神经捕捉技术</h3>
+                <p className="text-gray-300 mb-4"> 
                   NeuraMint使用先进的脑机接口技术来捕捉和解释神经活动模式。我们的专有算法可以识别与特定记忆、情感和认知状态相关的独特模式。
                 </p>
-                <p className="text-gray-300 mb-4">[Chinese UI text] 
+                <p className="text-gray-300 mb-4"> 
                   每个捕捉的记忆都会生成一个独特的神经签名，作为其真实性和独特性的证明。这种签名是通过复杂的数学变换从原始脑电图数据中派生出来的。
                 </p>
-                <p className="text-gray-300">[Chinese UI text] 
+                <p className="text-gray-300"> 
                   我们支持多种消费级脑机接口设备，使记忆捕捉技术可以被更多人使用。
                 </p>
               </div>
               <div>
-                <h3 className="text-2xl font-bold mb-4">[Chinese UI text] 区块链实现</h3>
-                <p className="text-gray-300 mb-4">[Chinese UI text] 
+                <h3 className="text-2xl font-bold mb-4"> 区块链实现</h3>
+                <p className="text-gray-300 mb-4"> 
                   我们选择Solana区块链作为我们的基础设施，因为它提供了高速交易和低费用，使记忆Mint和交易的体验更加顺畅。
                 </p>
-                <p className="text-gray-300 mb-4">[Chinese UI text] 
+                <p className="text-gray-300 mb-4"> 
                   每个记忆NFT都包含元数据，如神经签名、捕捉时间、大脑区域活动和情感价值。这些数据存储在去中心化存储网络上，确保永久可访问。
                 </p>
-                <p className="text-gray-300">[Chinese UI text] 
+                <p className="text-gray-300"> 
                   我们的智能合约确保记忆NFT的创建、转移和交易都是安全和透明的。同时，我们的Validate者网络确保每个记忆都经过真实性Validate。
                 </p>
               </div>
@@ -213,7 +213,7 @@ const About = () =>[Chinese UI text]  {
           <motion.h2 
             className="text-3xl font-bold mb-8 text-center"
             variants={fadeIn}
-          >[Chinese UI text] 
+          > 
             我们的团队
           </motion.h2>
           
@@ -280,23 +280,23 @@ const About = () =>[Chinese UI text]  {
           <motion.h2 
             className="text-3xl font-bold mb-6"
             variants={fadeIn}
-          >[Chinese UI text] 
+          > 
             加入我们的旅程
           </motion.h2>
           <motion.p 
             className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto"
             variants={fadeIn}
-          >[Chinese UI text] 
+          > 
             我们正在创造一个记忆可以被捕捉、分享和珍藏的世界。无论您是创作者、收藏家还是技术爱好者，NeuraMint都欢迎您。
           </motion.p>
           <motion.div 
             className="flex flex-wrap justify-center gap-4"
             variants={fadeIn}
           >
-            <Link href="/mint" className="bg-gradient-to-r from-purple-600 to-green-500 px-8 py-3 rounded-lg font-semibold text-lg hover:opacity-90">[Chinese UI text] 
+            <Link href="/mint" className="bg-gradient-to-r from-purple-600 to-green-500 px-8 py-3 rounded-lg font-semibold text-lg hover:opacity-90"> 
               开始Mint记忆
             </Link>
-            <Link href="/marketplace" className="bg-gray-700 px-8 py-3 rounded-lg font-semibold text-lg hover:bg-gray-600">[Chinese UI text] 
+            <Link href="/marketplace" className="bg-gray-700 px-8 py-3 rounded-lg font-semibold text-lg hover:bg-gray-600"> 
               探索记忆Marketplace
             </Link>
           </motion.div>

@@ -87,7 +87,7 @@ const ValidatorDashboard: React.FC = () => {
         generateChartData(stats);
       } else {
         // If not a validator, redirect to validator registration page
-        toast.error('[Chinese UI text] 您还不是Validate者');
+        toast.error('You还不是Validate者');
         router.push('/validator-registration');
         return;
       }
@@ -106,7 +106,7 @@ const ValidatorDashboard: React.FC = () => {
             toast.error(`Error loading validator data: ${error.message}`);
         }
       } else {
-        toast.error('[Chinese UI text] 加载Validate者数据失败');
+        toast.error('Failed to load validator data');
       }
     } finally {
       setLoading(false);
@@ -247,7 +247,7 @@ const ValidatorDashboard: React.FC = () => {
       setValidationHistory(filteredHistory);
     } catch (error) {
       console.error('Error loading validation history:', error);
-      toast.error('[Chinese UI text] 无法加载Validate历史');
+      toast.error('Failed to load validation history');
     } finally {
       setLoading(false);
     }
@@ -302,7 +302,7 @@ const ValidatorDashboard: React.FC = () => {
       setRankings(mockRankings);
     } catch (error) {
       console.error('Error loading validator rankings:', error);
-      toast.error('[Chinese UI text] 无法加载Validate者排名');
+      toast.error('Failed to load validator rankings');
     } finally {
       setLoading(false);
     }
@@ -342,7 +342,7 @@ const ValidatorDashboard: React.FC = () => {
             toast.error('Network connection error, please try again later', { id: 'claim-rewards' });
             break;
           case ValidationErrorType.REWARD_CLAIM_FAILED:
-            toast.error('[Chinese UI text] Failed to claim rewards，请稍后再试', { id: 'claim-rewards' });
+            toast.error('Failed to claim rewards, please try again later', { id: 'claim-rewards' });
             break;
           default:
             toast.error(`Error claiming rewards: ${error.message}`, { id: 'claim-rewards' });
@@ -409,24 +409,24 @@ const ValidatorDashboard: React.FC = () => {
         {/* Summary cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
           <div className="bg-gray-800 rounded-xl p-4">
-            <h3 className="text-gray-400 text-sm mb-1">[Chinese UI text] 总Validate数</h3>
+            <h3 className="text-gray-400 text-sm mb-1">Total Validations</h3>
             <p className="text-2xl font-bold">{validatorStats.completedValidations}</p>
           </div>
           
           <div className="bg-gray-800 rounded-xl p-4">
-            <h3 className="text-gray-400 text-sm mb-1">[Chinese UI text] 成功率</h3>
+            <h3 className="text-gray-400 text-sm mb-1">Success Rate</h3>
             <p className="text-2xl font-bold text-green-400">{validatorStats.successRate.toFixed(1)}%</p>
           </div>
           
           <div className="bg-gray-800 rounded-xl p-4">
-            <h3 className="text-gray-400 text-sm mb-1">[Chinese UI text] 总Rewards</h3>
+            <h3 className="text-gray-400 text-sm mb-1">Total Rewards</h3>
             <p className="text-2xl font-bold text-yellow-400">
               {(validatorStats.totalRewards / 1000000000).toFixed(4)} NRAM
             </p>
           </div>
           
           <div className="bg-gray-800 rounded-xl p-4">
-            <h3 className="text-gray-400 text-sm mb-1">[Chinese UI text] 待领取Rewards</h3>
+            <h3 className="text-gray-400 text-sm mb-1">Pending Rewards</h3>
             <div className="flex justify-between items-center">
               <p className="text-2xl font-bold text-green-400">
                 {(validatorStats.pendingRewards / 1000000000).toFixed(4)} NRAM
@@ -445,7 +445,7 @@ const ValidatorDashboard: React.FC = () => {
         {/* Additional stats */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div className="bg-gray-800 rounded-xl p-4 md:col-span-2">
-            <h3 className="text-lg font-bold mb-4">[Chinese UI text] 每日Validate活动</h3>
+            <h3 className="text-lg font-bold mb-4">Daily Validation Activity</h3>
             <div className="h-64">
               <ResponsiveContainer width="100%" height="100%">
                 <LineChart
@@ -481,7 +481,7 @@ const ValidatorDashboard: React.FC = () => {
           </div>
           
           <div className="bg-gray-800 rounded-xl p-4">
-            <h3 className="text-lg font-bold mb-4">[Chinese UI text] Validate结果分布</h3>
+            <h3 className="text-lg font-bold mb-4">Validation Result Distribution</h3>
             <div className="h-64 flex items-center justify-center">
               <ResponsiveContainer width="100%" height="100%">
                 <PieChart>
@@ -512,25 +512,25 @@ const ValidatorDashboard: React.FC = () => {
         
         {/* Validator profile */}
         <div className="bg-gray-800 rounded-xl p-6">
-          <h3 className="text-lg font-bold mb-4">[Chinese UI text] Validate者资料</h3>
+          <h3 className="text-lg font-bold mb-4">Validator Profile</h3>
           <div className="space-y-4">
             <div className="flex justify-between items-center">
-              <span className="text-gray-400">[Chinese UI text] 钱包地址</span>
+              <span className="text-gray-400">Wallet Address</span>
               <span className="font-mono">{formatAddress(validatorStats.publicKey.toString())}</span>
             </div>
             <div className="flex justify-between items-center">
-              <span className="text-gray-400">[Chinese UI text] 质押金额</span>
+              <span className="text-gray-400">Staked Amount</span>
               <span>{(validatorStats.stakedAmount / 1000000000).toFixed(2)} NRAM</span>
             </div>
             <div className="flex justify-between items-center">
-              <span className="text-gray-400">[Chinese UI text] Validate者状态</span>
+              <span className="text-gray-400">Validator Status</span>
               <div className="flex items-center">
                 <div className={`w-2 h-2 rounded-full mr-2 ${validatorStats.isActive ? 'bg-green-400' : 'bg-red-400'}`}></div>
                 <span>{validatorStats.isActive ? '活跃' : '非活跃'}</span>
               </div>
             </div>
             <div className="flex justify-between items-center">
-              <span className="text-gray-400">[Chinese UI text] 声誉分数</span>
+              <span className="text-gray-400">Reputation Score</span>
               <div className="flex items-center">
                 <div className="w-32 h-2 bg-gray-700 rounded-full mr-2">
                   <div 
@@ -542,7 +542,7 @@ const ValidatorDashboard: React.FC = () => {
               </div>
             </div>
             <div className="flex justify-between items-center">
-              <span className="text-gray-400">[Chinese UI text] 本周Rewards</span>
+              <span className="text-gray-400">Weekly Rewards</span>
               <span className="text-yellow-400">{(validatorStats.weeklyRewards / 1000000000).toFixed(4)} NRAM</span>
             </div>
           </div>
@@ -557,8 +557,8 @@ const ValidatorDashboard: React.FC = () => {
       return (
         <div className="bg-gray-800 rounded-xl p-8 text-center">
           <div className="text-5xl mb-4">📊</div>
-          <h3 className="text-xl font-bold mb-2">[Chinese UI text] 暂无Validate历史</h3>
-          <p className="text-gray-400 mb-4">[Chinese UI text] 
+          <h3 className="text-xl font-bold mb-2">No Validation History</h3>
+          <p className="text-gray-400 mb-4"> 
             您还没有进行过任何Validate，或选择的时间范围内没有Validate记录。
           </p>
         </div>
@@ -574,7 +574,7 @@ const ValidatorDashboard: React.FC = () => {
               timeRange === 'week' ? 'bg-purple-600 text-white' : 'bg-gray-700 hover:bg-gray-600'
             }`}
             onClick={() => setTimeRange('week')}
-          >[Chinese UI text] 
+          > 
             本周
           </button>
           <button
@@ -582,7 +582,7 @@ const ValidatorDashboard: React.FC = () => {
               timeRange === 'month' ? 'bg-purple-600 text-white' : 'bg-gray-700 hover:bg-gray-600'
             }`}
             onClick={() => setTimeRange('month')}
-          >[Chinese UI text] 
+          > 
             本月
           </button>
           <button
@@ -590,14 +590,14 @@ const ValidatorDashboard: React.FC = () => {
               timeRange === 'all' ? 'bg-purple-600 text-white' : 'bg-gray-700 hover:bg-gray-600'
             }`}
             onClick={() => setTimeRange('all')}
-          >[Chinese UI text] 
+          > 
             全部
           </button>
         </div>
         
         {/* Activity chart */}
         <div className="bg-gray-800 rounded-xl p-4">
-          <h3 className="text-lg font-bold mb-4">[Chinese UI text] Validate活动图表</h3>
+          <h3 className="text-lg font-bold mb-4">Validation Activity Chart</h3>
           <div className="h-64">
             <ResponsiveContainer width="100%" height="100%">
               <BarChart
@@ -633,9 +633,9 @@ const ValidatorDashboard: React.FC = () => {
               <thead>
                 <tr className="bg-gray-700">
                   <th className="text-left p-4">Memory name</th>
-                  <th className="text-left p-4">[Chinese UI text] Validate时间</th>
-                  <th className="text-left p-4">[Chinese UI text] Validate分数</th>
-                  <th className="text-left p-4">[Chinese UI text] 结果</th>
+                  <th className="text-left p-4">Validation Time</th>
+                  <th className="text-left p-4">Validation Score</th>
+                  <th className="text-left p-4">Result</th>
                   <th className="text-left p-4">Rewards</th>
                 </tr>
               </thead>
@@ -677,11 +677,11 @@ const ValidatorDashboard: React.FC = () => {
           <table className="w-full">
             <thead>
               <tr className="bg-gray-700">
-                <th className="text-left p-4">[Chinese UI text] 排名</th>
-                <th className="text-left p-4">[Chinese UI text] Validate者</th>
-                <th className="text-left p-4">[Chinese UI text] Validate数量</th>
-                <th className="text-left p-4">[Chinese UI text] 成功率</th>
-                <th className="text-left p-4">[Chinese UI text] 声誉分数</th>
+                <th className="text-left p-4">Rank</th>
+                <th className="text-left p-4">Validator</th>
+                <th className="text-left p-4">Validation Count</th>
+                <th className="text-left p-4">Success Rate</th>
+                <th className="text-left p-4">Reputation Score</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-700">
@@ -704,7 +704,7 @@ const ValidatorDashboard: React.FC = () => {
                   <td className="p-4 font-mono">
                     {formatAddress(ranking.publicKey)}
                     {ranking.publicKey === publicKey?.toString() && (
-                      <span className="ml-2 text-xs bg-purple-600 px-2 py-0.5 rounded-full">[Chinese UI text] 您</span>
+                      <span className="ml-2 text-xs bg-purple-600 px-2 py-0.5 rounded-full">You</span>
                     )}
                   </td>
                   <td className="p-4">{ranking.completedValidations}</td>
@@ -728,7 +728,7 @@ const ValidatorDashboard: React.FC = () => {
 
         {/* Reputation Ranking Chart */}
         <div className="bg-gray-800 rounded-xl p-4">
-          <h3 className="text-lg font-bold mb-4">[Chinese UI text] 声誉排名对比</h3>
+          <h3 className="text-lg font-bold mb-4">Reputation Ranking Comparison</h3>
           <div className="h-64">
             <ResponsiveContainer width="100%" height="100%">
               <BarChart
@@ -766,14 +766,14 @@ const ValidatorDashboard: React.FC = () => {
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-900 to-black text-white">
       <Head>
-        <title>[Chinese UI text] Validate者仪表盘 | NeuraMint</title>
+        <title>Validator Dashboard | NeuraMint</title>
         <meta name="description" content="查看您的Validate者统计数据、历史记录和排名" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
       </Head>
       
       <main className="container mx-auto px-4 py-6 md:py-12">
-        <h1 className="text-2xl md:text-3xl font-bold mb-2">[Chinese UI text] Validate者仪表盘</h1>
-        <p className="text-gray-300 mb-6 md:mb-8">[Chinese UI text] 查看您的Validate统计数据、历史记录和排名</p>
+        <h1 className="text-2xl md:text-3xl font-bold mb-2">Validator Dashboard</h1>
+        <p className="text-gray-300 mb-6 md:mb-8">View your validation statistics, history, and rankings</p>
         
         {loading ? (
           <div className="flex items-center justify-center h-64">
@@ -784,8 +784,8 @@ const ValidatorDashboard: React.FC = () => {
           </div>
         ) : !connected ? (
           <div className="bg-gray-800 rounded-xl p-6 md:p-10 text-center">
-            <h2 className="text-xl md:text-2xl font-bold mb-4">[Chinese UI text] 请连接您的钱包</h2>
-            <p className="text-gray-400 mb-6">[Chinese UI text] 
+            <h2 className="text-xl md:text-2xl font-bold mb-4">Please Connect Your Wallet</h2>
+            <p className="text-gray-400 mb-6"> 
               连接钱包以访问您的Validate者仪表盘，查看统计数据，历史记录和排名。
             </p>
             <div className="flex justify-center">
@@ -801,7 +801,7 @@ const ValidatorDashboard: React.FC = () => {
                   activeTab === 'stats' ? 'bg-purple-600 text-white' : 'hover:bg-gray-700'
                 }`}
                 onClick={() => setActiveTab('stats')}
-              >[Chinese UI text] 
+              > 
                 统计数据
               </button>
               <button
@@ -809,7 +809,7 @@ const ValidatorDashboard: React.FC = () => {
                   activeTab === 'history' ? 'bg-purple-600 text-white' : 'hover:bg-gray-700'
                 }`}
                 onClick={() => setActiveTab('history')}
-              >[Chinese UI text] 
+              > 
                 Validate历史
               </button>
               <button
@@ -817,7 +817,7 @@ const ValidatorDashboard: React.FC = () => {
                   activeTab === 'rankings' ? 'bg-purple-600 text-white' : 'hover:bg-gray-700'
                 }`}
                 onClick={() => setActiveTab('rankings')}
-              >[Chinese UI text] 
+              > 
                 排行榜
               </button>
             </div>

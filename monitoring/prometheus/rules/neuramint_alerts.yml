@@ -1,0 +1,110 @@
+groups:
+  - name: neuramint_alerts
+    rules:
+      # API Service Health
+      - alert: NeuraMintAPIDown
+        expr: up{job="neuramint_api"} == 0
+        for: 2m
+        labels:
+          severity: critical
+        annotations:
+          summary: "NeuraMint API is down"
+          description: "The NeuraMint API has been down for more than 2 minutes."
+          runbook_url: "https://github.com/NeuraMint/NRAM/docs/runbooks/api_down.md"
+      
+      # High Error Rate
+      - alert: NeuraMintHighErrorRate
+        expr: sum(rate(http_requests_total{job="neuramint_api",status=~"5.."}[5m])) / sum(rate(http_requests_total{job="neuramint_api"}[5m])) > 0.05
+        for: 3m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High error rate in NeuraMint API"
+          description: "More than 5% of requests to the NeuraMint API are failing with 5xx errors over the last 3 minutes."
+          runbook_url: "https://github.com/NeuraMint/NRAM/docs/runbooks/high_error_rate.md"
+      
+      # API Latency
+      - alert: NeuraMintHighAPILatency
+        expr: histogram_quantile(0.95, sum(rate(http_request_duration_seconds_bucket{job="neuramint_api"}[5m])) by (le)) > 1
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High API latency"
+          description: "95th percentile of API request latency is above 1 second for the last 5 minutes."
+          runbook_url: "https://github.com/NeuraMint/NRAM/docs/runbooks/high_latency.md"
+      
+      # Memory NFT Creation Failures
+      - alert: NeuraMintMemoryCreationFailures
+        expr: rate(memory_transaction_failures_total{operation="create"}[15m]) > 0.1
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Memory creation failures detected"
+          description: "Memory creation operations are failing at a rate higher than expected."
+          runbook_url: "https://github.com/NeuraMint/NRAM/docs/runbooks/memory_creation_failures.md"
+      
+      # Solana RPC Issues
+      - alert: NeuraMintSolanaRPCErrors
+        expr: rate(solana_rpc_errors_total[5m]) > 0.5
+        for: 3m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High rate of Solana RPC errors"
+          description: "The NeuraMint platform is experiencing a high rate of errors with Solana RPC calls."
+          runbook_url: "https://github.com/NeuraMint/NRAM/docs/runbooks/solana_rpc_errors.md"
+      
+      # Solana RPC Latency
+      - alert: NeuraMintSolanaRPCLatency
+        expr: histogram_quantile(0.95, sum(rate(solana_rpc_latency_seconds_bucket[5m])) by (le, method)) > 2
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High Solana RPC latency"
+          description: "95th percentile of Solana RPC calls latency is above 2 seconds for the last 5 minutes."
+          runbook_url: "https://github.com/NeuraMint/NRAM/docs/runbooks/solana_rpc_latency.md"
+      
+      # Low Validator Count
+      - alert: NeuraMintLowValidatorCount
+        expr: validator_count < 50
+        for: 10m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Low validator count"
+          description: "The number of active validators has dropped below 50."
+          runbook_url: "https://github.com/NeuraMint/NRAM/docs/runbooks/low_validator_count.md"
+      
+      # Node Resource Usage
+      - alert: NeuraMintHighCPUUsage
+        expr: 100 - (avg by(instance) (irate(node_cpu_seconds_total{mode="idle"}[5m])) * 100) > 85
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High CPU usage"
+          description: "CPU usage is above 85% for the last 5 minutes."
+          runbook_url: "https://github.com/NeuraMint/NRAM/docs/runbooks/high_cpu_usage.md"
+      
+      - alert: NeuraMintHighMemoryUsage
+        expr: (node_memory_MemTotal_bytes - node_memory_MemAvailable_bytes) / node_memory_MemTotal_bytes * 100 > 85
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High memory usage"
+          description: "Memory usage is above 85% for the last 5 minutes."
+          runbook_url: "https://github.com/NeuraMint/NRAM/docs/runbooks/high_memory_usage.md"
+      
+      - alert: NeuraMintHighDiskUsage
+        expr: 100 - ((node_filesystem_avail_bytes{mountpoint="/",fstype!="rootfs"} * 100) / node_filesystem_size_bytes{mountpoint="/",fstype!="rootfs"}) > 85
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High disk usage"
+          description: "Disk usage is above 85% for the last 5 minutes."
+          runbook_url: "https://github.com/NeuraMint/NRAM/docs/runbooks/high_disk_usage.md" 

@@ -59,7 +59,7 @@ export class MintService {
       
       // [Chinese comment] 模拟交易延迟和成功
       console.log('Mint记忆NFT:', { name, description, uri, isTransferable });
-      await new Promise(resolve =>[Chinese UI text]  setTimeout(resolve, 2000));
+      await new Promise(resolve =>  setTimeout(resolve, 2000));
       
       // [Chinese comment] 返回模拟结果
       return {
@@ -104,7 +104,7 @@ export class MintService {
         from: from.toString(),
         to: to.toString(),
       });
-      await new Promise(resolve =>[Chinese UI text]  setTimeout(resolve, 2000));
+      await new Promise(resolve =>  setTimeout(resolve, 2000));
       
       // [Chinese comment] 返回模拟结果
       return {
@@ -140,7 +140,7 @@ export class MintService {
         mint: mintAddress.toString(),
         isTransferable,
       });
-      await new Promise(resolve =>[Chinese UI text]  setTimeout(resolve, 2000));
+      await new Promise(resolve =>  setTimeout(resolve, 2000));
       
       // [Chinese comment] 返回模拟结果
       return {

@@ -15,7 +15,7 @@ const Navbar: React.FC = () => {
     };
 
     window.addEventListener('scroll', handleScroll);
-    return () =>[Chinese UI text]  window.removeEventListener('scroll', handleScroll);
+    return () =>  window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const navLinks = [

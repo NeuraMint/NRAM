@@ -65,7 +65,7 @@ export interface FilterOptions {
 }
 
 // [Chinese comment] 将API返回的MemoryNFT转换为UI使用的Memory
-const convertMemoryNFTToMemory = (memoryNFT: MemoryNFT): Memory =>[Chinese UI text]  {
+const convertMemoryNFTToMemory = (memoryNFT: MemoryNFT): Memory =>  {
   return {
     id: memoryNFT.id,
     name: memoryNFT.name,
@@ -193,7 +193,7 @@ export function useMemoryMarket() {
           new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
         );
       case 'oldest':
-        return [...memoriesToSort].sort((a, b) =>[Chinese UI text]  
+        return [...memoriesToSort].sort((a, b) =>  
           new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
         );
       default:

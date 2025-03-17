@@ -28,7 +28,7 @@ interface ListResponseData {
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse<ListResponseData | { error: string }>[Chinese UI text] 
+  res: NextApiResponse<ListResponseData | { error: string }> 
 ) {
   // Only accept POST requests
   if (req.method !== 'POST') {

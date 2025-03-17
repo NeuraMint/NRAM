@@ -14,7 +14,7 @@ import { formatSol, getExplorerUrl } from '../../utils/environment';
 import { MemoryType, MemoryQuality } from '../../hooks/useMemoryMarket';
 
 // [Chinese comment] 内存类型颜色映射
-const MEMORY_TYPE_COLORS: Record<string, string>[Chinese UI text]  = {
+const MEMORY_TYPE_COLORS: Record<string, string>  = {
   visual: 'bg-purple-500 text-white',
   conceptual: 'bg-blue-500 text-white',
   emotional: 'bg-pink-500 text-white',
@@ -32,7 +32,7 @@ const MEMORY_QUALITY_COLORS: Record<string, string> = {
   legendary: 'bg-yellow-400 text-black'
 };
 
-const MemoryDetails: NextPage = () =>[Chinese UI text]  {
+const MemoryDetails: NextPage = () =>  {
   const router = useRouter();
   const { id } = router.query;
   const wallet = useWallet();
@@ -83,7 +83,7 @@ const MemoryDetails: NextPage = () =>[Chinese UI text]  {
     }
 
     if (!memoryData || !memoryData.isListed || !memoryData.price) {
-      toast.error('[Chinese UI text] 该内存当前不可购买');
+      toast.error(' 该内存当前不可购买');
       return;
     }
 
@@ -98,7 +98,7 @@ const MemoryDetails: NextPage = () =>[Chinese UI text]  {
         wallet.publicKey!
       );
       
-      toast.success('[Chinese UI text] 内存购买成功！', { id: toastId });
+      toast.success(' 内存购买成功！', { id: toastId });
       
       // [Chinese comment] 更新内存数据以反映新的所有权
       const updatedMemory = { 
@@ -117,20 +117,20 @@ const MemoryDetails: NextPage = () =>[Chinese UI text]  {
   };
   
   // [Chinese comment] 处理上架出售
-  const handleListMemory = async () =>[Chinese UI text]  {
+  const handleListMemory = async () =>  {
     if (!wallet.connected) {
       toast.error('Please connect your wallet first');
       return;
     }
     
     if (!memoryData || memoryData.owner !== wallet.publicKey?.toString()) {
-      toast.error('[Chinese UI text] 您不是此内存的拥有者');
+      toast.error('You不是此内存的拥有者');
       return;
     }
     
     const price = parseFloat(listingPrice);
     if (isNaN(price) || price <= 0) {
-      toast.error('[Chinese UI text] 请输入有效的价格');
+      toast.error(' 请输入有效的价格');
       return;
     }
     
@@ -139,7 +139,7 @@ const MemoryDetails: NextPage = () =>[Chinese UI text]  {
       // [Chinese comment] 这里应调用实际的上架API，模拟上架成功
       await new Promise(resolve => setTimeout(resolve, 1000));
       
-      toast.success('[Chinese UI text] 内存已成功上架出售');
+      toast.success(' 内存已成功上架出售');
       
       // [Chinese comment] 更新内存数据以反映上架状态
       const updatedMemory = { 
@@ -165,7 +165,7 @@ const MemoryDetails: NextPage = () =>[Chinese UI text]  {
     }
     
     if (!memoryData || !memoryData.isListed || memoryData.owner !== wallet.publicKey?.toString()) {
-      toast.error('[Chinese UI text] 您不能下架此内存');
+      toast.error('You不能下架此内存');
       return;
     }
     
@@ -174,7 +174,7 @@ const MemoryDetails: NextPage = () =>[Chinese UI text]  {
       // [Chinese comment] 这里应调用实际的下架API，模拟下架成功
       await new Promise(resolve => setTimeout(resolve, 1000));
       
-      toast.success('[Chinese UI text] 内存已成功下架');
+      toast.success(' 内存已成功下架');
       
       // [Chinese comment] 更新内存数据以反映下架状态
       const updatedMemory = { 
@@ -203,7 +203,7 @@ const MemoryDetails: NextPage = () =>[Chinese UI text]  {
   };
   
   // [Chinese comment] 截断地址
-  const truncateAddress = (address: string) =>[Chinese UI text]  {
+  const truncateAddress = (address: string) =>  {
     if (!address) return '';
     return `${address.slice(0, 6)}...${address.slice(-6)}`;
   };
@@ -213,7 +213,7 @@ const MemoryDetails: NextPage = () =>[Chinese UI text]  {
     return (
       <div className="flex justify-center items-center min-h-screen">
         <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-blue-500"></div>
-      </div>[Chinese UI text] 
+      </div> 
     );
   }
   
@@ -221,15 +221,15 @@ const MemoryDetails: NextPage = () =>[Chinese UI text]  {
   if (error) {
     return (
       <div className="container mx-auto px-4 py-20 text-center">
-        <h1 className="text-2xl font-bold text-red-500 mb-4">[Chinese UI text] 加载失败</h1>
+        <h1 className="text-2xl font-bold text-red-500 mb-4"> 加载失败</h1>
         <p className="mb-6">{error}</p>
         <button 
           onClick={() => router.back()} 
           className="btn btn-primary"
-        >[Chinese UI text] 
+        > 
           返回
         </button>
-      </div>[Chinese UI text] 
+      </div> 
     );
   }
   
@@ -237,14 +237,14 @@ const MemoryDetails: NextPage = () =>[Chinese UI text]  {
   if (!memoryData) {
     return (
       <div className="container mx-auto px-4 py-20 text-center">
-        <h1 className="text-2xl font-bold mb-4">[Chinese UI text] 内存不存在</h1>
-        <p className="mb-6">[Chinese UI text] 找不到ID为 {id} 的内存</p>
+        <h1 className="text-2xl font-bold mb-4"> 内存不存在</h1>
+        <p className="mb-6"> 找不到ID为 {id} 的内存</p>
         <Link href="/market">
-          <a className="btn btn-primary">[Chinese UI text] 
+          <a className="btn btn-primary"> 
             返回Marketplace
           </a>
         </Link>
-      </div>[Chinese UI text] 
+      </div> 
     );
   }
   
@@ -262,7 +262,7 @@ const MemoryDetails: NextPage = () =>[Chinese UI text]  {
             <a className="text-blue-600 hover:text-blue-800 flex items-center">
               <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor">
                 <path fillRule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clipRule="evenodd" />
-              </svg>[Chinese UI text] 
+              </svg> 
               返回Marketplace
             </a>
           </Link>
@@ -282,7 +282,7 @@ const MemoryDetails: NextPage = () =>[Chinese UI text]  {
                   />
                 ) : (
                   <div className="w-full h-full bg-gray-200 flex items-center justify-center">
-                    <span className="text-gray-400">[Chinese UI text] 无图片</span>
+                    <span className="text-gray-400"> 无图片</span>
                   </div>
                 )}
               </div>
@@ -304,7 +304,7 @@ const MemoryDetails: NextPage = () =>[Chinese UI text]  {
                 
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-6">
                   <div>
-                    <span className="text-sm font-medium text-gray-500">[Chinese UI text] 创建者</span>
+                    <span className="text-sm font-medium text-gray-500"> 创建者</span>
                     <p className="text-sm font-mono">
                       <a 
                         href={getExplorerUrl(memoryData.creator)} 
@@ -317,7 +317,7 @@ const MemoryDetails: NextPage = () =>[Chinese UI text]  {
                     </p>
                   </div>
                   <div>
-                    <span className="text-sm font-medium text-gray-500">[Chinese UI text] 拥有者</span>
+                    <span className="text-sm font-medium text-gray-500"> 拥有者</span>
                     <p className="text-sm font-mono">
                       <a 
                         href={getExplorerUrl(memoryData.owner)} 
@@ -327,7 +327,7 @@ const MemoryDetails: NextPage = () =>[Chinese UI text]  {
                       >
                         {truncateAddress(memoryData.owner)}
                         {wallet.connected && memoryData.owner === wallet.publicKey?.toString() && (
-                          <span className="ml-1 text-xs bg-blue-100 text-blue-800 px-1 py-0.5 rounded">[Chinese UI text] 
+                          <span className="ml-1 text-xs bg-blue-100 text-blue-800 px-1 py-0.5 rounded"> 
                             您
                           </span>
                         )}
@@ -335,11 +335,11 @@ const MemoryDetails: NextPage = () =>[Chinese UI text]  {
                     </p>
                   </div>
                   <div>
-                    <span className="text-sm font-medium text-gray-500">[Chinese UI text] 创建时间</span>
+                    <span className="text-sm font-medium text-gray-500"> 创建时间</span>
                     <p className="text-sm">{formatDate(memoryData.createdAt)}</p>
                   </div>
                   <div>
-                    <span className="text-sm font-medium text-gray-500">[Chinese UI text] Mint地址</span>
+                    <span className="text-sm font-medium text-gray-500"> Mint地址</span>
                     <p className="text-sm font-mono">
                       <a 
                         href={getExplorerUrl(memoryData.mintAddress, 'token')} 
@@ -352,23 +352,23 @@ const MemoryDetails: NextPage = () =>[Chinese UI text]  {
                     </p>
                   </div>
                   <div>
-                    <span className="text-sm font-medium text-gray-500">[Chinese UI text] 可转让</span>
+                    <span className="text-sm font-medium text-gray-500"> 可转让</span>
                     <p className="text-sm">
                       {memoryData.isTransferable ? (
-                        <span className="text-green-600">[Chinese UI text] 是</span>
+                        <span className="text-green-600"> 是</span>
                       ) : (
-                        <span className="text-red-600">[Chinese UI text] 否</span>
+                        <span className="text-red-600"> 否</span>
                       )}
                     </p>
                   </div>
                   <div>
-                    <span className="text-sm font-medium text-gray-500">[Chinese UI text] 强度</span>
+                    <span className="text-sm font-medium text-gray-500"> 强度</span>
                     <p className="text-sm">{memoryData.intensity}/10</p>
                   </div>
                 </div>
                 
                 <div className="mb-6">
-                  <h3 className="text-lg font-semibold mb-2">[Chinese UI text] 神经指纹</h3>
+                  <h3 className="text-lg font-semibold mb-2"> 神经指纹</h3>
                   <div className="bg-gray-100 p-3 rounded-md">
                     <p className="text-xs font-mono break-all">{memoryData.neuralFingerprint}</p>
                   </div>
@@ -378,15 +378,15 @@ const MemoryDetails: NextPage = () =>[Chinese UI text]  {
                 <div>
                   {!wallet.connected ? (
                     <div className="text-center p-4 bg-gray-50 rounded-lg mb-4">
-                      <p className="mb-2">[Chinese UI text] 连接钱包以购买或管理此内存</p>
+                      <p className="mb-2"> 连接钱包以购买或管理此内存</p>
                       <WalletMultiButton />
-                    </div>[Chinese UI text] 
+                    </div> 
                   ) : memoryData.owner === wallet.publicKey?.toString() ? (
                     // [Chinese comment] 拥有者操作
                     <>
                       {isListingMode ? (
                         <div className="bg-gray-50 p-4 rounded-lg mb-4">
-                          <h3 className="text-lg font-semibold mb-2">[Chinese UI text] 上架出售</h3>
+                          <h3 className="text-lg font-semibold mb-2"> 上架出售</h3>
                           <div className="flex items-center mb-4">
                             <input
                               type="number"
@@ -411,7 +411,7 @@ const MemoryDetails: NextPage = () =>[Chinese UI text]  {
                               onClick={() => setIsListingMode(false)}
                               disabled={processing}
                               className="btn btn-secondary"
-                            >[Chinese UI text] 
+                            > 
                               取消
                             </button>
                           </div>
@@ -420,7 +420,7 @@ const MemoryDetails: NextPage = () =>[Chinese UI text]  {
                         <div className="bg-gray-50 p-4 rounded-lg mb-4">
                           <div className="flex justify-between items-center mb-3">
                             <div>
-                              <h3 className="text-lg font-semibold">[Chinese UI text] 当前上架价格</h3>
+                              <h3 className="text-lg font-semibold"> 当前上架价格</h3>
                               <p className="text-2xl font-bold text-blue-600">{formatSol(memoryData.price)} SOL</p>
                             </div>
                             <button
@@ -436,17 +436,17 @@ const MemoryDetails: NextPage = () =>[Chinese UI text]  {
                         <button
                           onClick={() => setIsListingMode(true)}
                           className="btn btn-primary w-full mb-4"
-                        >[Chinese UI text] 
+                        > 
                           上架出售
                         </button>
                       )}
                       
                       <Link href="/validator-dashboard">
-                        <a className="btn btn-secondary w-full">[Chinese UI text] 
+                        <a className="btn btn-secondary w-full"> 
                           管理我的内存
                         </a>
                       </Link>
-                    </>[Chinese UI text] 
+                    </> 
                   ) : (
                     // [Chinese comment] 非拥有者操作
                     <>
@@ -454,7 +454,7 @@ const MemoryDetails: NextPage = () =>[Chinese UI text]  {
                         <div className="bg-gray-50 p-4 rounded-lg mb-4">
                           <div className="flex justify-between items-center mb-3">
                             <div>
-                              <h3 className="text-lg font-semibold">[Chinese UI text] 售价</h3>
+                              <h3 className="text-lg font-semibold"> 售价</h3>
                               <p className="text-2xl font-bold text-blue-600">{formatSol(memoryData.price)} SOL</p>
                             </div>
                             <button
@@ -468,12 +468,12 @@ const MemoryDetails: NextPage = () =>[Chinese UI text]  {
                         </div>
                       ) : (
                         <div className="bg-gray-50 p-4 rounded-lg text-center mb-4">
-                          <p className="text-lg">[Chinese UI text] 此内存当前未上架出售</p>
+                          <p className="text-lg"> 此内存当前未上架出售</p>
                         </div>
                       )}
                       
                       <Link href="/market">
-                        <a className="btn btn-secondary w-full">[Chinese UI text] 
+                        <a className="btn btn-secondary w-full"> 
                           浏览更多内存
                         </a>
                       </Link>
@@ -487,16 +487,16 @@ const MemoryDetails: NextPage = () =>[Chinese UI text]  {
           {/* Validate记录 */}
           <div className="md:col-span-1">
             <div className="bg-white rounded-lg shadow-md p-6">
-              <h2 className="text-xl font-bold mb-4">[Chinese UI text] Validate记录</h2>
+              <h2 className="text-xl font-bold mb-4"> Validate记录</h2>
               
               {validations.length === 0 ? (
-                <p className="text-gray-500 text-center py-6">[Chinese UI text] 暂无Validate记录</p>
+                <p className="text-gray-500 text-center py-6"> 暂无Validate记录</p>
               ) : (
                 <div className="space-y-4">
                   {validations.map((validation, index) => (
                     <div key={index} className="border-b pb-3 last:border-0">
                       <div className="flex justify-between mb-1">
-                        <span className="text-sm font-medium">[Chinese UI text] 
+                        <span className="text-sm font-medium"> 
                           Validate者: 
                           <a 
                             href={getExplorerUrl(validation.validator)} 
@@ -513,7 +513,7 @@ const MemoryDetails: NextPage = () =>[Chinese UI text]  {
                       </div>
                       
                       <div className="flex items-center mb-1">
-                        <span className="text-sm font-medium mr-2">[Chinese UI text] 得分:</span>
+                        <span className="text-sm font-medium mr-2"> 得分:</span>
                         <div className="flex-1 bg-gray-200 rounded-full h-2">
                           <div 
                             className={`h-2 rounded-full ${
@@ -527,7 +527,7 @@ const MemoryDetails: NextPage = () =>[Chinese UI text]  {
                       </div>
                       
                       <div className="flex items-center mb-1">
-                        <span className="text-sm font-medium mr-2">[Chinese UI text] 有效性:</span>
+                        <span className="text-sm font-medium mr-2"> 有效性:</span>
                         <span className={`text-sm ${validation.isValid ? 'text-green-600' : 'text-red-600'}`}>
                           {validation.isValid ? '有效' : '无效'}
                         </span>
@@ -535,7 +535,7 @@ const MemoryDetails: NextPage = () =>[Chinese UI text]  {
                       
                       {validation.comment && (
                         <div className="mt-2">
-                          <span className="text-sm font-medium">[Chinese UI text] 评论:</span>
+                          <span className="text-sm font-medium"> 评论:</span>
                           <p className="text-sm text-gray-700 mt-1">{validation.comment}</p>
                         </div>
                       )}
@@ -554,9 +554,9 @@ const MemoryDetails: NextPage = () =>[Chinese UI text]  {
             </div>
             
             <div className="bg-white rounded-lg shadow-md p-6 mt-6">
-              <h2 className="text-xl font-bold mb-4">[Chinese UI text] 类似内存</h2>
+              <h2 className="text-xl font-bold mb-4"> 类似内存</h2>
               
-              <p className="text-gray-500 text-center py-4">[Chinese UI text] 
+              <p className="text-gray-500 text-center py-4"> 
                 推荐功能正在开发中...
               </p>
             </div>
