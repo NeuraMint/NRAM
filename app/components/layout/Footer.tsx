@@ -68,7 +68,7 @@ export default function Footer() {
               <h3 className="text-sm font-semibold text-gray-800 mb-3">Community</h3>
               <ul className="space-y-2">
                 <li>
-                  <a href="https://x.com/NeuraMint_" target="_blank" rel="noopener noreferrer" className="text-sm text-gray-600 hover:text-blue-600">Twitter</a>
+                  <a href="https://x.com/NeuraMint_Ai" target="_blank" rel="noopener noreferrer" className="text-sm text-gray-600 hover:text-blue-600">Twitter</a>
                 </li>
                 <li>
                   <a href="https://github.com/NeuraMint/NRAM" target="_blank" rel="noopener noreferrer" className="text-sm text-gray-600 hover:text-blue-600">GitHub</a>

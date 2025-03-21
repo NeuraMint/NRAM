@@ -288,7 +288,7 @@ We welcome feature requests! When submitting a feature request:
 
 Join our community channels to connect with other contributors:
 
-- [Twitter](https://x.com/NeuraMint_)
+- [Twitter](https://x.com/NeuraMint_Ai)
 - [Website](https://www.neuramint.tech)
 - [GitHub Discussions](https://github.com/NeuraMint/NRAM/discussions)
 

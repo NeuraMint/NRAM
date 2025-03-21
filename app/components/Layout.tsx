@@ -55,7 +55,7 @@ const Layout: React.FC<LayoutProps> = ({
             <div>
               <h4 className="font-semibold mb-4">Community</h4>
               <ul className="space-y-2 text-gray-400">
-                <li><a href="https://x.com/NeuraMint_" target="_blank" rel="noopener noreferrer" className="hover:text-white">Twitter</a></li>
+                <li><a href="https://x.com/NeuraMint_Ai" target="_blank" rel="noopener noreferrer" className="hover:text-white">Twitter</a></li>
                 <li><a href="https://github.com/NeuraMint/NRAM" target="_blank" rel="noopener noreferrer" className="hover:text-white">GitHub</a></li>
               </ul>
             </div>

@@ -7,7 +7,7 @@
 
   <p>
     <a href="https://www.neuramint.tech" target="_blank"><img src="https://img.shields.io/badge/Website-neuramint.tech-00C7B7?style=flat-square" alt="Website" /></a>
-    <a href="https://x.com/NeuraMint_" target="_blank"><img src="https://img.shields.io/badge/Twitter-@NeuraMint__-1DA1F2?style=flat-square&logo=twitter" alt="Twitter" /></a>
+    <a href="https://x.com/NeuraMint_Ai" target="_blank"><img src="https://img.shields.io/badge/Twitter-@NeuraMint__Ai-1DA1F2?style=flat-square&logo=twitter" alt="Twitter" /></a>
     <a href="https://github.com/NeuraMint/NRAM" target="_blank"><img src="https://img.shields.io/badge/GitHub-NeuraMint/NRAM-181717?style=flat-square&logo=github" alt="GitHub" /></a>
   </p>
 </div>
@@ -366,7 +366,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## Contact
 
 - Website: [www.neuramint.tech](https://www.neuramint.tech)
-- Twitter: [@NeuraMint_](https://x.com/NeuraMint_)
+- Twitter: [@NeuraMint_Ai](https://x.com/NeuraMint_Ai)
 - GitHub: [NeuraMint/NRAM](https://github.com/NeuraMint/NRAM)
 
 ## Acknowledgements

@@ -47,7 +47,7 @@ These documents are regularly updated to reflect the current state of the projec
 
 - [NeuraMint Website](https://www.neuramint.tech)
 - [GitHub Repository](https://github.com/NeuraMint/NRAM)
-- [Twitter](https://x.com/NeuraMint_)
+- [Twitter](https://x.com/NeuraMint_Ai)
 
 ## Contributing to Documentation
 
